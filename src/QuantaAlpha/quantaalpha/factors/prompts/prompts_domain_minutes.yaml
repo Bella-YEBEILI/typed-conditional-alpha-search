@@ -1,0 +1,32 @@
+potential_direction_transformation: |-
+  Intraday-domain supplement:
+  - If minute-level fields are active, emphasize microstructure, short-horizon reversal/momentum, intraday liquidity, execution pressure, and noise control.
+  - Keep the hypothesis actionable under minute-bar semantics instead of daily semantics.
+
+factor_hypothesis_specification: |-
+  4. When minute-level data is active, interpret rolling windows as minute-bar windows unless explicitly stated otherwise.
+  5. Prioritize noise-robust intraday signals and explain why the signal should persist after turnover and basic transaction-cost pressure.
+  6. Explore both compact and richer minute constructions when they remain executable and have clear intraday semantics.
+
+function_lib_description: |-
+  Intraday-domain supplement:
+  - Supported minute-domain fields are restricted to: opens, highs, lows, closes, volumes, amounts, ratios, vwaps, turnovers, returns, lreturns.
+  - Use derived-style raw constructions as inspiration: participation/ADV from rolling volume or amount, smoothed intraday trend from returns/lreturns, price-volume coupling from return versus volume/amount/turnover change, volatility from return or high-low range, and efficiency/friction from price move per liquidity or vwap deviation.
+  - If you mix daily and minute fields, explain the horizon bridge explicitly and keep minute signals in a clearly defined timing/filtering role.
+  - For a multi-factor batch, use the full minute allowlist. Diversify raw fields, reducer/operator families, and market mechanisms.
+  - The initial direction is only a reference; use broader field/operator patterns from the allowlist when they fit the research theme.
+
+factor_experiment_output_format: |-
+  Intraday-domain supplement:
+  - If a factor uses minute-level fields, the description must state the intended horizon and why the signal is robust to intraday noise.
+  - Prefer windows that match the intended intraday horizon, such as 5/15/30/60/120 bars, and allow richer nesting when each layer has a clear role.
+  - Across a generated batch, expressions should differ in field choices, operator families, timing choices, and market mechanisms.
+
+factor_feedback_generation:
+  system: |-
+    Intraday-domain evaluation supplement:
+    - Focus on turnover realism, noise sensitivity, and whether any added complexity has a clear intraday mechanism.
+    - Prioritize the raw and zz1000s submission checks over headline gross performance; use complete only to decide whether the minute signal should be tagged as smart_styles.
+  user: |-
+    Intraday-domain evaluation supplement:
+    - If the tested factor uses minute-level fields, comment on whether the window sizes, turnover profile, and execution realism are plausible for intraday deployment.

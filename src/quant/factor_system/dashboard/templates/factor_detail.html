@@ -1,0 +1,273 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  .compact-card .card-body { font-size:12px; }
+  .perf-grid {
+    display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px 14px;
+  }
+  .kv-item { display:flex; flex-direction:column; }
+  .kv-label { color:#6c757d; line-height:1.1; font-size:11px; }
+  .kv-value { font-weight:600; line-height:1.3; }
+  .perf-section { margin-bottom:10px; }
+  .perf-section:last-child { margin-bottom:0; }
+  .perf-section-title {
+    font-size:11px; font-weight:600; color:#495057;
+    border-bottom:1px solid #dee2e6; padding-bottom:3px; margin-bottom:6px;
+  }
+  .perf-row {
+    display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:4px 12px;
+  }
+  .chart-legend-rows { margin-top:8px; font-size:12px; }
+  .chart-legend-row {
+    display:grid; grid-template-columns:repeat(5,minmax(0,1fr));
+    column-gap:8px; row-gap:4px; margin-bottom:4px;
+  }
+  .chart-legend-item { display:inline-flex; align-items:center; gap:5px; }
+  .chart-legend-swatch { width:14px; height:2px; display:inline-block; border-radius:1px; }
+  .matched-row { display:flex; flex-wrap:wrap; }
+  .matched-row > [class*="col-"] { display:flex; flex-direction:column; }
+  .matched-row .card { flex:1; }
+</style>
+
+<h5 class="mb-3">Factor: {{ factor_name }}</h5>
+
+<!-- Row 1: Meta + Performance -->
+<div class="row matched-row mb-3">
+  <div class="col-md-4 mb-3 compact-card">
+    <div class="card">
+      <div class="card-header">Meta</div>
+      <div class="card-body">
+        <div class="perf-grid">
+          <div class="kv-item"><div class="kv-label">Name</div><div class="kv-value" title="{{ factor_name }}">{{ factor_name }}</div></div>
+          <div class="kv-item"><div class="kv-label">Author</div><div class="kv-value">{{ info.get("author","") }}</div></div>
+          <div class="kv-item"><div class="kv-label">Type</div><div class="kv-value">{{ info.get("type","") }}</div></div>
+          <div class="kv-item"><div class="kv-label">Level</div><div class="kv-value">{{ info.get("level","") }}</div></div>
+          <div class="kv-item"><div class="kv-label">Tag</div><div class="kv-value">{{ info.get("tag","") }}</div></div>
+          <div class="kv-item"><div class="kv-label">Category</div><div class="kv-value">{{ info.get("category","") }}</div></div>
+          <div class="kv-item"><div class="kv-label">Universe</div><div class="kv-value">{{ info.get("universe","") }}</div></div>
+          <div class="kv-item"><div class="kv-label">Pasteurization</div><div class="kv-value">{{ info.get("pasteurization","") }}</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8 mb-3 compact-card">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span>Performance</span>
+        <form method="get" class="d-flex align-items-center gap-2 mb-0">
+          <input type="hidden" name="refresh_chart" value="{{ 1 if refresh_chart else 0 }}">
+          <input type="hidden" name="refresh_corr" value="{{ 1 if refresh_corr else 0 }}">
+          <input type="hidden" name="chart_type" value="{{ chart_type }}">
+          <input type="hidden" name="benchmark" value="{{ benchmark }}">
+          <input type="hidden" name="chart_start" value="{{ chart_start }}">
+          <input type="hidden" name="chart_end" value="{{ chart_end }}">
+          <input type="date" class="form-control form-control-sm" name="perf_start" value="{{ perf_start }}" style="width:130px;" placeholder="start">
+          <input type="date" class="form-control form-control-sm" name="perf_end" value="{{ perf_end }}" style="width:130px;" placeholder="end">
+          <button type="submit" name="annualize" value="{{ '0' if annualize else '1' }}" class="btn btn-sm {{ 'btn-primary' if annualize else 'btn-outline-secondary' }}">{{ 'Annualized' if annualize else 'Cumulative' }}</button>
+          <button type="submit" class="btn btn-sm btn-primary">Apply</button>
+        </form>
+      </div>
+      <div class="card-body">
+        <!-- LS -->
+        <div class="perf-section">
+          <div class="perf-section-title">Long-Short</div>
+          <div class="perf-row">
+            <div class="kv-item"><div class="kv-label">Ret</div><div class="kv-value">{{ fmt_pct(safe_float(perf_data.get("ls_ret"))) }}</div></div>
+            <div class="kv-item"><div class="kv-label">IR</div><div class="kv-value">{{ fmt_num(safe_float(perf_data.get("ls_ir"))) }}</div></div>
+            <div class="kv-item"><div class="kv-label">MaxDD</div><div class="kv-value">{{ fmt_pct(safe_float(perf_data.get("ls_maxdd"))) }}</div></div>
+            <div class="kv-item"><div class="kv-label">NetRet</div><div class="kv-value">{{ fmt_pct(safe_float(perf_data.get("ls_netret"))) }}</div></div>
+            <div class="kv-item"><div class="kv-label">NetIR</div><div class="kv-value">{{ fmt_num(safe_float(perf_data.get("ls_netir"))) }}</div></div>
+            <div class="kv-item"><div class="kv-label">NetMaxDD</div><div class="kv-value">{{ fmt_pct(safe_float(perf_data.get("ls_netmaxdd"))) }}</div></div>
+          </div>
+        </div>
+        <!-- Long -->
+        <div class="perf-section">
+          <div class="perf-section-title">Long</div>
+          <div class="perf-row">
+            <div class="kv-item"><div class="kv-label">Ret</div><div class="kv-value">{{ fmt_pct(safe_float(perf_data.get("long_ret"))) }}</div></div>
+            <div class="kv-item"><div class="kv-label">IR</div><div class="kv-value">{{ fmt_num(safe_float(perf_data.get("long_ir"))) }}</div></div>
+            <div class="kv-item"><div class="kv-label">MaxDD</div><div class="kv-value">{{ fmt_pct(safe_float(perf_data.get("long_maxdd"))) }}</div></div>
+            <div class="kv-item"><div class="kv-label">NetRet</div><div class="kv-value">{{ fmt_pct(safe_float(perf_data.get("long_netret"))) }}</div></div>
+            <div class="kv-item"><div class="kv-label">NetIR</div><div class="kv-value">{{ fmt_num(safe_float(perf_data.get("long_netir"))) }}</div></div>
+            <div class="kv-item"><div class="kv-label">NetMaxDD</div><div class="kv-value">{{ fmt_pct(safe_float(perf_data.get("long_netmaxdd"))) }}</div></div>
+          </div>
+        </div>
+        <!-- IC / Turnover / Coverage -->
+        <div class="perf-section">
+          <div class="perf-section-title">IC / Turnover</div>
+          <div class="perf-row">
+            <div class="kv-item"><div class="kv-label">RankIC</div><div class="kv-value">{{ fmt_num(safe_float(perf_data.get("rankic")), 3) }}</div></div>
+            <div class="kv-item"><div class="kv-label">RankICIR</div><div class="kv-value">{{ fmt_num(safe_float(perf_data.get("rankicir"))) }}</div></div>
+            <div class="kv-item"><div class="kv-label">Long TO</div><div class="kv-value">{{ fmt_pct(safe_float(perf_data.get("long_turnover")), 1) }}</div></div>
+            <div class="kv-item"><div class="kv-label">LS TO</div><div class="kv-value">{{ fmt_pct(safe_float(perf_data.get("ls_turnover")), 1) }}</div></div>
+            <div class="kv-item"><div class="kv-label">Long Num</div><div class="kv-value">{{ fmt_int(safe_float(perf_data.get("long_num"))) }}</div></div>
+            <div class="kv-item"><div class="kv-label">Coverage</div><div class="kv-value">{{ fmt_pct(safe_float(perf_data.get("coverage")), 1) }}</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Row 2: Correlation + PNL (fixed height) -->
+<div class="row mb-3" style="height:560px;">
+  <div class="col-md-4 mb-3 compact-card" style="height:100%;">
+    <div class="card h-100" style="display:flex;flex-direction:column;">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span>Correlation (vs Library)</span>
+        <form method="get" class="d-flex align-items-center gap-2 mb-0">
+          <input type="hidden" name="refresh_chart" value="{{ 1 if refresh_chart else 0 }}">
+          <input type="hidden" name="refresh_corr" value="1">
+          <input type="hidden" name="chart_type" value="{{ chart_type }}">
+          <input type="hidden" name="benchmark" value="{{ benchmark }}">
+          <input type="hidden" name="chart_start" value="{{ chart_start }}">
+          <input type="hidden" name="chart_end" value="{{ chart_end }}">
+          <input type="hidden" name="perf_start" value="{{ perf_start }}">
+          <input type="hidden" name="perf_end" value="{{ perf_end }}">
+          <input type="hidden" name="annualize" value="{{ '1' if annualize else '0' }}">
+          <button type="submit" class="btn btn-sm btn-primary">Load</button>
+        </form>
+      </div>
+      <div class="card-body" style="flex:1;overflow-y:auto;min-height:0;">
+        {% if refresh_corr %}
+          <p><strong>Max |Corr|:</strong> {{ fmt_num(corr_info.max_corr, 3) }}</p>
+          <p><strong>Avg Corr:</strong> {{ fmt_num(corr_info.avg_corr, 3) }}</p>
+          <table class="table table-sm">
+            <thead><tr><th>Factor</th><th>Corr</th></tr></thead>
+            <tbody>
+            {% for item in corr_info.top_list %}
+              <tr>
+                <td><a href="{{ url_for('factor_detail',factor_name=item.factor_name) }}">{{ item.factor_name }}</a></td>
+                <td>{{ fmt_num(item.corr, 3) }}</td>
+              </tr>
+            {% endfor %}
+            {% if not corr_info.top_list %}
+              <tr><td colspan="2">No correlation data.</td></tr>
+            {% endif %}
+            </tbody>
+          </table>
+        {% else %}
+          <div class="text-muted">Click "Load" to compute correlation.</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8 mb-3 compact-card" style="height:100%;">
+    <div class="card h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span>PNL</span>
+        <form method="get" class="d-flex align-items-center gap-2 mb-0">
+          <input type="hidden" name="refresh_chart" value="1">
+          <input type="hidden" name="refresh_corr" value="{{ 1 if refresh_corr else 0 }}">
+          <input type="hidden" name="perf_start" value="{{ perf_start }}">
+          <input type="hidden" name="perf_end" value="{{ perf_end }}">
+          <input type="hidden" name="annualize" value="{{ '1' if annualize else '0' }}">
+          <select class="form-select form-select-sm" name="chart_type" style="width:200px;">
+            {% for ct in chart_type_options %}
+              <option value="{{ ct }}" {% if ct == chart_type %}selected{% endif %}>{{ ct }}</option>
+            {% endfor %}
+          </select>
+          <select class="form-select form-select-sm" name="benchmark" style="width:120px;">
+            {% for value,label in benchmark_options %}
+              <option value="{{ value }}" {% if value == benchmark %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+          </select>
+          <input type="date" class="form-control form-control-sm" name="chart_start" value="{{ chart_start }}" style="width:130px;">
+          <input type="date" class="form-control form-control-sm" name="chart_end" value="{{ chart_end }}" style="width:130px;">
+          <button type="submit" class="btn btn-sm btn-primary">Load</button>
+        </form>
+      </div>
+      <div class="card-body">
+        {% if refresh_chart and chart_json.datasets %}
+          <canvas id="pnlChart"></canvas>
+          <div id="pnlLegend" class="chart-legend-rows"></div>
+        {% elif refresh_chart %}
+          <div class="text-muted">No result data.</div>
+        {% else %}
+          <div class="text-muted">Click "Load" to compute and display chart.</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chart scripts -->
+<script>
+function buildLineChart(canvasId, chartData, isPercent, legendId) {
+  const ctx = document.getElementById(canvasId);
+  if (!ctx || !chartData.datasets || chartData.datasets.length === 0) return;
+  const labels = chartData.labels || [];
+  const useGroupLegend = legendId && chartData.datasets.length > 4;
+  const datasets = chartData.datasets.map(d => ({
+    label: d.label,
+    data: d.data,
+    borderWidth: 1,
+    pointRadius: 0,
+    pointHoverRadius: 2,
+    fill: false,
+    tension: 0.1
+  }));
+  const chart = new Chart(ctx.getContext('2d'), {
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true,
+      interaction: { mode: 'index', intersect: false },
+      plugins: { legend: { display: !useGroupLegend, position: 'bottom', labels: { font: { size: 10 } } } },
+      scales: {
+        x: {
+          afterBuildTicks: s => {
+            if (s.ticks && s.ticks.length > 1)
+              s.ticks = [s.ticks[0], s.ticks[s.ticks.length - 1]];
+          },
+          ticks: {
+            callback: v => {
+              const i = Number(v);
+              if (i === 0) return labels[0] ? labels[0].slice(2) : '';
+              if (i === labels.length - 1) return labels[labels.length - 1] ? labels[labels.length - 1].slice(2) : '';
+              return '';
+            },
+            font: { size: 10 }, maxRotation: 0
+          }
+        },
+        y: {
+          ticks: { callback: v => isPercent ? (v * 100).toFixed(1) + '%' : v }
+        }
+      }
+    }
+  });
+  if (useGroupLegend && legendId) {
+    const legend = document.getElementById(legendId);
+    if (legend) {
+      legend.innerHTML = '';
+      const rows = [datasets.slice(0, 5), datasets.slice(5, 10)];
+      rows.forEach(row => {
+        const rowEl = document.createElement('div');
+        rowEl.className = 'chart-legend-row';
+        row.forEach(ds => {
+          const item = document.createElement('span');
+          item.className = 'chart-legend-item';
+          const sw = document.createElement('span');
+          sw.className = 'chart-legend-swatch';
+          sw.style.background = ds.borderColor || '#666';
+          const tx = document.createElement('span');
+          tx.textContent = ds.label;
+          item.appendChild(sw);
+          item.appendChild(tx);
+          rowEl.appendChild(item);
+        });
+        legend.appendChild(rowEl);
+      });
+    }
+  }
+}
+
+const pnlData = {{ chart_json|tojson }};
+const pnlIsPercent = {{ 'true' if chart_is_percent else 'false' }};
+document.addEventListener('DOMContentLoaded', function() {
+  buildLineChart('pnlChart', pnlData, pnlIsPercent, 'pnlLegend');
+});
+</script>
+{% endblock %}

@@ -1,0 +1,426 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="hero">
+  <div>
+    <h1 class="hero-title">策略净值看板</h1>
+    <div class="hero-subtitle">{{ pkl_path }}</div>
+  </div>
+  <div class="text-end" style="min-width:320px;">
+    <form method="get" id="strategy-form" class="d-grid gap-2">
+      <input type="hidden" name="benchmark" value="{{ benchmark }}">
+      <div>
+        <div class="summary-label">当前策略</div>
+        <select class="form-select form-select-sm" name="strategy" onchange="document.getElementById('strategy-form').submit()">
+          {% for value,label in strategy_options %}
+          <option value="{{ value }}" {{ 'selected' if strategy==value }}>{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <div class="summary-label">对比策略</div>
+        <select class="form-select form-select-sm" name="compare_strategy" onchange="document.getElementById('strategy-form').submit()">
+          <option value="">不对比</option>
+          {% for value,label in strategy_options %}
+          <option value="{{ value }}" {{ 'selected' if compare_strategy==value }}>{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </form>
+    <div class="summary-note">{{ pkl_name }}</div>
+  </div>
+</div>
+
+<form class="topbar" method="get" id="toolbar-form">
+  <input type="hidden" name="strategy" value="{{ strategy }}">
+  <input type="hidden" name="compare_strategy" value="{{ compare_strategy }}">
+  {% if compare_mode %}
+  <div class="toolbar-left">
+    <span class="summary-label mb-0">对比模式</span>
+    <span class="summary-note">仅展示两个策略各自的净值与回撤</span>
+  </div>
+  {% else %}
+  <div class="toolbar-left">
+    <span class="summary-label mb-0">对标基准</span>
+    <select class="form-select" name="benchmark" onchange="document.getElementById('toolbar-form').submit()">
+      {% for value,label in benchmark_options %}
+      <option value="{{ value }}" {{ 'selected' if benchmark==value }}>{{ label }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  {% endif %}
+  <div class="toolbar-right">
+    <span class="summary-note">最新日期 <span id="latest-date-value">{{ summary.latest_date }}</span></span>
+    {% if compare_mode %}
+    <span class="summary-note">{{ strategy_name }} vs {{ compare_strategy_name }}</span>
+    {% elif benchmark_name %}
+    <span class="summary-note">当前基准 {{ benchmark_name }}</span>
+    {% endif %}
+  </div>
+</form>
+
+{% if compare_mode %}
+<div class="summary-grid compare-mode">
+  <div class="panel summary-card">
+    <div class="summary-label">{{ strategy_name }}</div>
+    <div class="summary-value" id="primary-nav-value">{{ fmt_nav(summary.primary_nav) }}</div>
+    <div class="summary-note">Net</div>
+  </div>
+  <div class="panel summary-card">
+    <div class="summary-label">{{ strategy_name }}回撤</div>
+    <div class="summary-value" id="primary-drawdown-value">{{ fmt_pct(summary.primary_drawdown) }}</div>
+    <div class="summary-note">Drawdown</div>
+  </div>
+  <div class="panel summary-card">
+    <div class="summary-label">{{ compare_strategy_name }}</div>
+    <div class="summary-value" id="secondary-nav-value">{{ fmt_nav(summary.secondary_nav) }}</div>
+    <div class="summary-note">Net</div>
+  </div>
+  <div class="panel summary-card">
+    <div class="summary-label">{{ compare_strategy_name }}回撤</div>
+    <div class="summary-value" id="secondary-drawdown-value">{{ fmt_pct(summary.secondary_drawdown) }}</div>
+    <div class="summary-note">Drawdown</div>
+  </div>
+</div>
+{% else %}
+<div class="summary-grid">
+  <div class="panel summary-card">
+    <div class="summary-label">毛净值</div>
+    <div class="summary-value" id="gross-nav-value">{{ fmt_nav(summary.gross_nav) }}</div>
+    <div class="summary-note">Gross</div>
+  </div>
+  <div class="panel summary-card">
+    <div class="summary-label">净值</div>
+    <div class="summary-value" id="nav-value">{{ fmt_nav(summary.nav) }}</div>
+    <div class="summary-note">Net</div>
+  </div>
+  <div class="panel summary-card">
+    <div class="summary-label">净值回撤</div>
+    <div class="summary-value" id="nav-drawdown-value">{{ fmt_pct(summary.nav_drawdown) }}</div>
+    <div class="summary-note">最深回撤</div>
+  </div>
+  <div class="panel summary-card">
+    <div class="summary-label">日度胜率</div>
+    <div class="summary-value" id="daily-win-rate-value">{{ fmt_pct(summary.daily_win_rate) }}</div>
+    <div class="summary-note">Net Daily Win Rate</div>
+  </div>
+  <div class="panel summary-card">
+    <div class="summary-label">基准净值</div>
+    <div class="summary-value" id="benchmark-nav-value">{{ fmt_nav(summary.benchmark_nav) }}</div>
+    <div class="summary-note">{{ benchmark_name or '未选择基准' }}</div>
+  </div>
+  <div class="panel summary-card">
+    <div class="summary-label">超额净值</div>
+    <div class="summary-value" id="excess-nav-value">{{ fmt_nav(summary.excess_nav) }}</div>
+    <div class="summary-note">Net-Benchmark</div>
+  </div>
+  <div class="panel summary-card">
+    <div class="summary-label">超额回撤</div>
+    <div class="summary-value" id="excess-drawdown-value">{{ fmt_pct(summary.excess_drawdown) }}</div>
+    <div class="summary-note">Excess Drawdown</div>
+  </div>
+</div>
+{% endif %}
+
+<div class="panel chart-panel">
+  <div class="chart-toolbar">
+    <div class="toolbar-left">
+      {% for key,label in [("1m","1M"),("3m","3M"),("6m","6M"),("ytd","YTD"),("1y","1Y"),("3y","3Y"),("5y","5Y"),("all","ALL")] %}
+      <button type="button" class="range-btn {% if key=='all' %}active{% endif %}" data-range="{{ key }}">{{ label }}</button>
+      {% endfor %}
+    </div>
+    <div class="toolbar-right">
+      <input type="date" class="form-control" id="range-start">
+      <input type="date" class="form-control" id="range-end">
+      <button type="button" class="btn btn-dark" id="apply-range">应用区间</button>
+    </div>
+  </div>
+  <div id="nav-chart"></div>
+</div>
+
+<script>
+const chartPayload = {{ chart_payload|tojson }};
+const compareMode = chartPayload.compare_mode;
+const drawdownKinds = new Set(chartPayload.drawdown_kinds || []);
+const navChart = echarts.init(document.getElementById('nav-chart'));
+const returnSeries = chartPayload.return_series;
+const startInput = document.getElementById('range-start');
+const endInput = document.getElementById('range-end');
+const allDates = Array.from(new Set(returnSeries.flatMap(item => item.data.map(point => point[0])))).sort();
+
+function lineSeriesConfig(item,xAxisIndex,yAxisIndex,areaOpacity){
+  return {
+    name: item.name,
+    type: 'line',
+    showSymbol: false,
+    smooth: false,
+    xAxisIndex,
+    yAxisIndex,
+    data: item.data,
+    lineStyle: { width: 2, color: item.color },
+    itemStyle: { color: item.color },
+    areaStyle: areaOpacity ? { color: item.color, opacity: areaOpacity } : undefined,
+    emphasis: { focus: 'series' }
+  };
+}
+
+function buildNavData(points){
+  if(!points.length) return [];
+  let nav = 1;
+  const data = [[points[0][0],1]];
+  for(let i = 1;i<points.length;i++){
+    nav *= 1+Number(points[i][1] ?? 0);
+    data.push([points[i][0],nav]);
+  }
+  return data;
+}
+
+function buildDrawdownData(navData){
+  let peak = 1;
+  return navData.map(([date,value]) => {
+    peak = Math.max(peak,value);
+    return [date,value/peak-1];
+  });
+}
+
+function slicePoints(points,startDate,endDate){
+  return points.filter(([date]) => date>=startDate&&date<=endDate);
+}
+
+function getSeriesLastValue(seriesList,kind){
+  const series = seriesList.find(item => item.kind===kind);
+  if(!series||!series.data.length) return null;
+  return Number(series.data[series.data.length-1][1]);
+}
+
+function getSeriesMinValue(seriesList,kind){
+  const series = seriesList.find(item => item.kind===kind);
+  if(!series||!series.data.length) return null;
+  let minValue = Number(series.data[0][1]);
+  for(let i = 1;i<series.data.length;i++){
+    minValue = Math.min(minValue,Number(series.data[i][1]));
+  }
+  return minValue;
+}
+
+function formatNavValue(value){
+  return value==null ? '-' : value.toFixed(4);
+}
+
+function formatPctValue(value,decimals=2){
+  return value==null ? '-' : `${(value*100).toFixed(decimals)}%`;
+}
+
+function getRangeWinRate(startDate,endDate){
+  const netSeries = returnSeries.find(item => item.kind==='net');
+  if(!netSeries) return null;
+  const sliced = slicePoints(netSeries.data,startDate,endDate);
+  if(sliced.length<=1) return null;
+  let winCount = 0;
+  for(let i = 1;i<sliced.length;i++){
+    if(Number(sliced[i][1])>0) winCount += 1;
+  }
+  return winCount/(sliced.length-1);
+}
+
+function updateSummaryValues(startDate,endDate,navDisplaySeries,drawdownDisplaySeries){
+  document.getElementById('latest-date-value').textContent = endDate;
+  if(compareMode){
+    document.getElementById('primary-nav-value').textContent = formatNavValue(getSeriesLastValue(navDisplaySeries,'primary'));
+    document.getElementById('primary-drawdown-value').textContent = formatPctValue(getSeriesMinValue(drawdownDisplaySeries,'primary'));
+    document.getElementById('secondary-nav-value').textContent = formatNavValue(getSeriesLastValue(navDisplaySeries,'secondary'));
+    document.getElementById('secondary-drawdown-value').textContent = formatPctValue(getSeriesMinValue(drawdownDisplaySeries,'secondary'));
+    return;
+  }
+  document.getElementById('gross-nav-value').textContent = formatNavValue(getSeriesLastValue(navDisplaySeries,'gross'));
+  document.getElementById('nav-value').textContent = formatNavValue(getSeriesLastValue(navDisplaySeries,'net'));
+  document.getElementById('nav-drawdown-value').textContent = formatPctValue(getSeriesMinValue(drawdownDisplaySeries,'net'));
+  document.getElementById('daily-win-rate-value').textContent = formatPctValue(getRangeWinRate(startDate,endDate));
+  document.getElementById('benchmark-nav-value').textContent = formatNavValue(getSeriesLastValue(navDisplaySeries,'benchmark'));
+  document.getElementById('excess-nav-value').textContent = formatNavValue(getSeriesLastValue(navDisplaySeries,'excess'));
+  document.getElementById('excess-drawdown-value').textContent = formatPctValue(getSeriesMinValue(drawdownDisplaySeries,'excess'));
+}
+
+function renderRange(startDate,endDate){
+  const navDisplaySeries = [];
+  const drawdownDisplaySeries = [];
+
+  returnSeries.forEach(item => {
+    const sliced = slicePoints(item.data,startDate,endDate);
+    if(!sliced.length) return;
+    const navData = buildNavData(sliced);
+    navDisplaySeries.push({
+      kind: item.kind,
+      name: item.name,
+      color: item.color,
+      data: navData,
+    });
+    if(drawdownKinds.has(item.kind)){
+      drawdownDisplaySeries.push({
+        kind: item.kind,
+        name: compareMode ? `${item.name}回撤` : (item.kind==='net' ? '净值回撤' : '超额回撤'),
+        color: item.color,
+        data: buildDrawdownData(navData),
+      });
+    }
+  });
+
+  const option = {
+    animation: false,
+    backgroundColor: 'transparent',
+    legend: {
+      top: 4,
+      itemGap: 18,
+      textStyle: { color: '#172033', fontSize: 12, fontWeight: 600 }
+    },
+    axisPointer: {
+      link: [{ xAxisIndex: 'all' }],
+      label: { show: false }
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+        label: { show: false }
+      },
+      backgroundColor: 'rgba(23,32,51,0.94)',
+      borderWidth: 0,
+      padding: [6,8],
+      textStyle: { color: '#fff', fontSize: 10 },
+      formatter: params => {
+        if(!params.length) return '';
+        const lines = [];
+        params.forEach(item => {
+          const isDrawdown = item.seriesName.includes('回撤');
+          const value = Array.isArray(item.value) ? item.value[1] : item.value;
+          const text = isDrawdown ? `${(value*100).toFixed(2)}%` : value.toFixed(4);
+          lines.push(
+            `<div style="display:flex;justify-content:space-between;gap:8px;font-size:10px;">` +
+            `<span>${item.marker}${item.seriesName}</span>` +
+            `<strong>${text}</strong>` +
+            `</div>`
+          );
+        });
+        return lines.join('');
+      }
+    },
+    grid: [
+      { left: 60, right: 28, top: 56, height: 360 },
+      { left: 60, right: 28, top: 454, height: 120 }
+    ],
+    xAxis: [
+      {
+        type: 'time',
+        gridIndex: 0,
+        axisLine: { lineStyle: { color: 'rgba(23,32,51,0.15)' } },
+        axisLabel: { color: '#6b7280' },
+        splitLine: { show: false }
+      },
+      {
+        type: 'time',
+        gridIndex: 1,
+        axisLine: { lineStyle: { color: 'rgba(23,32,51,0.15)' } },
+        axisLabel: { color: '#6b7280' },
+        splitLine: { show: false }
+      }
+    ],
+    yAxis: [
+      {
+        type: 'value',
+        gridIndex: 0,
+        scale: true,
+        axisLabel: {
+          color: '#6b7280',
+          formatter: value => value.toFixed(2)
+        },
+        splitLine: { lineStyle: { color: 'rgba(23,32,51,0.08)' } }
+      },
+      {
+        type: 'value',
+        gridIndex: 1,
+        max: 0,
+        axisLabel: {
+          color: '#6b7280',
+          formatter: value => `${(value*100).toFixed(0)}%`
+        },
+        splitLine: { lineStyle: { color: 'rgba(23,32,51,0.08)' } }
+      }
+    ],
+    series: [
+      ...navDisplaySeries.map(item => lineSeriesConfig(item,0,0,0)),
+      ...drawdownDisplaySeries.map(item => lineSeriesConfig(item,1,1,0.18))
+    ]
+  };
+
+  navChart.setOption(option,true);
+  startInput.value = startDate;
+  endInput.value = endDate;
+  updateSummaryValues(startDate,endDate,navDisplaySeries,drawdownDisplaySeries);
+}
+
+window.addEventListener('resize',() => navChart.resize());
+
+if(allDates.length){
+  startInput.value = allDates[0];
+  endInput.value = allDates[allDates.length-1];
+}
+
+function addMonths(baseDate,months){
+  const d = new Date(baseDate);
+  d.setMonth(d.getMonth()+months);
+  return d;
+}
+
+function addYears(baseDate,years){
+  const d = new Date(baseDate);
+  d.setFullYear(d.getFullYear()+years);
+  return d;
+}
+
+function toDateString(date){
+  const year = date.getFullYear();
+  const month = String(date.getMonth()+1).padStart(2,'0');
+  const day = String(date.getDate()).padStart(2,'0');
+  return `${year}-${month}-${day}`;
+}
+
+function nearestDate(target){
+  const targetTime = new Date(target).getTime();
+  for(const value of allDates){
+    if(new Date(value).getTime()>=targetTime) return value;
+  }
+  return allDates[0];
+}
+
+function setPresetRange(key){
+  document.querySelectorAll('.range-btn').forEach(btn => {
+    btn.classList.toggle('active',btn.dataset.range===key);
+  });
+  if(!allDates.length) return;
+  const endDate = allDates[allDates.length-1];
+  const end = new Date(endDate);
+  let startDate = allDates[0];
+  if(key==='1m') startDate = nearestDate(toDateString(addMonths(end,-1)));
+  if(key==='3m') startDate = nearestDate(toDateString(addMonths(end,-3)));
+  if(key==='6m') startDate = nearestDate(toDateString(addMonths(end,-6)));
+  if(key==='1y') startDate = nearestDate(toDateString(addYears(end,-1)));
+  if(key==='3y') startDate = nearestDate(toDateString(addYears(end,-3)));
+  if(key==='5y') startDate = nearestDate(toDateString(addYears(end,-5)));
+  if(key==='ytd') startDate = nearestDate(`${end.getFullYear()}-01-01`);
+  if(key==='all') startDate = allDates[0];
+  renderRange(startDate,endDate);
+}
+
+document.querySelectorAll('.range-btn').forEach(btn => {
+  btn.addEventListener('click',() => setPresetRange(btn.dataset.range));
+});
+
+document.getElementById('apply-range').addEventListener('click',() => {
+  if(startInput.value&&endInput.value){
+    renderRange(startInput.value,endInput.value);
+    document.querySelectorAll('.range-btn').forEach(btn => btn.classList.remove('active'));
+  }
+});
+
+setPresetRange('all');
+</script>
+{% endblock %}

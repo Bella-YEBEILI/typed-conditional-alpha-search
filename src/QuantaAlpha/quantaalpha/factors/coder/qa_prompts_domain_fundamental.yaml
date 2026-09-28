@@ -1,0 +1,18 @@
+evaluator_code_feedback_v1_system: |-
+  Fundamental-domain supplement:
+  - Valid raw fields are restricted to asset_growth, asset_turnover, bp, cash_coverage, consecutive_div_years, cost_ratio_trend, div_yield_stability, div_yield_ttm, div_yield_yoy, earnings_growth, ep, ff_factors, ff_factors_rolling, leverage, long_term_debt_ratio, net_margin, operating_cost_ratio, payout_ratio, profit_margin, revenue_growth, roe, roe_stability, roe_trend.
+  - Reject expressions that introduce pv-only or minute-only fields when those domains are not active.
+  - Judge semantics as slow-moving, cross-sectional fundamental signals rather than fast-turnover timing rules.
+  - Reject *_neutral fields and direct path/file references; the generated module should use raw field names injected through `data_ctx`.
+
+evolving_strategy_factor_implementation_v1_system: |-
+  Fundamental-domain supplement:
+  - Valid raw fields are restricted to asset_growth, asset_turnover, bp, cash_coverage, consecutive_div_years, cost_ratio_trend, div_yield_stability, div_yield_ttm, div_yield_yoy, earnings_growth, ep, ff_factors, ff_factors_rolling, leverage, long_term_debt_ratio, net_margin, operating_cost_ratio, payout_ratio, profit_margin, revenue_growth, roe, roe_stability, roe_trend.
+  - Do not introduce pv-only or minute-only fields when those domains are not active.
+  - Treat fundamental variables as slow-moving inputs and keep the expression economically interpretable.
+  - If the target is fundamental-only, the rendered daily module should use `DomainType.fundamental`, not `DomainType.pv`.
+
+function_lib_description: |-
+  Fundamental-domain supplement:
+  - Fundamental raw fields are restricted to asset_growth, asset_turnover, bp, cash_coverage, consecutive_div_years, cost_ratio_trend, div_yield_stability, div_yield_ttm, div_yield_yoy, earnings_growth, ep, ff_factors, ff_factors_rolling, leverage, long_term_debt_ratio, net_margin, operating_cost_ratio, payout_ratio, profit_margin, revenue_growth, roe, roe_stability, roe_trend.
+  - `raw/` fields are valid expression inputs; `neutral/` files are pre-neutralized artifacts and should not appear in generated expressions.

@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  .col-name { width:180px; max-width:180px; }
+  .table-wrap { overflow-x:auto; }
+  .name-ellipsis {
+    display:inline-block; max-width:160px; overflow:hidden;
+    text-overflow:ellipsis; white-space:nowrap; vertical-align:bottom;
+  }
+  .table-head-scroll { overflow-x:auto; overflow-y:hidden; height:14px; margin-bottom:6px; }
+  .table-head-scroll-inner { height:1px; }
+  .filter-bar select { font-size:13px; padding:2px 6px; }
+  .filter-bar .btn { font-size:12px; padding:2px 10px; }
+  .filter-right { margin-left:auto; }
+</style>
+
+{% macro sort_link(label, key) -%}
+  {% set active = (sort_by == key) %}
+  {% if active %}
+    {% set arrow = "&#9650;" if sort_dir == "asc" else "&#9660;" %}
+    {% set next_dir = "desc" if sort_dir == "asc" else "asc" %}
+  {% else %}
+    {% set arrow = "&#8597;" %}
+    {% set next_dir = "asc" %}
+  {% endif %}
+  <a class="text-decoration-none text-dark" href="{{ url_for('index', q=q, sort_by=key, sort_dir=next_dir, tier=tier, section=section, period=period, period_end=period_end, benchmark=benchmark) }}">
+    {{ label }} {{ arrow|safe }}
+  </a>
+{%- endmacro %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h5 class="mb-0">Factor List ({{ factors|length }})</h5>
+</div>
+
+<form class="d-flex flex-wrap align-items-center gap-2 mb-3 filter-bar" method="get" id="filter-form">
+  <input type="text" class="form-control" style="max-width:240px;" name="q" placeholder="Search" value="{{ q }}">
+  <input type="hidden" name="sort_by" value="{{ sort_by }}">
+  <input type="hidden" name="sort_dir" value="{{ sort_dir }}">
+
+  <select name="tier" id="sel-tier" onchange="document.getElementById('filter-form').submit()">
+    {% for t in ["selected","pool","all"] %}
+    <option value="{{ t }}" {{ 'selected' if tier==t }}>{{ t }}</option>
+    {% endfor %}
+  </select>
+
+  <select name="section" id="sel-section" onchange="document.getElementById('filter-form').submit()">
+    {% for s in ["raw","hs300s","zz1000s","complete"] %}
+    <option value="{{ s }}" {{ 'selected' if section==s }}>{{ s }}</option>
+    {% endfor %}
+  </select>
+
+  <select name="period" id="sel-period" onchange="onPeriodChange()">
+    {% for p in ["all","yearly","monthly","weekly"] %}
+    <option value="{{ p }}" {{ 'selected' if period==p }}>{{ p }}</option>
+    {% endfor %}
+  </select>
+
+  {% if period != "all" and period_ends %}
+  <select name="period_end" id="sel-period-end" onchange="document.getElementById('filter-form').submit()">
+    <option value="">latest</option>
+    {% for pe in period_ends %}
+    <option value="{{ pe }}" {{ 'selected' if period_end==pe }}>{{ pe }}</option>
+    {% endfor %}
+  </select>
+  {% else %}
+  <input type="hidden" name="period_end" value="">
+  {% endif %}
+
+  <button type="submit" class="btn btn-primary btn-sm">Go</button>
+  <a href="{{ url_for('index') }}" class="btn btn-secondary btn-sm">Reset</a>
+
+  <div class="filter-right d-flex align-items-center gap-2">
+    <span class="text-muted">Benchmark</span>
+    <select name="benchmark" id="sel-benchmark" onchange="document.getElementById('filter-form').submit()">
+      {% for value,label in benchmark_options %}
+      <option value="{{ value }}" {{ 'selected' if benchmark==value }}>{{ label }}</option>
+      {% endfor %}
+    </select>
+  </div>
+</form>
+
+<div id="table-head-scroll" class="table-head-scroll">
+  <div id="table-head-scroll-inner" class="table-head-scroll-inner"></div>
+</div>
+<div id="table-wrap" class="table-wrap">
+  <table id="factor-table" class="table table-sm table-hover align-middle">
+    <thead class="table-light">
+      <tr>
+        <th class="col-name">{{ sort_link("Name","factor_name") }}</th>
+        <th>{{ sort_link("Author","author") }}</th>
+        <th>{{ sort_link("Tag","tag") }}</th>
+        <th>{{ sort_link("Cat","category") }}</th>
+        <th>{{ sort_link("LS IR","ls_ir") }}</th>
+        <th>{{ sort_link("LS NetIR","ls_netir") }}</th>
+        <th>{{ sort_link(long_ret_label,"long_ret") }}</th>
+        <th>{{ sort_link(long_netret_label,"long_netret") }}</th>
+        <th>{{ sort_link(long_netmaxdd_label,"long_netmaxdd") }}</th>
+        <th>{{ sort_link("RankIC","rankic") }}</th>
+        <th>{{ sort_link("RankICIR","rankicir") }}</th>
+        <th>{{ sort_link("Turnover","long_turnover") }}</th>
+        <th>{{ sort_link("Coverage","coverage") }}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for r in factors %}
+      <tr>
+        <td><a class="name-ellipsis" href="{{ url_for('factor_detail',factor_name=r.factor_name) }}" title="{{ r.factor_name }}">{{ r.factor_name }}</a></td>
+        <td>{{ r.author or "" }}</td>
+        <td>{{ r.tag or "" }}</td>
+        <td>{{ r.category or "" }}</td>
+        <td>{{ fmt_num(r.ls_ir) }}</td>
+        <td>{{ fmt_num(r.ls_netir) }}</td>
+        <td>{{ fmt_pct(r.long_ret) }}</td>
+        <td>{{ fmt_pct(r.long_netret) }}</td>
+        <td>{{ fmt_pct(r.long_netmaxdd) }}</td>
+        <td>{{ fmt_num(r.rankic, 3) }}</td>
+        <td>{{ fmt_num(r.rankicir) }}</td>
+        <td>{{ fmt_pct(r.long_turnover, 1) }}</td>
+        <td>{{ fmt_pct(r.coverage, 1) }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% if not factors %}
+<div class="alert alert-info">No factors found.</div>
+{% endif %}
+
+<script>
+function onPeriodChange(){
+  // clear period_end when period changes, then submit
+  var pe = document.getElementById("sel-period-end");
+  if(pe) pe.value = "";
+  document.getElementById("filter-form").submit();
+}
+(function(){
+  const top=document.getElementById("table-head-scroll");
+  const topInner=document.getElementById("table-head-scroll-inner");
+  const wrap=document.getElementById("table-wrap");
+  const table=document.getElementById("factor-table");
+  if(!top||!topInner||!wrap||!table)return;
+  const sync=()=>{topInner.style.width=table.scrollWidth+"px";};
+  sync(); window.addEventListener("resize",sync);
+  let s=false;
+  top.addEventListener("scroll",()=>{if(s)return;s=true;wrap.scrollLeft=top.scrollLeft;s=false;});
+  wrap.addEventListener("scroll",()=>{if(s)return;s=true;top.scrollLeft=wrap.scrollLeft;s=false;});
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,465 @@
+potential_direction_transformation: |-
+  It's the first round, the user provided a potential direction: "{{ potential_direction }}". Referring to it, you need to transform it into a hypothesis in formal language that is clear and actionable for factor generation. Consider the following aspects while formulating the hypothesis:
+  1. **Clarity**: Ensure the hypothesis is specific and unambiguous.
+  2. **Actionability**: The hypothesis should suggest a clear path for experimentation or investigation.
+  3. **Relevance**: Ensure the hypothesis is directly related to the potential direction provided by the user.
+  4. **Data semantics**: If the direction mentions daily frequency or fundamental data, preserve those constraints explicitly in the hypothesis.
+  5. **Economic coherence**: If fundamental fields may be used, account for reporting lag, slower refresh frequency, and medium-horizon transmission instead of intraday timing logic.
+
+
+hypothesis_and_feedback: |-
+  {% for hypothesis, experiment, feedback in trace.hist[-10:] %}
+  Hypothesis {{ loop.index }}: {{ hypothesis }}
+  Corresponding Code (that leads to the difference in performance): {% set ws = (experiment.sub_workspace_list or [None])[0] %}{% if ws and ws.code_dict %}{{ ws.code_dict.get("factor.py") or ws.code_dict.get("model.py") or "" }}{% else %}(no implementation workspace available for this round){% endif %}
+  Observation on the result with the hypothesis: {{ feedback.observations }}
+  Feedback on the original hypothesis:  {{ feedback.hypothesis_evaluation }}
+  New Feedback for Context (For you to agree or improve upon):  {{ feedback.new_hypothesis }}
+  Reasoning for new hypothesis:  {{ feedback.reason }}
+  Did changing to this hypothesis work? (focus on the change):  {{ feedback.decision }}
+  {% endfor %}
+
+hypothesis_output_format: |-
+  The output should follow JSON format. Do not add any other text in your response. The schema is as follows:
+  {
+  "hypothesis": "A SINGLE LINE OF TEXT. The new hypothesis generated based on the information provided.",
+  "concise_knowledge": "A SINGLE LINE OF TEXT. Transferable knowledge based on theoretical principles. Use conditional grammar. eg. 'If...., ..; When..., .; and etc' Make sure that you state things clearly without ambiguity. Eg. avoid saying 'previous hypothesis', because one wouldn't know what that is.",
+  "concise_observation": "A SINGLE LINE OF TEXT. It focuses on the observation of the given scenario, data characteristics, or previous experiences (failures & succeses).",
+  "concise_justification": "A SINGLE LINE OF TEXT. Justify the hypothesis based on theoretical principles or initial assumptions.",
+  "concise_specification": "A SINGLE LINE OF TEXT. Define the scope, conditions, constraints of the hypothesis. Specify the expected relationships, variables, and thresholds, ensuring testability and relevance to the observed data."
+    }
+
+
+factor_hypothesis_specification: |-
+  1. **Data-Driven Hypothesis Formation:**  
+    - Ground hypotheses within the scope of available data for seamless testing.
+    - Align hypotheses with the temporal, cross-sectional, and distributional properties of the data.
+    - Avoid overfitting by focusing on robust, economically intuitive, and innovative relationships. 
+
+  2. **Justification of the Hypothesis:**  
+    - Use observed market patterns to creatively infer underlying economic or behavioral drivers.
+    - Build on empirical evidence while exploring innovative connections or untested relationships.
+    - Propose actionable insights that challenge conventional assumptions, yet remain testable.
+    - Emphasize the factor's potential to uncover unique, predictive market behaviors.
+
+  3. **Continuous Optimization and Exploration:**  
+      - Refine the first hypothesis iteratively by testing across different variants. 
+      - Incorporate feedback from empirical results to enhance the factor's predictive power.
+
+
+function_lib_description: |-
+  Use only the current TQ/QA runtime registry.
+
+  Notes:
+  - Use field names directly from the current runtime allowlist, e.g. hfq_closes, volumes, vwaps, turnovers, bp, roe.
+  - Do not use legacy platform syntax such as $open, $close, HIGH, LOW, VOLUME, or uppercase operator names.
+  - Factor expression must contain at least one valid data field and use only operators from the runtime allowlist injected for this run.
+  - If multiple data domains are active, every factor expression must include at least one valid field from each active domain.
+  - Do not use undeclared variables (like n, w_1) or undefined symbols (like =).
+
+
+factor_experiment_output_format: |-
+  Do NOT use any undeclared variables. The factor expression should be strictly based on the injected runtime operator library (e.g. ts_mean(.), ts_corr(.)) and valid runtime fields (e.g., hfq_closes, volumes, bp).
+  If multiple data domains are active for the current run, every factor expression MUST include at least one valid field from each active domain.
+  The output should follow JSON format without other content. The schema is as follows:
+  {
+      "factor name 1": {
+          "description": "description of factor 1",
+          "variables": {
+              "variable or function name 1": "description of variable or function 1",
+              "variable or function name 2": "description of variable or function 2"
+          }
+          "formulation": "A LaTeX formula of factor 1",
+          "expression": "An expression of factor 1, based on functions and variable mentioned",
+      },
+      "factor name 2": {
+          "description": "description of factor 2",
+          "variables": {
+              "variable or function name 1": "description of variable or function 1",
+              "variable or function name 2": "description of variable or function 2"
+          }
+          "formulation": "A LaTeX formula of factor 2",
+          "expression": "An expression of factor 2, based on functions and variable mentioned",
+      }
+      # Don't add ellipsis (...) or any filler text that might cause JSON parsing errors here!
+  }
+
+  Here is an example:
+  {
+      "Normalized_HFQ_Range_Factor_10D": {
+          "description": "This factor measures the normalized distance between adjusted open and adjusted close, smoothed by the recent average bar move, to capture daily bar strength under comparable price scales.",
+          "variables": {
+          "hfq_closes": "Adjusted close price of the stock on that day.",
+          "hfq_opens": "Adjusted open price of the stock on that day.",
+          "abs(A)": "Absolute value of A.",
+          "ts_mean(A, n)": "Mean value of sequence A over the past n periods."
+          }
+        "formulation": "NHR_\\text{10D} = \\frac{\\text{abs}(\\text{hfq\\_closes} - \\text{hfq\\_opens})}{\\text{ts\\_std}(\\text{hfq\\_closes}, 10)}",
+        "expression": "abs(hfq_closes - hfq_opens) / (ts_mean(abs(hfq_closes - hfq_opens), 10) + 1e-8)",
+      },
+      "HFQ_Volume_Range_Correlation_Factor_20D": {
+          "description": "This factor measures the correlation between adjusted daily trading range and trading volume over a 20-day period, aiming to capture the relationship between price expansion and market participation.",
+          "variables": {
+          "hfq_highs": "Adjusted high price of the stock on that day.",
+          "hfq_lows": "Adjusted low price of the stock on that day.",
+          "volumes": "Volume of the stock on that day.",
+          "ts_corr(A, B, n)": "Correlation coefficient between sequences A and B over the past n periods."
+          }
+        "formulation": "HVRC_\\text{20D} = \\text{ts\\_corr}(\\text{hfq\\_highs} - \\text{hfq\\_lows}, \\text{volumes}, 20)",
+        "expression": "ts_corr(hfq_highs - hfq_lows, volumes, 20)",
+      }
+  }
+
+factor_feedback_generation:
+  system: |-
+    Please understand the following operation logic and then make your feedback that is suitable for the scenario:
+
+    {{ scenario }}
+
+    You will receive a hypothesis, multiple tasks with their factors, their results, and the SOTA result. 
+    Your feedback should specify whether the current result supports or refutes the hypothesis, compare it with previous SOTA (State of the Art) results, and suggest improvements or new directions.
+    Please understand the following operation logic and then make your feedback that is suitable for the scenario:
+      1. Logic Explanation:
+          - Each hypothesis represents a theoretical framework that can be refined through multiple iterations
+          - Focus on exploring various implementations within the same theoretical framework
+          - Continuously optimize factor construction methods before considering direction changes
+      
+      2. Development Directions:
+          - Hypothesis Refinement:
+              - Suggest specific improvements in factor construction methodology
+              - Propose alternative mathematical representations of the same theoretical concept
+              - Identify potential variations in parameter selection and combination methods
+          
+          - Factor Enhancement:
+              - Fine-tune existing factors through parameter or structure optimization
+              - Explore different normalization and standardization approaches
+              - Consider alternative window sizes and weighting schemes
+          
+          - Methodological Iteration:
+              - Refine the mathematical expression while maintaining the core concept
+              - Suggest complementary signals within the same theoretical framework
+              - Propose robust variations of the current methodology
+      
+      3. Final Goal:
+          - The ultimate goal is to continuously mine factors that surpass each iteration to maintain the best SOTA.
+    
+      When analyzing results:
+      1. **Factor Construction Analysis:**
+          - Evaluate how different construction methods affect factor performance
+          - Identify which aspects of the construction process contribute most to performance
+          - Suggest specific modifications to improve factor robustness
+          - Read the per-factor "Alpha Evaluation Context" first when it is available. It summarizes the current train-stage checks used in mining, including which train stage metrics failed.
+      
+      2. **Parameter Sensitivity:**
+          - Analyze the impact of different parameter choices
+          - Recommend parameter ranges for further exploration
+          - Identify critical components in the factor construction process
+
+      3. **Residual-Alpha Metric Interpretation:**
+          - In current QA mining, optimization is based on the train stage only. A factor is train-passed only when raw and zz1000s pass on the train stage; complete is an additional style-sensitivity check that only affects tagging.
+          - The test stage is recorded for library evaluation, but it is not part of the feedback or evolution loop. Do not optimize directly against test metrics.
+          - Treat the train-stage check results as the decision basis for whether a factor is eligible, and use complete mainly to judge whether the signal survives broad neutralization cleanly or should be tagged as smart_styles.
+          - When giving improvement suggestions, address all failed train-stage items together instead of optimizing only one bottleneck metric.
+
+      4. **Complexity Diagnostics (SOFT RISK SIGNALS):**
+          - **Symbol Length (SL)**: Expressions above the soft threshold (currently 400 characters) deserve scrutiny, but complexity alone is not a hard failure.
+          - **Base Features Count (ER)**: Many raw fields may indicate over-engineering, but can be valid for deliberate cross-field mechanisms.
+          - **Free Parameters (PC)**: Many numeric constants can signal over-parameterization; prefer meaningful windows and constants.
+          - Treat complexity feedback as a diagnostic: decide whether the mechanism is intentionally rich or accidentally tangled.
+          - Generate both simple and moderately complex follow-ups when justified by the hypothesis. Do not simplify away valid structure solely because a complexity warning exists.
+
+    Focus on Continuous Refinement:
+      - Exhaust all possible variations within the current theoretical framework
+      - Document the effectiveness of different implementation approaches
+      - Explore a frontier from simple baselines to richer expressions; prefer clarity of mechanism over either extreme simplicity or gratuitous complexity.
+      - Only discuss domains that are explicitly active in the current runtime context. Do not mention inactive domains.
+      - Attribute domain roles only from observed real fields, minute inputs, and parent-role guidance when they are explicitly provided.
+      - If a diagnostic is not present in the runtime context, do not pretend it can be judged.
+      
+    Please provide detailed and constructive feedback for future exploration.
+    Respond in JSON format. Example JSON structure for Result Analysis:
+    {
+      "Observations": "Your overall observations here",
+      "Feedback for Hypothesis": "Observations related to the hypothesis",
+      "New Hypothesis": "Your new hypothesis here",
+      "Reasoning": "Reasoning for the new hypothesis",
+      "Replace Best Result": "yes or no"
+    }
+  user: |-
+    Target hypothesis: 
+    {{ hypothesis_text }}
+    Current Runtime Context:
+    {{ runtime_context_summary }}
+    Tasks and Factors:
+    {% for task in task_details %}
+      - {{ task.factor_name }}: {{ task.factor_description }}
+        - Factor Formulation: {{ task.factor_formulation }}
+        - Variables: {{ task.variables }}
+        - Factor Implementation: {{ task.factor_implementation }}
+        {% if task.get("alpha_evaluation_feedback") and task.alpha_evaluation_feedback %}
+        - Alpha Evaluation Context: {{ task.alpha_evaluation_feedback }}
+        {% endif %}
+        {% if task.get("runtime_analysis_context") and task.runtime_analysis_context %}
+        - Runtime Analysis Context: {{ task.runtime_analysis_context }}
+        {% endif %}
+        {% if task.get("selection_diagnostics_context") and task.selection_diagnostics_context %}
+        - Selection Diagnostics Context: {{ task.selection_diagnostics_context }}
+        {% endif %}
+        {% if task.get("complexity_feedback") and task.complexity_feedback %}
+        - **Complexity Feedback**: {{ task.complexity_feedback }}
+          **Important**: Treat this as a soft risk diagnostic. You may simplify accidental clutter, but keep intentional complex structure when it is parseable, executable, and economically meaningful.
+        {% endif %}
+        {% if task.factor_implementation == "False" %}
+        **Note: This factor was not implemented in the current experiment. Only the hypothesis for implemented factors can be verified.**
+        {% endif %}
+    {% endfor %}
+    Combined Results: 
+    {{ combined_result }}
+    
+    Analyze the combined result in the context of its ability to:
+    1. Support or refute the hypothesis.
+    2. Show improvement or deterioration compared to the SOTA experiment.
+    3. Pass the current train-stage gate: raw + zz1000s are mandatory on the train stage; complete is advisory for tagging.
+
+    Evaluation Metrics Explanations:
+    Below are the financial meanings of each metric, which should be used to judge the results:
+
+    - `long_ret`, `ls_ret`: gross annualized return of long-only / long-short portfolios. Bigger is better.
+    - `long_ir`, `ls_ir`: gross information ratio of long-only / long-short portfolios. Bigger is better.
+    - `long_maxdd`, `ls_maxdd`: gross max drawdown of long-only / long-short portfolios. Smaller is better.
+    - `long_netret`, `ls_netret`: annualized return after transaction costs. Bigger is better.
+    - `long_netir`, `ls_netir`: information ratio after transaction costs. Bigger is better.
+    - `long_netmaxdd`, `ls_netmaxdd`: max drawdown after transaction costs. Smaller is better.
+    - `rankic`, `rankicir`: cross-sectional alpha quality and its stability. Bigger is better.
+    - `long_turnover`, `ls_turnover`: trading intensity / implementation burden. Smaller is generally better if alpha quality is similar.
+    - `long_num`: average number of names in the long book. Use it to judge concentration and implementation realism.
+    - `coverage`: effective stock coverage. Higher is generally better when alpha quality is preserved.
+
+    When judging the results:
+      1. **Recommendation for Replacement:**
+        - Use the Alpha Evaluation Context as the main evaluation basis, with the train-stage checks deciding pass/fail and complete only deciding whether smart_styles tagging is needed.
+        - Judge replacement by the full metric panel: long_ret, long_ir, long_maxdd, long_netret, long_netir, long_netmaxdd, ls_ret, ls_ir, ls_maxdd, ls_netret, ls_netir, ls_netmaxdd, rankic, rankicir, long_turnover, ls_turnover, long_num, coverage.
+        - Address all failed train-stage items together instead of optimizing only one metric in isolation.
+        - Prefer factors that still look investable after fees and that do not collapse in zz1000s, instead of factors that only look good on one transformed view.
+        - If a factor has complexity warnings, discuss whether the extra structure is justified by the mechanism and train-stage evidence.
+      
+      2. **Complexity Considerations:**
+        - If complexity feedback is provided for a factor, treat it as a diagnostic rather than a rejection reason.
+        - Recommend simplification only when the expression is tangled, redundant, or economically unclear.
+        - When complexity is intentional and valid, suggest targeted robustness checks or structurally different variants instead of forced simplification.
+
+      3. **Joint-Domain Interpretation:**
+        - Only use domains explicitly listed in Current Runtime Context.
+        - When multiple active domains are actually evidenced by real fields or minute inputs, judge whether each domain has a clear role split instead of being blended mechanically.
+        - If parent-role guidance is provided, use it as the only semantic basis for multi-domain attribution.
+        - If one active domain contributes little after transformation, suggest simplifying the factor back to the domain that still carries residual predictive power.
+
+      4. **Additional Diagnostics (only when present in context):**
+        - If RankIC concentration diagnostics are provided, judge whether RankIC is temporally concentrated in a few dates. Do not reinterpret that as proof about a few extreme stocks unless such evidence is explicitly provided.
+        - If group monotonicity diagnostics are provided, comment on whether decile/group returns are monotonic and whether that strengthens or weakens confidence in the factor.
+
+    Note: Only factors with 'Factor Implementation' as True are implemented and tested in this experiment. If 'Factor Implementation' is False, the hypothesis for that factor cannot be verified in this run.
+
+
+hypothesis_gen:
+  system_prompt: |-
+    The user is working on generating new hypotheses for the {{targets}} in a data-driven research and development process. 
+    The {{targets}} are used in the following scenario:
+    {{scenario}}
+    The user has already proposed several hypotheses and conducted evaluations on them. This information will be provided to you. 
+    Your task is to check whether a hypothesis has already been generated. If one exists, follow it or generate an improved version.
+    {% if hypothesis_specification %}
+    To assist you in formulating new hypotheses, the user has provided some additional information:
+    {{hypothesis_specification}}.
+    **Important:** If the hypothesis_specification outlines the next steps you need to follow, ensure you adhere to those instructions.
+    {% endif %}
+    Please generate the output using the following format and specifications. Avoid making assumptions that depend on data outside the supported data range.
+    {{ hypothesis_output_format }}
+
+  user_prompt: |-
+    {% if hypothesis_and_feedback|length == 0 %}It is the first round of hypothesis generation. The user has no hypothesis on this scenario yet. You are encouraged to propose an innovative hypothesis that diverges significantly from existing perspectives.
+    {% elif hypothesis_and_feedback|length > 0 and round == 0 %}{{ hypothesis_and_feedback }}
+    {% else %}It is not the first round, the user has made several hypothesis on this scenario and did several evaluation on them.
+    The former hypothesis and the corresponding feedbacks are as follows (focus on the last one & the new hypothesis that it provides and reasoning to see if you agree):
+    {{ hypothesis_and_feedback }}
+    {% endif %}
+    {% if RAG %}
+    To assist you in generating new {{targets}}, we have provided the following information: {{RAG}}.
+    **Note:** The provided RAG is for reference only. 
+    You must carefully assess whether the RAG aligns with the {{targets}}. 
+    If it does not, it should not be used. Exercise caution and make your own judgment.
+    {% endif %}
+    Also generate the relevant keys for the reasoning and the distilled knowledge that follows. For those keys, in particular for knowledge, explain in the context of the specific scenario to build up domain knowledge in the specific field rather than general knowledge.
+
+hypothesis2experiment:
+  system_prompt: |-
+    The user is trying to generate new {{targets}} based on the hypothesis generated in the previous step. 
+    The {{targets}} are used in certain scenario, the scenario is as follows:
+    {{ scenario }}
+
+    The user will use the {{targets}} generated to do some experiments. The user will provide this information to you:
+    1. The target hypothesis you are targeting to generate {{targets}} for.
+    2. The hypothesis generated in the previous steps and their corresponding feedbacks.
+    3. Former proposed {{targets}} on similar hypothesis.
+    4. Duplicated sub-expressions that you have to evade for better factor originality and novelty. 
+    5. Some additional information to help you generate new {{targets}}.
+
+
+    1. **Exact Factor Count and Diversity per Generation:**
+      - Generate exactly {{ target_factor_count }} factor{% if target_factor_count != 1 %}s{% endif %} in one response.
+      - Treat the target hypothesis and initial direction as semantic guidance: preserve the research theme while exploring multiple valid constructions from the full current runtime allowlist.
+      - If one candidate idea is too similar to another, choose a structurally different alternative so the response still contains exactly {{ target_factor_count }} factor{% if target_factor_count != 1 %}s{% endif %}.
+      - The generated factors must be mutually distinct in expression structure: do not reuse the same main operator chain, same window pair, or same transformed field pair across factors.
+      - Give each factor a distinct name, expression skeleton, and economic mechanism; vary constants, lags, and lookback windows together with the underlying construction rather than as the only difference.
+      - Use the full current runtime allowlist. Any allowlisted field and any allowlisted operator may be used when it helps create a valid, diverse factor.
+      - Each factor should use a different primary mechanism, for example correlation, regression residual/beta, normalized range/volatility, imbalance/liquidity, reversal/momentum, or cross-sectional normalization.
+      - Across the batch, diversify both field families and operator families, with distinct input combinations, target transformations, reducers, and timing choices.
+      - Do not satisfy diversity by only renaming factors or changing one window constant. At least two of the following must change across any pair: primary operator family, primary field family, normalization/ranking method, temporal reducer, or interaction structure.
+      - This diversity requirement applies to daily pv, minute, fundamental, and joint-domain runs. In joint pv/minutes runs, vary the daily pv side, the intraday minute side, and their interaction pattern across factors.
+      - Before responding, internally check that every factor expression is parseable, uses only allowlisted operators/fields, and will not be filtered as an exact duplicate or near-duplicate of another factor in the same response.
+      - If the user prompt says some candidates were already accepted and asks for replacements, keep those accepted candidates fixed and return only the requested new replacement factors. The pipeline will merge accepted factors with the replacements.
+      - Balance simple anchors, medium-complexity mechanisms, and occasional richer boundary tests to build a robust factor library.
+      - Note that each factor is independent. Please do NOT reference other factors within the factor expression.
+
+    2. **Factor Complexity Exploration (SOFT DIAGNOSTICS):**
+      - **Symbol Length (SL) Soft Threshold: 400 characters**
+        - Expressions may exceed this only when the added structure has a clear economic role and remains parseable/executable.
+        - Complexity warnings are not hard failures. They are prompts to check whether the construction is intentional rather than accidental clutter.
+        - Good simple anchor: `ts_mean(turnovers, 20)`
+        - Good medium mechanism: `ts_corr(ts_return(hfq_closes, 1), ts_delta(volumes, 1), 20)`
+        - Richer expressions are acceptable when they combine distinct mechanisms such as volatility regime, liquidity pressure, and price-volume disagreement without violating syntax or allowed-field rules.
+      - **Base Features (ER) Soft Threshold**
+        - Using many distinct base features is a risk signal, not a ban. Keep it when the field set maps to a real mechanism.
+      - **Exploration Priority**
+        - Generate a mix of simple, moderate, and boundary-testing factors across a batch.
+        - Do not make every factor complex. Do not make every factor minimal. Diversity of mechanism and complexity is the goal.
+        - If previous factors were flagged for complexity, diagnose whether to simplify, restructure, or keep the complexity and test a different operator/field path.
+
+    3.**Key Considerations in Factor Construction:**
+      - **Data Preprocessing and Standardization:**
+          - Avoid using absolute price or volume levels directly due to scale differences
+          - Use relative changes or runtime-allowed standardized transforms when available
+          - Convert adjusted prices into relative moves, e.g. `(ts_delta(hfq_closes, 1)/hfq_closes)` instead of absolute price levels
+          - Transform volume into relative changes, e.g. `(ts_delta(volumes, 1)/volumes)`
+
+      - **Time Series Processing:**
+          - Consider appropriate sample periods for indicators requiring historical data
+          - Choose suitable window sizes for moving averages or other runtime-allowed smoothers
+
+      - **Daily + Fundamental Semantics:**
+          - When fundamental fields are available, treat them as slow-moving signals rather than high-frequency triggers.
+          - Prefer medium-horizon windows such as 20/60/120/252 days when linking fundamentals to returns.
+          - If you mix price-volume and fundamental fields, keep the design parsimonious and economically interpretable.
+          - Prefer 1-3 core fundamental fields plus at most 1-2 daily confirmation signals.
+
+      - **Joint Daily PV + Minutes Semantics:**
+          - When both pv and minutes domains are active, include at least one explicit daily pv field and at least one explicit minute field.
+          - Do not rely on shared names such as `volumes` alone to prove both domains are present.
+          - Use actual plural fields `vwaps` and `turnovers`; in joint runs they route by context, with minute subtrees using minute data and declared top-level anchors using daily data.
+          - Never emit singular `vwap` or `turnover`.
+          - Minute subtrees may be simple or moderately rich; keep the horizon bridge explicit and ensure every minute feature can be rendered and reduced to a daily frame.
+          - It is valid to first reduce minute data to a daily 2D frame and then apply regular daily pv operators to that reduced result.
+
+      - **Normalization and Stability:**
+          - Add small constants (e.g., 1e-8) to denominators to prevent division by zero
+          - Use ts_zscore() for factor value standardization
+          - Consider sign() to reduce impact of extreme values
+          - Apply max(min(x, upper), lower) for value truncation
+
+      - **Cross-sectional Treatment:**
+          - Apply runtime-allowed cross-sectional normalization operators for comparability
+          - Use filter() for outlier handling
+          - Ensure sufficient window length for correlation calculations
+
+      - **Robustness Considerations:**
+          - Validate factor stability across multiple time windows
+          - When the runtime allowlist offers a robust statistic, prefer it over a noisy mean for outlier-heavy series
+          - Apply moving averages to smooth high-frequency variations
+  
+      - **Flexibility Considerations:**  
+          - Allow for a range of values or flexibility when defining factors, rather than imposing strict equality constraints.
+          - For example, in expression `(ts_min(hfq_lows, 10) == delay(ts_min(hfq_lows, 10), 1))`, `==` is too restrictive. 
+          - Instead, use a range-based approach like: `(ts_min(hfq_lows, 10) < delay(ts_min(hfq_lows, 10), 1) + 0.1 * ts_mean(abs(ts_delta(hfq_lows, 1)), 20)) && (ts_min(hfq_lows, 10) > delay(ts_min(hfq_lows, 10), 1) - 0.1 * ts_mean(abs(ts_delta(hfq_lows, 1)), 20))`.
+
+      - **Handling Duplicated Sub-expressions:**
+            - When given specific duplicated sub-expressions to avoid, ensure new factor expressions use alternative calculations
+            - Replace duplicated patterns with semantically similar but structurally different expressions
+          - For example, if `abs(hfq_closes - hfq_opens)` is flagged as duplicated:
+            - Consider using `(hfq_highs - hfq_lows)` for price range
+            - Use `tanh(hfq_closes - hfq_opens) * abs(hfq_closes - hfq_opens)` for directional magnitude
+            - Explore other adjusted-price combinations like `(hfq_highs - hfq_lows) / (hfq_opens + hfq_closes + 1e-8)`
+            - Maintain factor interpretability while avoiding structural repetition
+            - Focus on unique combinations of operators and variables to ensure originality
+
+    Please generate the output following the format below:
+    {{ experiment_output_format }}
+
+    Strictly adhere to the syntax requirements of factor expressions; do not use undeclared variables (e.g., n) or functions.
+    
+  user_prompt: |-
+    The user has made several hypothesis on this scenario and did several evaluation on them.
+    The target hypothesis you are targeting to generate {{targets}} for is as follows:
+    {{ target_hypothesis }}
+    Treat this hypothesis as a reference direction. You may use any field and operator in the current allowlist to produce diverse, valid factors that still serve the research theme.
+    
+    The former hypothesis and the corresponding feedbacks are as follows:
+    {{ hypothesis_and_feedback }}
+
+    When constructing factor expressions, use only fields from the current runtime allowlist.
+    The allowlist below is the source of truth for this run and may include daily price-volume fields, fundamental fields, or both depending on the active domains.
+
+    Allowed operators and functions in factor expressions are: 
+    {{function_lib_description}}
+
+
+    {% if expression_duplication %}
+    **Alert: Duplication Detected in Previous Factor Expressions**
+    {{ expression_duplication }}
+
+    Recommendations:
+    - Use alternative calculations for the duplicated sub-expressions above
+    - Return a complete batch of exactly {{ target_factor_count }} factor{% if target_factor_count != 1 %}s{% endif %}; replace any rejected or similar candidate with a fresh structurally different one.
+    - Ensure the factors differ in their main operator family, input field pair, and lookback windows so same-batch similarity filtering does not remove them.
+    - Use the full current allowlist: any allowed field and any allowed operator may be used, even if it was not named in the hypothesis.
+    - Use different primary mechanisms, field families, and operator families across the batch.
+    - For joint pv/minutes factors, diversify both sides of the joint expression and the interaction pattern between them.
+    - Generate novel factor by uniquely combining data variables and operations
+    - Experiment with a mix of mathematical operations (e.g., exponentiation, logarithmic transformations) to construct expressions that reveal different relationships and interactions among variables.
+    - Replace direct field usage with transformed variants to enhance expressiveness, such as using `hfq_opens`, `hfq_closes/ts_mean(hfq_closes, 10)`, or `(hfq_opens + hfq_closes) / 2` instead of absolute adjusted close to normalize or adjust for trends.
+    {% endif %}
+
+    Please generate the new {{targets}} in JSON format based on the information above.
+
+
+
+expression_duplication: |-
+  - Proposed Expression: {{ prev_expression }}
+  {% if duplicated_subtree_size > duplication_threshold %}
+  - Novelty Check Failed: Duplicated subtree size ({{ duplicated_subtree_size }}) exceeds threshold ({{ duplication_threshold }})
+  - Duplicated Sub-expression: {{ duplicated_subtree }}
+    {% if matched_alpha %}Matched with: {{ matched_alpha }}{% endif %}
+  {% endif %}
+  {% if free_args_ratio >= 0.5 %}
+  - Parsimony Warning: Free arguments ratio ({{ "%.2f"|format(free_args_ratio * 100) }}%) >= 50%
+    - Number of free args: {{ num_free_args }}, Total nodes: {{ num_all_nodes }}
+    - This may indicate over-parameterization; keep it only when constants/windows are meaningful.
+  {% endif %}
+  {% if unique_vars_ratio >= 0.5 %}
+  - Diversity Warning: Unique variables ratio ({{ "%.2f"|format(unique_vars_ratio * 100) }}%) >= 50%
+    - Number of unique vars: {{ num_unique_vars }}, Total nodes: {{ num_all_nodes }}
+    - This may indicate a narrow construction; keep it if the field choice is intentional.
+  {% endif %}
+  {% if symbol_length > symbol_length_threshold %}
+  - **Symbol Length (SL) Warning: Expression length ({{ symbol_length }}) exceeds soft threshold ({{ symbol_length_threshold }} characters)**
+    - Complexity is a risk diagnostic, not a hard rejection reason.
+    - Keep intentional structure when it is parseable, executable, and economically meaningful.
+    - Simplify only accidental clutter, redundant nesting, or unsupported constructions.
+  {% endif %}
+  {% if num_base_features > base_features_threshold %}
+  - **Base Features Count (ER) Warning: Number of base features ({{ num_base_features }}) exceeds soft threshold ({{ base_features_threshold }})**
+    - Many distinct raw features can be valid when they represent a real cross-field mechanism.
+    - Remove fields only when they are redundant or unsupported by the economic story.
+  {% endif %}
+
+
+
+

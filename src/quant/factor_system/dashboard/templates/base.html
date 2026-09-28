@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title or "Factor Hub Dashboard" }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{{ url_for('static', filename='vendor/bootstrap.min.css') }}" rel="stylesheet">
+  <script src="{{ url_for('static', filename='vendor/chart.umd.min.js') }}"></script>
+  <style>
+    body { font-size: 13px; }
+    .table { font-size: 12px; }
+    .form-control, .form-select, .btn { font-size: 12px; }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{ url_for('index') }}">Factor Hub</a>
+    <div class="navbar-nav ms-auto">
+      <a class="nav-link text-light" href="{{ url_for('index') }}">Factors</a>
+      <a class="nav-link text-light" href="{{ url_for('weekly_report') }}">Weekly Report</a>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  {% block content %}{% endblock %}
+</div>
+</body>
+</html>

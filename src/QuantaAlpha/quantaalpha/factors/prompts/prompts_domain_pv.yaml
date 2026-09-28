@@ -1,0 +1,44 @@
+potential_direction_transformation: |-
+  Price-volume domain supplement:
+  - When price-volume fields are active, prefer hypotheses around trend continuation, reversal, volatility compression/expansion, liquidity re-pricing, crowding, or volume-confirmed breakout failure.
+  - Keep the horizon explicitly daily and cross-sectional; avoid intraday microstructure language unless minute data is also active.
+
+factor_hypothesis_specification: |-
+  4. When price-volume data is active, describe the signal in daily-bar semantics and explain why it should survive after basic turnover and implementation frictions.
+  5. Prefer robust mechanisms such as trend persistence, mean reversion after overreaction, liquidity/participation shifts, volatility regime changes, or price-volume disagreement.
+  6. Restrict allowed pv inputs to hfq_opens, hfq_closes, hfq_highs, hfq_lows, volumes, vwaps, and turnovers. Do not use singular vwap or turnover.
+
+function_lib_description: |-
+  Price-volume domain supplement:
+  - Available pv fields for mining are restricted to: hfq_opens, hfq_closes, hfq_highs, hfq_lows, volumes, vwaps, turnovers.
+  - Treat derived pv files such as adv/ema/pvc/rvc/vol/te as inspiration only. Do not emit those names directly unless they appear in the runtime allowlist.
+  - Reconstruct derived-style motifs from raw fields when useful:
+    - adv/participation: `ts_mean(volumes, n)`, `ts_mean(turnovers, n)`, or current volume/turnover relative to its rolling mean.
+    - ema/smoothed state: smooth price returns, vwap deviation, volume, or turnover with allowed smoothers such as `ema1`, `ts_decay_linear`, or `ts_mean`.
+    - pvc/price-volume coupling: use rolling correlation or interaction between price returns/ranges and volume or turnover changes.
+    - rvc/return-volume coupling: use return versus volume/turnover change, with ranking or normalization outside pairwise ts kernels.
+    - vol/volatility state: use rolling return volatility or high-low range normalized by price.
+    - te/efficiency or friction: use price movement per liquidity, turnover, range, or vwap deviation without assuming a literal `te` field.
+  - If price-volume is combined with other domains, use price-volume signals as confirmation, timing, or cross-sectional conditioning rather than noisy decoration.
+  - If multiple domains are active, each factor must include at least one pv field in the final expression.
+  - For a multi-factor batch, use the full pv allowlist and diversify mechanisms across price action, volatility/range, volume/liquidity, vwap deviation, and turnover.
+  - The initial direction is only a reference; use broader field/operator patterns from the allowlist when they fit the research theme.
+
+factor_experiment_output_format: |-
+  Price-volume domain supplement:
+  - If a factor uses price-volume fields, the description must state the intended market mechanism, such as trend confirmation, reversal, crowding, liquidity shock, or volatility regime.
+  - Simple and richer expressions are both acceptable when the economic mechanism is clear; do not rely on fields outside hfq_opens, hfq_closes, hfq_highs, hfq_lows, volumes, vwaps, turnovers.
+  - When pv is active alongside other domains, the final expression must still contain at least one pv field.
+  - Across a generated batch, expressions should differ in field choices, operator families, timing choices, and market mechanisms.
+
+factor_feedback_generation:
+  system: |-
+    Price-volume domain evaluation supplement:
+    - Check whether the factor's economic story matches its actual construction, especially for momentum, reversal, liquidity, and volatility signals.
+    - Penalize expressions that merely remix many price-volume transforms without adding a distinct mechanism.
+    - Reward expressions, simple or complex, when they have stable daily semantics, plausible turnover, and executable raw-field construction.
+    - Reward pv factors that pass both raw and zz1000s checks, and treat complete only as evidence for whether the signal is residual alpha or better labeled as smart_styles.
+  user: |-
+    Price-volume domain evaluation supplement:
+    - If the tested factor uses price-volume fields, comment on whether its horizon, turnover, and market mechanism are internally consistent.
+    - Explain which raw / zz1000s / complete metric is currently the bottleneck, and whether the pv signal should remain a plain alpha or be treated as smart_styles.

@@ -1,0 +1,11 @@
+evolving_strategy_factor_implementation_v1_system: |-
+  Price-volume coding supplement:
+  - For pv-only runs, stay on the daily expression-template path.
+  - Do not introduce `prepare_minute_datas()` or minute-only runtime objects.
+  - Use only daily pv fields such as `hfq_*`, `volumes`, `vwaps`, and `turnovers`; never emit singular `vwap` or `turnover`.
+  - Keep the implementation expression-driven; complex raw-field expressions are valid when they use allowed fields/operators and remain executable.
+
+evolving_strategy_factor_implementation_v2_user: |-
+  Price-volume coding supplement:
+  - Prefer correcting the target daily expression instead of inventing a custom execution module.
+  - Do not introduce minute-only fields or minute-engine calls in pv-only runs.

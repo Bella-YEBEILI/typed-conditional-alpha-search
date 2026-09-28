@@ -1,0 +1,351 @@
+# Evolution Operator Prompts Configuration
+# All prompts for mutation and crossover operators
+# Language: English
+# ============================================================
+# MUTATION OPERATOR PROMPTS
+# Generate orthogonal strategies for exploration diversity
+# ============================================================
+
+mutation:
+  system: |
+    You are a quantitative finance strategy expert specializing in generating diversified factor mining strategies.
+
+    Your task is to generate a new, orthogonal strategy direction based on an existing parent strategy.
+
+    "Orthogonal" means the new strategy should:
+    1. Explore a completely different market hypothesis from the parent
+    2. Use different data dimensions or feature types
+    3. Be based on different investment logic or market perspectives
+    4. Avoid generating factors highly correlated with the parent strategy
+
+    You need to ensure the generated strategy has sufficient differentiation to expand the diversity of the exploration space.
+
+  user: |
+    Based on the following parent strategy, generate an orthogonal new strategy direction.
+
+    ## Parent Strategy Information
+
+    ### Hypothesis
+    {parent_hypothesis}
+
+    ### Factor Expressions
+    {parent_factors}
+
+    ### Backtest Metrics
+    {parent_metrics}
+
+    ### Evaluation Feedback
+    {parent_feedback}
+
+    ### Mutation Intent
+    - Intent: {mutation_intent}
+    - Objective: {mutation_objective}
+    - Requirements:
+    {mutation_requirements}
+
+    ---
+
+    ## Requirements
+
+    Please generate a new strategy direction that is **orthogonal** to the parent strategy, including:
+
+    1. **New Hypothesis**: Propose a market hypothesis completely different from the parent
+    2. **Exploration Direction**: Describe the data dimensions and feature types the new strategy will explore
+    3. **Orthogonality Reasoning**: Explain why this new strategy is orthogonal to the parent
+    4. **Expected Characteristics**: Expected characteristics of factors from the new strategy
+
+    Please ensure:
+    - The new strategy has minimal correlation with the parent
+    - Explore market patterns not covered by the parent
+    - Maintain feasibility and reasonableness
+    - If the parent strategy has explicit domain constraints, preserve those constraints unless the parent itself is intentionally cross-domain
+    - Explore a simple-to-complex frontier: include mechanisms that may require richer field/operator composition, but keep all downstream expressions parseable, executable, and grounded in allowed raw fields
+
+    Output in JSON format:
+    ```json
+    {{
+        "new_hypothesis": "Description of the new market hypothesis",
+        "exploration_direction": "Exploration direction description",
+        "orthogonality_reason": "Reasoning for orthogonality with parent",
+        "expected_characteristics": "Expected factor characteristics"
+    }}
+    ```
+
+  simple_user: |
+    Based on the following information, generate an orthogonal factor mining hypothesis:
+
+    Parent Hypothesis: {parent_hypothesis}
+
+    Parent Factors: {parent_factors}
+
+    Mutation Intent: {mutation_intent}
+    Objective: {mutation_objective}
+
+    Please propose a new hypothesis that is completely different from the above direction to explore new factor space. Output the new hypothesis text directly.
+
+  suffix_template: |
+    ---
+
+    ## Mutation Round Guidance
+
+    This is a mutation exploration round that requires generating an orthogonal new strategy based on the parent strategy.
+
+    ### Parent Strategy Summary
+    {parent_summary}
+
+    ### Mutation Intent
+    - Intent: {mutation_intent}
+    - Objective: {mutation_objective}
+    - Requirements:
+    {mutation_requirements}
+
+    ### Mutation Direction Suggestions
+    - **New Hypothesis Direction**: {new_hypothesis}
+    - **Exploration Dimension**: {exploration_direction}
+    - **Orthogonality Reasoning**: {orthogonality_reason}
+
+    ### Important Notes
+    1. Follow the mutation intent strictly: repair mutations focus on failed metrics, orthogonal-diverse mutations focus on new mechanisms
+    2. Prioritize repairing failed submission metrics when the intent is repair
+    3. For orthogonal-diverse mutations, require at least two of the following three dimensions to change materially: field usage, operator usage, structural composition
+    4. Preserve explicit domain constraints from the parent strategy
+    5. Do not force all descendants to become simpler. Allow simple, moderate, and richer valid constructions when they explore different boundaries of the same research theme
+
+    Please propose your new hypothesis based on the above mutation guidance.
+
+  # Fallback hypotheses when LLM fails
+  fallback_templates:
+    - "Explore an orthogonal cross-sectional alpha mechanism under the same active domain constraints"
+    - "Study an alternative temporal mechanism under the same data-domain semantics"
+    - "Analyze regime-dependent behavior without changing the active data domains"
+    - "Build a robustness-oriented signal using a different construction logic in the same domain"
+    - "Explore participation-versus-efficiency mismatch under the current field constraints"
+    - "Search for a lower-correlation alpha within the same domain-specific research space"
+
+
+# ============================================================
+# CROSSOVER OPERATOR PROMPTS
+# Combine multiple parent strategies to leverage their strengths
+# ============================================================
+
+crossover:
+  system: |
+    You are a quantitative finance strategy fusion expert, specializing in combining the advantages of multiple strategies into a stronger hybrid strategy.
+
+    Your task is to analyze multiple parent strategies, identify their respective strengths and weaknesses, and generate a hybrid strategy that takes the best from each.
+
+    Use a semantic-first process:
+    1. First reason about why these parent strategies should be combined at all.
+    2. Analyze the alpha source and economic meaning of each parent factor or parent strategy.
+    3. Identify a clear role split for each parent or active domain.
+    4. Infer the complementarity: why the combination should be stronger than any parent alone.
+    5. Decide an explicit combination strategy before proposing downstream guidance:
+       - weighted: signal superposition such as factor_a * w1 + factor_b * w2
+       - conditional: regime or condition switch such as if condition then factor_a else factor_b
+       - nested: one signal enhances or filters another such as factor_a(factor_b(...))
+       - interaction: cross term such as factor_a * factor_b
+    6. Only after the semantic fusion is coherent should you propose the downstream hybrid hypothesis that later expression generation can follow.
+
+    When fusing strategies, consider:
+    1. The core hypotheses and market views of each parent strategy
+    2. Factor types and features that performed well
+    3. Complementarity and potential synergies between strategies
+    4. Avoid inheriting common weaknesses from parent strategies
+
+    You need to generate a hybrid strategy that is both innovative and feasible.
+
+  user: |
+    Based on the following multiple parent strategies, generate a fused hybrid strategy.
+
+    ## Crossover Intent
+    - Intent: {intent_name}
+    - Objective: {intent_objective}
+    - Requirements:
+    {intent_requirements}
+
+    ## Failed/Passed Metric Map
+    {intent_evidence}
+
+    ---
+
+    ## Parent Strategy Information
+
+    {parent_summaries}
+
+    ---
+
+    ## Requirements
+
+    Please analyze the above parent strategies and generate a hybrid strategy that combines their strengths:
+
+    1. **Combination Rationale**: Why these parents should be combined at the semantic layer
+    2. **Parent Alpha Source Analysis**: Explain the alpha source and economic meaning of each parent
+    3. **Parent Role Assignment**: Explain the role of each parent or active domain in the fused strategy
+    4. **Complementarity Reasoning**: Explain why the combination should outperform standalone parents
+    5. **Combination Strategy**: Choose the semantic combination pattern (weighted / conditional / nested / interaction) and explain the intended structure
+    6. **Semantic Guidance**: Produce a downstream semantic guide that later hypothesis/factor generation should follow
+    7. **Hybrid Hypothesis**: A new market hypothesis that fuses the advantages of all parents
+    8. **Fusion Logic**: Explain how to combine the strengths of each parent
+    9. **Innovation Points**: New characteristics brought by the hybrid strategy
+    10. **Expected Benefits**: Why the hybrid strategy may outperform individual parents
+
+    Please ensure:
+    - The hybrid strategy inherits the advantages of all parents
+    - Avoid common weaknesses of all parents
+    - Potential for synergistic effects
+    - Respect explicit domain constraints shared by the parent strategies
+    - Do not blend formulas mechanically without a clear semantic reason
+    - When multiple domains are active, describe the role split explicitly, such as "fundamental anchor + pv confirmation"
+    - Allow richer hybrid structures when they are needed to express the semantic fusion; complexity is acceptable if it remains valid and interpretable
+
+    Output in JSON format:
+    ```json
+    {{
+        "combination_rationale": "Why these parents belong together semantically",
+        "parent_alpha_source_analysis": "Alpha source and economic meaning of each parent",
+        "parent_role_assignment": "Role split across parents or domains",
+        "complementarity_reasoning": "Why the combination should beat standalone parents",
+        "combination_strategy": "weighted / conditional / nested / interaction with structure rationale",
+        "semantic_guidance": "Semantic guide for downstream hypothesis and factor generation",
+        "hybrid_hypothesis": "Description of the fused market hypothesis",
+        "fusion_logic": "Fusion logic explanation",
+        "innovation_points": "Innovation points description",
+        "expected_benefits": "Expected benefits explanation"
+    }}
+    ```
+
+  simple_user: |
+    Please combine the advantages of the following strategies to generate a hybrid hypothesis:
+
+    Intent: {intent_name}
+    Objective: {intent_objective}
+
+    {parent_summaries}
+
+    Output the fused new hypothesis text directly.
+
+  # Template for formatting parent trajectory summary
+  parent_template: |
+    ### Parent {idx}: {phase_name}
+    **Direction ID**: {direction_id}
+    **Hypothesis**: {hypothesis}
+    **Factors**:
+    {factors}
+    **Metrics**:
+    {metrics}
+    **Feedback**:
+    {feedback}
+    ---
+
+  # Prompt suffix template for hypothesis generator
+  suffix_template: |
+    ---
+
+    ## Crossover Round Guidance
+
+    This is a crossover fusion exploration round that requires generating a hybrid strategy by combining multiple parent strategies.
+
+    ### Crossover Intent
+    - Intent: {intent_name}
+    - Objective: {intent_objective}
+    - Requirements:
+    {intent_requirements}
+
+    ### Failed/Passed Metric Map
+    {intent_evidence}
+
+    ### Parent Strategy Summaries
+    {parent_summaries}
+
+    ### Fusion Direction Suggestions
+    - **Parent Alpha Source Analysis**: {parent_alpha_source_analysis}
+    - **Hybrid Hypothesis Direction**: {hybrid_hypothesis}
+    - **Why This Combination Works**: {combination_rationale}
+    - **Complementarity Reasoning**: {complementarity_reasoning}
+    - **Combination Strategy**: {combination_strategy}
+    - **Fusion Logic**: {fusion_logic}
+    - **Parent Role Assignment**: {parent_role_assignment}
+    - **Semantic Guidance**: {semantic_guidance}
+    - **Innovation Points**: {innovation_points}
+
+    ### Important Notes
+    1. First justify the combination semantically before proposing any downstream expression path
+    2. Explicitly analyze the alpha source and economic meaning of each parent
+    3. Your new hypothesis should fuse the advantages of all parent strategies
+    4. Avoid inheriting common weaknesses of the parents
+    5. Look for synergistic effects between parent strategies
+    6. Choose and respect a concrete combination strategy: weighted / conditional / nested / interaction
+    7. Generated factors should capture the comprehensive characteristics of the combined strategies
+    8. Preserve shared domain semantics from the parents and explain the role split only when multiple domains are actually present
+    9. Do not collapse hybrid guidance into the shortest expression. Encourage a mix of simple and richer downstream constructions that test the fusion boundary safely
+
+    Please propose your fusion hypothesis based on the above crossover guidance.
+
+  # Phase name translations
+  phase_names:
+    original: "Original Round"
+    mutation: "Mutation Round"
+    crossover: "Crossover Round"
+
+
+# ============================================================
+# ORTHOGONALITY CHECK PROMPTS
+# Verify if generated strategies are sufficiently orthogonal
+# ============================================================
+
+orthogonality_check:
+  system: |
+    You are a quantitative strategy analyst responsible for evaluating the orthogonality (independence) between two strategies.
+
+  user: |
+    Please evaluate the orthogonality of the following two strategies:
+
+    ## Strategy A
+    {strategy_a}
+
+    ## Strategy B
+    {strategy_b}
+
+    Please evaluate their orthogonality from the following dimensions (1-10 score, 10 being completely orthogonal):
+    1. Data Dimension Orthogonality: Whether they use different data features
+    2. Logic Orthogonality: Whether they are based on different investment logic
+    3. Time Scale Orthogonality: Whether they focus on different time horizons
+    4. Market State Orthogonality: Whether they target different market conditions
+
+    Output in JSON format:
+    ```json
+    {{
+        "data_orthogonality": 8,
+        "logic_orthogonality": 7,
+        "time_orthogonality": 6,
+        "market_orthogonality": 9,
+        "overall_score": 7.5,
+        "analysis": "Analysis explanation"
+    }}
+    ```
+
+
+# ============================================================
+# TRAJECTORY SUMMARY PROMPTS
+# Format trajectory information for prompts
+# ============================================================
+
+trajectory_summary:
+  template: |
+    **Trajectory ID**: {trajectory_id}
+    **Phase**: {phase}
+    **Direction**: {direction_id}
+
+    **Hypothesis**:
+    {hypothesis}
+
+    **Factors** (top {max_factors}):
+    {factors}
+
+    **Backtest Metrics**:
+    {metrics}
+
+    **Feedback Summary**:
+    {feedback}
+
+

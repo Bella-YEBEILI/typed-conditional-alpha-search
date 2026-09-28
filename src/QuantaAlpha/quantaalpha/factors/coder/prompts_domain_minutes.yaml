@@ -1,0 +1,55 @@
+evolving_strategy_factor_implementation_v1_system: |-
+  Minute-domain coding supplement:
+  - The implementation must be a full minute factor module, not an expr-only template.
+  - Define `TYPE = "regular"` exactly.
+  - Define `META["level"] = "minutes"`.
+  - Define callable `prepare_minute_datas()` and `calc_factor(data_ctx, minute_ctx)`.
+  - Use `from vendors.quant_lib.minute_tools import MinuteFactorEngine`; do not import `MinuteFactorEngine` from `quantaalpha.backtest`.
+  - Use `SETTING["universe"] = "standards"` for smoke tests. Do not invent unsupported universe names such as `csi300`.
+  - `SETTING["data_needed"]` must be a Python list, usually `[]` for pure minute factors. Do not emit `{}`.
+  - Put only daily-frame requirements into `SETTING["data_needed"]`; minute inputs belong inside `prepare_minute_datas()`.
+  - `META` must include a non-empty `factor_name` and `level = "minutes"`.
+  - `META` and `SETTING` must be valid Python dictionaries. Do not omit commas between key-value lines.
+  - In particular, lines such as `"description": ...`, `"tag": ...`, `"data_needed": ...`, and `"universe": ...` must not be concatenated without a trailing comma on the previous line.
+  - Import `vendors.quant_lib.minute_ops` when using registered minute operators.
+  - `MinuteFactorEngine.run` has the exact signature `run(inputs, operator, aggregator=None, preprocess=None, ...)`. The first argument is one or more raw minute field names such as `closes`; the second argument must be a registered operator such as `mean`, `std`, `sum`, `min`, `max`, `pct`, `corr`.
+  - If an input needs a simple unary transform such as `abs`, `log`, `neg`, `pos`, or `nozero_abs`, keep the raw minute field name in `inputs` and express the transform through `preprocess=[...]`. Example: `inputs=["returns","volumes"], preprocess=["abs", None], operator=("corr", {"shift": 1})`.
+  - Do not call `MinuteFactorEngine.run("closes")`, do not pass `universe=...`, do not pass unsupported kwargs such as `window=...`, and do not invent operator names such as `get_minute_data`.
+  - Never invent derived pseudo-input names such as `abs_returns` or `volumes_snapshot` inside `engine_run` / `window_engine`. `inputs` must stay raw minute field names.
+  - Do not use `aggregator="last"` or similar pseudo-aggregators. If you need the last minute snapshot, use `load_single_minute(handle, field_name, "1457")` explicitly.
+  - Operator arity must match the number of raw minute inputs exactly. Examples: `mean/std/sum/min/max/log/abs/pos/neg/neg_part/rank/neutralize/zscore/scale` take exactly 1 input; `add/sub/mul/div/pct/corr` take exactly 2 inputs.
+  - Do not pass three or more raw fields into a unary operator such as `mean` or `std`. Build multi-step minute components instead.
+  - Conditional operators are available exactly as listed in the runtime allowlist; do not prefer one allowlisted spelling over another unless the surrounding expression requires it.
+  - Use `ts_return(field, lag)` only for lagged same-field returns. Do not use `pct(field, lag)` for that meaning.
+  - Use `pct(a, b)` only for same-time tensor ratio `a / b - 1` when both operands are minute tensors from the same intraday slice.
+  - Inside `MinuteFactorEngine.run(...)`, use registered minute operators on raw minute tensors. After minute data has been reduced to a daily 2D dataframe (`dates x stocks`), `calc_factor(...)` may continue combining those 2D frames with the regular daily PV operators imported from `vendors.quant_lib.analysis`.
+  - Once a minute reduce operator has already produced a daily 2D dataframe, any later `ts_rank/ts_zscore/ts_corr/...` in `calc_factor(...)` follows regular daily semantics, not intraday minute semantics.
+  - When you need the cross-section at a specific minute, use `load_single_minute(...)` from `vendors.quant_lib.minute_tools` instead of abusing `MinuteFactorEngine.run(...)`.
+  - `load_single_minute` must be called with `(handle, field_name, minute_string, ...)`, for example `load_single_minute(handle, "closes", "1457")`.
+  - `prepare_minute_datas()` must return `dict[str, pd.DataFrame]`, for example `{"closes": closes_df}`. Never return raw field-name strings such as `{"closes": "closes"}`.
+  - `minute_ctx["closes"]` and similar objects are pandas DataFrames; use pandas accessors like `.iloc`, `.shift`, `.rolling`, `.pct_change`. When using `pct_change`, always pass `fill_method=None` explicitly, for example `.pct_change(periods=30, fill_method=None)`. Do not use NumPy-style slicing such as `closes[:, -1]`.
+  - `data_ctx` is a plain dict of daily DataFrames, not an object with attributes like `current_date` or `instruments`.
+  - Minute operators may perform `3D -> 2D`, `2D -> 1D`, or `1D -> 2D` intermediate transforms. That is allowed. The hard requirement is that `calc_factor(data_ctx, minute_ctx)` must finally return a daily-indexed 2D DataFrame whose index is trading dates and whose columns are stock codes. Do not build a MultiIndex `(datetime, instrument)` output manually.
+  - The final module must be loadable by QA standalone backtest and by TQ factor_hub without code changes.
+  - Do not include a QA-only `if __name__ == "__main__":` block in the final module.
+  - The module must run end to end without relying on expression-export fallback.
+
+evolving_strategy_factor_implementation_v2_user: |-
+  Minute-domain coding supplement:
+  - If the target idea uses minute inputs such as `opens`, `closes`, `volumes`, `turnovers`, or `lreturns`, either:
+    1. use `MinuteFactorEngine().run(inputs=..., operator=..., aggregator=...)` with registered operators only, or
+    2. use `load_single_minute(...)` when you need a specific minute snapshot.
+  - Example of valid decomposition: compute `mfe.run(inputs="vwaps", operator="mean", startminute="1428", endminute="1457")` for a 30-minute average VWAP, and separately compute `mfe.run(inputs=["highs","lows"], operator="add", aggregator="mean", startminute="1428", endminute="1457") / 2.0` for the mean intraday mid-price. Then combine those daily 2D frames inside `calc_factor(...)`.
+  - Use `ts_return(field, lag)` for lagged same-field returns. Use `pct(a, b)` only for same-time tensor ratio `a / b - 1`; do not use `pct(field, lag)` as a return shorthand.
+  - Once `prepare_minute_datas()` has reduced minute data to standard daily 2D frames, you may continue composing them with regular daily PV operators inside `calc_factor(...)`.
+  - Once a minute reduce operator has already produced a daily 2D frame, any later `ts_rank/ts_zscore/ts_corr/...` in `calc_factor(...)` is a regular daily operation, not an intraday minute operation.
+  - Conditional operators are available exactly as listed in the runtime allowlist; do not prefer one allowlisted spelling over another unless the surrounding expression requires it.
+  - For a 30-minute return using close prices near the market close, prefer loading two minute snapshots and computing the return directly; do not call `engine.run("closes")` and then `.shift(30)`.
+  - For rolling windows such as `ts_mean(volumes, 15)`, do not pass `window=15` into `MinuteFactorEngine.run`. Either express the window through valid minute snapshots or use supported start/end-minute slices.
+  - Use `SETTING["universe"] = "standards"` unless the task explicitly requires another known runtime universe.
+  - Before returning code, check Python syntax carefully. `META = {...}` and `SETTING = {...}` must be syntactically valid dict literals with commas between adjacent entries.
+  - Return a daily-indexed dataframe from `calc_factor(data_ctx, minute_ctx)`, with dates as index and stock codes as columns.
+  - Treat `minute_ctx` values as pandas DataFrames and use `.iloc` / `.shift` / `.rolling` instead of raw NumPy slicing.
+  - Do not use attribute-style access like `data_ctx.current_date` or `data_ctx.instruments`; `data_ctx` is a dict.
+  - Use the exact minute-module contract: `TYPE`, `META`, `SETTING`, `prepare_minute_datas`, `calc_factor`.
+  - Keep the implementation executable; use simple or richer minute feature decompositions as needed, but do not output pseudo-code.

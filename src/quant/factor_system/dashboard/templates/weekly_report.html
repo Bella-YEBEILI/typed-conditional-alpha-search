@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  .summary-card { background:#f8f9fa; border-radius:8px; padding:16px; margin-bottom:16px; }
+  .summary-card h6 { margin-bottom:12px; }
+  .summary-item { display:inline-block; margin-right:24px; margin-bottom:6px; }
+  .summary-item .label { color:#666; font-size:11px; }
+  .summary-item .value { font-size:15px; font-weight:600; }
+  .alert-item { padding:4px 0; border-bottom:1px solid #eee; }
+  .alert-type { font-weight:600; color:#dc3545; }
+  .table-wrap { overflow-x:auto; }
+  .pct-bar { display:inline-block; height:12px; background:#0d6efd; border-radius:2px; opacity:0.3; vertical-align:middle; }
+  .section-title { margin-top:20px; margin-bottom:8px; font-weight:600; }
+</style>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h5 class="mb-0">因子周报</h5>
+  <form class="d-flex align-items-center gap-2" method="get">
+    <select name="week" class="form-select form-select-sm" style="width:160px;" onchange="this.form.submit()">
+      <option value="">最新一周</option>
+      {% for w in available_weeks %}
+      <option value="{{ w }}" {{ 'selected' if selected_week==w }}>{{ w }}</option>
+      {% endfor %}
+    </select>
+  </form>
+</div>
+
+{% if not detail_rows %}
+<div class="alert alert-info">无可用数据</div>
+{% else %}
+
+{# ===== Summary ===== #}
+<div class="summary-card">
+  <h6>总览  截至 {{ week_end }}</h6>
+  <div>
+    <span class="summary-item"><span class="label">因子总数</span><br><span class="value">{{ factor_count }}</span></span>
+    <span class="summary-item"><span class="label">中证1000</span><br><span class="value">{{ fmt_pct(summary.get('idx_ret')) }}</span></span>
+    <span class="summary-item"><span class="label">平均净超额</span><br><span class="value">{{ fmt_pct(summary.get('avg_net_excess')) }}</span></span>
+    <span class="summary-item"><span class="label">超额分位</span><br><span class="value">{{ fmt_num(summary.get('avg_net_excess_pct'),0) }}</span></span>
+    <span class="summary-item"><span class="label">平均多空净值</span><br><span class="value">{{ fmt_pct(summary.get('avg_ls_netret')) }}</span></span>
+    <span class="summary-item"><span class="label">多空分位</span><br><span class="value">{{ fmt_num(summary.get('avg_ls_netret_pct'),0) }}</span></span>
+    <span class="summary-item"><span class="label">平均RankIC</span><br><span class="value">{{ fmt_num(summary.get('avg_rankic'),4) }}</span></span>
+    <span class="summary-item"><span class="label">IC分位</span><br><span class="value">{{ fmt_num(summary.get('avg_rankic_pct'),0) }}</span></span>
+  </div>
+  <div style="margin-top:6px;font-size:12px;color:#666;">
+    超额优于75分位: <b>{{ summary.get('above_75_count',0) }}</b>个 &nbsp;|&nbsp; 低于25分位: <b>{{ summary.get('below_25_count',0) }}</b>个
+  </div>
+</div>
+
+{# ===== TOP / BOTTOM ===== #}
+<div class="row">
+  <div class="col-md-6">
+    <div class="section-title text-success">TOP 5</div>
+    <table class="table table-sm table-hover">
+      <thead class="table-light"><tr>
+        <th>Name</th><th>Net Excess</th><th>Pct</th><th>LS Net</th><th>RankIC</th>
+      </tr></thead>
+      <tbody>
+      {% for r in detail_rows[:5] %}
+      <tr>
+        <td><a href="{{ url_for('factor_detail',factor_name=r.factor_name) }}">{{ r.factor_name }}</a></td>
+        <td>{{ fmt_pct(r.net_excess) }}</td>
+        <td>{{ fmt_num(r.net_excess_pct,0) }}</td>
+        <td>{{ fmt_pct(r.ls_netret) }}</td>
+        <td>{{ fmt_num(r.rankic,3) }}</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <div class="section-title text-danger">BOTTOM 5</div>
+    <table class="table table-sm table-hover">
+      <thead class="table-light"><tr>
+        <th>Name</th><th>Net Excess</th><th>Pct</th><th>LS Net</th><th>RankIC</th>
+      </tr></thead>
+      <tbody>
+      {% for r in detail_rows[-5:]|reverse %}
+      <tr>
+        <td><a href="{{ url_for('factor_detail',factor_name=r.factor_name) }}">{{ r.factor_name }}</a></td>
+        <td>{{ fmt_pct(r.net_excess) }}</td>
+        <td>{{ fmt_num(r.net_excess_pct,0) }}</td>
+        <td>{{ fmt_pct(r.ls_netret) }}</td>
+        <td>{{ fmt_num(r.rankic,3) }}</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{# ===== Alerts ===== #}
+{% if alerts %}
+<div class="section-title">异常预警 ({{ alerts|length }}条)</div>
+<div class="summary-card" style="max-height:300px;overflow-y:auto;">
+  {% for a in alerts %}
+  <div class="alert-item">
+    <span class="alert-type">[{{ a.type }}]</span>
+    <a href="{{ url_for('factor_detail',factor_name=a.factor_name) }}">{{ a.factor_name }}</a>: {{ a.message }}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+{# ===== Group Summaries ===== #}
+{% macro group_table(title, rows) %}
+{% if rows %}
+<div class="section-title">{{ title }}</div>
+<table class="table table-sm table-hover">
+  <thead class="table-light"><tr>
+    <th>Name</th><th>Count</th><th>Avg Excess</th><th>Avg LS Net</th><th>Avg IC</th><th>Excess Pct</th>
+  </tr></thead>
+  <tbody>
+  {% for r in rows %}
+  <tr>
+    <td>{{ r.name }}</td>
+    <td>{{ r.count }}</td>
+    <td>{{ fmt_pct(r.avg_net_excess) }}</td>
+    <td>{{ fmt_pct(r.avg_ls_netret) }}</td>
+    <td>{{ fmt_num(r.avg_rankic,4) }}</td>
+    <td>{{ fmt_num(r.avg_net_excess_pct,0) }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endmacro %}
+
+{{ group_table("按Tag分类汇总", tag_rows) }}
+{{ group_table("按Category分类汇总", cat_rows) }}
+
+{# ===== Full Detail ===== #}
+<div class="section-title">全因子明细</div>
+<div class="table-wrap">
+<table class="table table-sm table-hover">
+  <thead class="table-light"><tr>
+    <th>Name</th><th>Net Excess</th><th>Excess Pct</th><th>LS Net</th><th>LS Pct</th>
+    <th>RankIC</th><th>IC Pct</th><th>Turnover</th><th>Coverage</th><th>Tag</th><th>Category</th>
+  </tr></thead>
+  <tbody>
+  {% for r in detail_rows %}
+  <tr>
+    <td><a href="{{ url_for('factor_detail',factor_name=r.factor_name) }}">{{ r.factor_name }}</a></td>
+    <td>{{ fmt_pct(r.net_excess) }}</td>
+    <td>{{ fmt_num(r.net_excess_pct,0) }}<span class="pct-bar" style="width:{{ (r.net_excess_pct or 0)|int * 0.5 }}px;"></span></td>
+    <td>{{ fmt_pct(r.ls_netret) }}</td>
+    <td>{{ fmt_num(r.ls_netret_pct,0) }}<span class="pct-bar" style="width:{{ (r.ls_netret_pct or 0)|int * 0.5 }}px;"></span></td>
+    <td>{{ fmt_num(r.rankic,3) }}</td>
+    <td>{{ fmt_num(r.rankic_pct,0) }}<span class="pct-bar" style="width:{{ (r.rankic_pct or 0)|int * 0.5 }}px;"></span></td>
+    <td>{{ fmt_pct(r.long_turnover,1) }}</td>
+    <td>{{ fmt_pct(r.coverage,1) }}</td>
+    <td>{{ r.tag }}</td>
+    <td>{{ r.category }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+
+{% endif %}
+{% endblock %}

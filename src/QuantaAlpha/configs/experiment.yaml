@@ -1,0 +1,196 @@
+# ============================================================
+# QuantaAlpha 运行配置
+# 所有实验参数统一集中在这里
+# ============================================================
+
+# ============================================================
+# 规划阶段配置
+# 控制并行探索方向的生成
+# ============================================================
+planning:
+  # 是否开启“并行规划”：将初始研究方向扩展为 N 个探索方向
+  enabled: true
+  # 规划阶段生成的并行方向数量
+  num_directions: 5
+  # 当 LLM 输出不符合 JSON 格式时，规划阶段最大重试次数
+  max_attempts: 5
+  # 是否使用 LLM 生成方向：true=调用 LLM，false=仅使用兜底模板
+  use_llm: true
+  # 当 LLM 失败时是否允许兜底：true=使用内置方向模板
+  allow_fallback: true
+  # 规划提示词文件路径（相对 quantaalpha/pipeline/prompts 目录）
+  prompt_file: planning_prompts.yaml
+
+
+# ============================================================
+# 执行阶段配置
+# 控制主循环执行参数
+# ============================================================
+execution:
+  # 主循环最大迭代次数；当 step_n 未设置时，与 steps_per_loop 相乘得到 step_n
+  max_loops: 11
+  # 每个循环的步骤数：固定为 5（propose/construct/calculate/backtest/feedback）
+  steps_per_loop: 5
+  # 总步数（最高优先级）；设置后覆盖 max_loops * steps_per_loop
+  step_n: null
+  # 回测是否使用本地环境：true=本地，false=Docker
+  use_local: true
+  # 是否使用多进程并行执行各分支
+  parallel_execution: true
+  # 分支日志根目录；仅在并行规划且分支数 > 1 时使用
+  branch_log_root: ${LOG_DIR}
+  # 分支日志前缀；目录命名格式为 {prefix}_{index}
+  branch_log_prefix: branch
+
+
+# ============================================================
+# 进化阶段配置
+# 控制进化式探索（变异与交叉）
+# 流程：Original -> Mutation -> Crossover -> Mutation -> Crossover -> ...
+# ============================================================
+evolution:
+  # 是否开启进化模式；开启后会覆盖传统规划 + 并行执行流程
+  enabled: true
+
+  # 是否开启变异阶段；false 时跳过变异轮（只保留 original 与 crossover）
+  mutation_enabled: true
+
+  # 是否开启交叉阶段；false 时跳过交叉轮（只保留 original 与 mutation）
+  crossover_enabled: true
+
+  # 是否在 original 阶段重新筛选初始因子
+  reselect_initial_factors: true
+  # 最大进化轮数（包含 original、mutation、crossover）
+  # 流程：两者都开 -> round 0=original, 1=mutation, 2=crossover, ...
+  #      仅 mutation 开 -> round 0=original, 1+=mutation, ...
+  #      仅 crossover 开 -> round 0=original, 1+=crossover, ...
+  max_rounds: 11
+
+  # 交叉：每次交叉操作选择的父轨迹数量
+  crossover_size: 2
+  # 交叉：每轮交叉组合数量（影响交叉后的并行度）
+  crossover_n: 6
+
+  # 每个进化阶段内部是否并行执行
+  # true：单条轨迹仍按轮次串行推进，但同一轮中不同方向/不同候选任务并行
+  # false：任务按顺序串行执行
+  parallel_enabled: true
+
+  # 是否优先使用多样化交叉组合（不同方向/阶段），而不是纯随机选父轨迹
+  prefer_diverse_crossover: true
+
+  # 进化提示词文件路径（相对 quantaalpha/pipeline/prompts 目录）
+  prompt_file: evolution_prompts.yaml
+
+  # 父轨迹选择策略：
+  #   best: 语义互补模式。先按候选过滤收敛池子，再按 repair/stage/mechanism/diverse 四类 intent 配额选父代
+  #   random: 随机选父代（仅建议用于调试或对照）
+  #   weighted / weighted_inverse / top_percent_plus_random: 兼容旧配置，运行时会自动退化到 best
+  parent_selection_strategy: best
+
+  # Top 百分比阈值（旧配置兼容项；当选择 best 时忽略）
+  top_percent_threshold: 0.3
+
+  # 仅 parent_selection_strategy = best 时生效：
+  # 不同 crossover intent 的目标配额；最终仍受可匹配组合数量约束
+  crossover_intent_quota:
+    repair-complement: 0.4
+    stage-complement: 0.3
+    mechanism-synergy: 0.2
+    diverse-angle: 0.1
+
+  # 仅 parent_selection_strategy = best 时生效：
+  # 先做候选过滤，再进入 intent 组合
+  crossover_candidate_filter:
+    require_primary_metric_not_none: true
+    max_per_direction: 4
+    recency_rounds: 2
+
+  # 是否全新启动：true=每次实验从空轨迹池开始；false=可加载已有轨迹池
+  fresh_start: true
+
+  # 结束后是否清理：true=删除轨迹池文件；false=保留用于复盘分析
+  cleanup_on_finish: false
+
+
+# ============================================================
+# 质量门控配置
+# 控制因子在进入回测前的质量检查
+# ============================================================
+quality_gate:
+  # 一致性检查（hypothesis-description-expression）；必要时使用 LLM 修正表达式
+  consistency_enabled: false
+
+  # 复杂度检查：符号长度、基础特征数、自由参数比例
+  complexity_enabled: false
+
+  # 冗余检查：基于 AST 子树匹配现有因子库
+  redundancy_enabled: false
+
+  # 严格一致性模式：true=任意不一致都拒绝，false=仅 major/critical 拒绝
+  consistency_strict_mode: false
+
+  # 检测到不一致时的最大修正尝试次数
+  max_correction_attempts: 3
+
+
+# ============================================================
+# 因子生成配置
+# 控制因子提案与表达式生成
+# ============================================================
+factor:
+  # 主数据模式：daily=日频量价，minutes=分钟级，fundamental=基本面
+  data_mode: daily
+  # 数据域选择：null/auto=跟随 data_mode；也可显式写 pv、fundamental、minutes 或组合如 pv/fundamental
+  data_domains: null
+
+  # 提示词模式：auto=跟随 data_mode；也可固定为 daily / minutes / fundamental
+  prompt_mode: auto
+
+  # 因子回测模式：single=单因子逐个回测，combined=同一轮因子组合后统一回测
+  backtest_mode: single
+
+  # 每条假设生成的因子数量
+  factors_per_hypothesis: 3
+
+  # 复杂度诊断（作为探索风险提示，不作为自动拒绝；建议软阈值约 400）
+  complexity:
+    symbol_length_threshold: 400
+    base_features_threshold: 5
+    free_args_ratio_threshold: 0.5
+
+  # 与因子库对比做唯一性/重复性检查
+  duplication:
+    enabled: true
+    threshold: 5
+    factor_zoo_path: null  # 为空时使用默认路径
+
+# ============================================================
+# 回测配置
+# 控制因子回测参数
+# ============================================================
+backtest:
+  engine: tq
+  tq_upstream_config: ${QUANTAALPHA_TQ_CONFIG}
+  use_docker: false
+  timeout: 800
+
+
+# ============================================================
+# LLM 配置
+# 控制 LLM API 调用行为
+# ============================================================
+llm:
+  factor_mining_timeout: 999999
+  max_retries: 3
+  retry_delay: 1.0
+  json_mode_strict: true
+
+
+# ============================================================
+# 日志配置
+# ============================================================
+logging:
+  level: INFO
+  save_snapshots: true
+  save_trajectory_pool: true

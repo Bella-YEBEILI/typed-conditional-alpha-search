@@ -1,0 +1,81 @@
+planning:
+  enabled: true
+  num_directions: 1
+  max_attempts: 1
+  use_llm: false
+  allow_fallback: true
+  prompt_file: planning_prompts.yaml
+
+execution:
+  max_loops: 1
+  steps_per_loop: 5
+  step_n: 5
+  use_local: true
+  parallel_execution: false
+  branch_log_root: ${LOG_DIR}
+  branch_log_prefix: branch
+
+evolution:
+  enabled: true
+  mutation_enabled: true
+  crossover_enabled: true
+  reselect_initial_factors: false
+  max_rounds: 3
+  crossover_size: 2
+  crossover_n: 1
+  parallel_enabled: false
+  prefer_diverse_crossover: false
+  prompt_file: evolution_prompts.yaml
+  parent_selection_strategy: best
+  top_percent_threshold: 0.3
+  crossover_intent_quota:
+    repair-complement: 0.4
+    stage-complement: 0.3
+    mechanism-synergy: 0.2
+    diverse-angle: 0.1
+  crossover_candidate_filter:
+    require_primary_metric_not_none: true
+    max_per_direction: 4
+    recency_rounds: 2
+  fresh_start: true
+  cleanup_on_finish: false
+  max_empty_task_retries: 1
+
+quality_gate:
+  consistency_enabled: false
+  complexity_enabled: false
+  redundancy_enabled: false
+  consistency_strict_mode: false
+  max_correction_attempts: 1
+
+factor:
+  data_mode: minutes
+  data_domains: pv/minutes
+  prompt_mode: minutes
+  backtest_mode: single
+  factors_per_hypothesis: 1
+  complexity:
+    symbol_length_threshold: 400
+    base_features_threshold: 5
+    free_args_ratio_threshold: 0.5
+  duplication:
+    enabled: true
+    threshold: 5
+    factor_zoo_path: null
+
+backtest:
+  engine: tq
+  tq_upstream_config: ${QUANTAALPHA_TQ_CONFIG}
+  use_docker: false
+  timeout: 800
+
+llm:
+  factor_mining_timeout: 999999
+  max_retries: 3
+  retry_delay: 1.0
+  json_mode_strict: true
+
+logging:
+  level: INFO
+  save_snapshots: true
+  save_trajectory_pool: true

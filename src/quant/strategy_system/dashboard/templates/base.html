@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title or "Strategy Dashboard" }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{{ url_for('static', filename='vendor/bootstrap.min.css') }}" rel="stylesheet">
+  <script src="{{ url_for('static', filename='vendor/echarts.min.js') }}"></script>
+  <style>
+    :root {
+      --bg: #f4efe7;
+      --panel: rgba(255,255,255,0.92);
+      --line: rgba(32,45,64,0.08);
+      --ink: #172033;
+      --muted: #6b7280;
+      --accent: #0b6e4f;
+      --accent-soft: rgba(11,110,79,0.10);
+      --warning-soft: rgba(229,159,0,0.10);
+      --shadow: 0 18px 50px rgba(23,32,51,0.08);
+    }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left,rgba(11,110,79,0.10),transparent 32%),
+        radial-gradient(circle at top right,rgba(229,159,0,0.10),transparent 28%),
+        linear-gradient(180deg,#faf7f1 0%,var(--bg) 100%);
+      font-size: 14px;
+      min-height: 100vh;
+    }
+    .shell {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 28px 18px 40px;
+    }
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .hero-title {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    .hero-subtitle {
+      margin-top: 8px;
+      color: var(--muted);
+      max-width: 900px;
+      word-break: break-all;
+    }
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 12px 14px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+      backdrop-filter: blur(12px);
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(7,minmax(0,1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .summary-grid.compare-mode {
+      grid-template-columns: repeat(4,minmax(0,1fr));
+    }
+    .summary-card {
+      padding: 16px 18px;
+    }
+    .summary-label {
+      color: var(--muted);
+      font-size: 11px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .summary-value {
+      font-size: 22px;
+      line-height: 1.1;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    .summary-note {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .chart-panel {
+      padding: 16px 16px 10px;
+    }
+    .chart-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .toolbar-left,
+    .toolbar-right {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .range-btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .range-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .form-select,
+    .form-control,
+    .btn {
+      font-size: 13px;
+    }
+    #nav-chart {
+      height: 640px;
+      width: 100%;
+    }
+    @media (max-width: 1200px) {
+      .summary-grid {
+        grid-template-columns: repeat(4,minmax(0,1fr));
+      }
+      .summary-grid.compare-mode {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+    }
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+      }
+      .summary-grid {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+      #nav-chart {
+        height: 560px;
+      }
+    }
+    @media (max-width: 576px) {
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

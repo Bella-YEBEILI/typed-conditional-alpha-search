@@ -1,0 +1,61 @@
+evaluator_code_feedback_v1_system: |-
+  Joint pv/minutes evaluation supplement:
+  - Reject implementations that collapse to a single domain when the task requires both daily pv and minute inputs.
+  - Raw `opens/highs/lows/closes` may be used only as minute inputs. Reject them when they appear on the daily pv side through `data_ctx[...]` or `SETTING["data_needed"]`.
+  - Reject doubly adjusted daily pv names such as `hfq_hfq_closes`.
+  - Require every daily pv field used through `data_ctx[...]` to be declared in `SETTING["data_needed"]`.
+
+evolving_strategy_factor_implementation_v1_system: |-
+  Joint pv/minutes evaluation supplement:
+  - Preserve both domain contributions while correcting the module.
+  - Prefer fixing field routing, `data_needed`, and final-expression composition over rewriting the module shape.
+
+  Combined pv/minutes contract checklist (every joint factor MUST satisfy ALL items;
+  any single violation makes the rendered module fail validation and the coder will
+  be re-run with these errors as feedback):
+  - The rendered module must be a minute-level module: it must define
+    `META = {"level": "minutes", ...}` and a `prepare_minute_datas()` function
+    alongside `calc_factor(data_ctx, minute_ctx)`.
+  - The expression must reference at least one raw minute field from the active
+    `MINUTE_FIELDS` registry, used through the structured spec so the rendered
+    module ends up calling either
+    `MinuteFactorEngine.run(inputs=[<raw minute field>], operator=...)`,
+    `MinuteFactorEngine.cached_run(...)`, or
+    `load_single_minute(handle, "<raw minute field>", ...)`.
+    Engine `inputs=` must be string literals taken from MINUTE_FIELDS; never invent
+    derived names like `"close_ret"`.
+  - The expression must also reference at least one daily pv field from the active
+    `PV_FIELDS` registry through `data_ctx["<pv field>"]`, AND that field must be
+    declared in `SETTING["data_needed"]`. Every `data_ctx["..."]` access of a daily
+    pv field must have a matching entry in `data_needed`.
+  - On the daily side, only adjusted names are allowed: use `hfq_opens / hfq_highs
+    / hfq_lows / hfq_closes` instead of raw `opens/highs/lows/closes`. Raw OHLC
+    names belong only to the minute side. Never emit doubly adjusted names such as
+    `hfq_hfq_closes`.
+  - Operator and aggregator names passed to `MinuteFactorEngine.run / cached_run`
+    must be literals registered in `MinuteFactorEngine._OPS`; aggregator must be a
+    unary reduction (mean/std/sum/min/max). Operator arity must match the number
+    of input fields.
+
+  Minimal joint pv/minutes module skeleton (the spec compiler emits something
+  shaped like this; treat it as a target for any expression you propose):
+  ```
+  META = {"level": "minutes"}
+  SETTING = {"data_needed": ["hfq_closes"]}
+  FINAL_EXPRESSION = 'close_mean_30.divide(data_ctx["hfq_closes"].replace(0.0, np.nan))'
+
+  def prepare_minute_datas():
+      mfe = MinuteFactorEngine()
+      close_mean_30 = mfe.run(inputs=["closes"], operator="mean", kwargs={"window": 30})
+      return {"close_mean_30": close_mean_30}
+
+  def calc_factor(data_ctx, minute_ctx):
+      close_mean_30 = minute_ctx["close_mean_30"]
+      return close_mean_30.divide(data_ctx["hfq_closes"].replace(0.0, np.nan))
+  ```
+  Stay on this shape; the LLM only fills the expression and field choices.
+
+evaluator_final_decision_v1_system: |-
+  Joint pv/minutes final-review supplement:
+  - Any joint-contract failure must fail final decision.
+  - A module that uses only minute features or only daily pv fields is not acceptable for a joint task.

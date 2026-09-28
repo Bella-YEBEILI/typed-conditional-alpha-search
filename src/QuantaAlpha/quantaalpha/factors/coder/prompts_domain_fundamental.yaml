@@ -1,0 +1,16 @@
+evolving_strategy_factor_implementation_v1_system: |-
+  Fundamental-domain coding supplement:
+  - For fundamental-only runs, stay on the daily expression-template path.
+  - Do not introduce minute-engine calls or minute-only fields.
+  - Treat fundamental variables as slow-moving daily inputs and keep the implementation economically interpretable.
+  - Raw fundamental inputs are loaded from `/home/workspace/common/quant_data/fundamental_factors/raw`.
+  - Valid raw field names are: asset_growth, asset_turnover, bp, cash_coverage, consecutive_div_years, cost_ratio_trend, div_yield_stability, div_yield_ttm, div_yield_yoy, earnings_growth, ep, ff_factors, ff_factors_rolling, leverage, long_term_debt_ratio, net_margin, operating_cost_ratio, payout_ratio, profit_margin, revenue_growth, roe, roe_stability, roe_trend.
+  - Do not use neutralized data files such as `roe_neutral`; the runtime expression allowlist only accepts the raw field names above.
+  - Use regular daily operators on 2D date x stock panels, with medium-horizon smoothing or cross-sectional ranking when needed.
+
+evolving_strategy_factor_implementation_v2_user: |-
+  Fundamental-domain coding supplement:
+  - Prefer correcting the target daily expression instead of inventing a custom execution module.
+  - Do not introduce pv-only timing logic or minute-only operators unless those domains are explicitly active.
+  - Preserve the intended fundamental role: valuation, profitability, quality, leverage, payout, capital efficiency, cost discipline, or growth persistence.
+  - If an expression refers to an unavailable field or a *_neutral file, replace it with the closest raw field from the allowlist.

@@ -1,0 +1,58 @@
+evolving_strategy_factor_implementation_v1_system: |-
+  Joint pv/minutes coding supplement:
+  - The final factor module must remain a minute-level module and must preserve both daily pv and minute inputs.
+  - Do not silently collapse the task into a pure minute factor or a pure daily pv factor.
+  - Use daily pv fields through `data_ctx[...]` and declare them in `SETTING["data_needed"]`.
+  - Use minute fields inside `prepare_minute_datas()` or declared minute feature blocks.
+  - Do not use doubly adjusted field names like `hfq_hfq_closes`.
+  - For minute operators with unary transformed inputs, keep raw minute field names in `inputs` and use `preprocess=[...]`; do not invent derived engine input names.
+  - Use `ts_return(field, lag)` only for lagged same-field returns. Use `pct(a, b)` only for same-time tensor ratio `a / b - 1`; do not use `pct(field, lag)` as a return shorthand.
+  - Once a minute reduce operator has already produced a daily 2D frame, any later `ts_rank/ts_zscore/ts_corr/...` in the final expression follows regular daily semantics, not intraday minute semantics.
+  - Conditional operators are available exactly as listed in the runtime allowlist; do not prefer one allowlisted spelling over another unless the surrounding expression requires it.
+
+  Joint pv/minutes contract checklist (pre-flight validator will reject the module if any item is violated):
+  1. The module must set `META = {"level": "minutes", ...}` (not "days").
+  2. The module must define both `prepare_minute_datas(handle, ...)` and `calc_factor(data_ctx, minute_ctx)` at module level.
+  3. The module must consume at least one raw minute field via either:
+        a. `MinuteFactorEngine.run(inputs=[<raw_field>, ...], operator=..., aggregator=...)`, or
+        b. `load_single_minute(handle, "<raw_field>")`.
+     Pure-daily implementations are rejected.
+  4. For `MinuteFactorEngine.run/cached_run`, `inputs` must be a literal list of raw minute fields, `operator` must be a literal registered operator name (string or `(name, {param: value})` tuple), and `aggregator` (if used) must be a unary registered reducer like "mean"/"std"/"sum"/"min"/"max".
+  5. Every daily pv field used in `data_ctx[...]` must also appear in `SETTING["data_needed"]`, and `SETTING["data_needed"]` must contain at least one daily pv field.
+
+  Minimal joint pv/minutes module template (use this structure; swap operator names and field names as needed):
+  ```python
+  META = {"level": "minutes", "version": 1}
+  SETTING = {"data_needed": ["hfq_closes", "turnover"]}
+
+  def prepare_minute_datas(handle, ...):
+      intraday_vol = MinuteFactorEngine.run(
+          inputs=["returns"],
+          operator="std",
+          aggregator="mean",
+      )
+      return {"intraday_vol": intraday_vol}
+
+  def calc_factor(data_ctx, minute_ctx):
+      daily_close = data_ctx["hfq_closes"]
+      to = data_ctx["turnover"]
+      vol = minute_ctx["intraday_vol"]
+      return cs_zscore(vol * ts_mean(to, 20))
+
+  expr = "cs_zscore(mul(intraday_vol, ts_mean(turnover, 20)))"
+  ```
+
+  If you violate the contract, the validator will return concrete error messages — fix exactly those points on the next attempt rather than rewriting from scratch.
+
+evolving_strategy_factor_implementation_v2_user: |-
+  Joint pv/minutes coding supplement:
+  - Minute features are built first in `prepare_minute_datas`, then combined with daily pv fields in `calc_factor`.
+  - Every daily pv field referenced in `data_ctx[...]` must also appear in `SETTING["data_needed"]`.
+  - Use `ts_return(field, lag)` for lagged same-field returns. Use `pct(a, b)` only for same-time tensor ratio `a / b - 1`.
+  - Once a minute feature has been reduced to a daily 2D frame, any later `ts_rank/ts_zscore/ts_corr/...` is a regular daily operation.
+  - Keep the implementation on the fixed minute-template path; do not improvise a custom module shape.
+  - Hard contract gates that the pre-flight validator will check:
+    * `META["level"] == "minutes"`, both `prepare_minute_datas` and `calc_factor` defined.
+    * At least one `MinuteFactorEngine.run(...)` or `load_single_minute(...)` call using a raw minute field.
+    * Every daily pv field accessed via `data_ctx[...]` is also declared in `SETTING["data_needed"]`; at least one daily pv field is declared.
+    * No doubly adjusted names like `hfq_hfq_*`.

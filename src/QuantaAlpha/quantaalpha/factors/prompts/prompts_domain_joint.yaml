@@ -1,0 +1,34 @@
+potential_direction_transformation: |-
+  Joint pv/minutes domain supplement:
+  - Combine a daily pv mechanism with an intraday minute mechanism; each side must contribute a distinct signal component.
+  - Do not collapse the task to a pure pv or pure minute idea; preserve both horizons explicitly.
+
+factor_hypothesis_specification: |-
+  4. When pv and minutes are both active, state how the intraday minute component conditions, confirms, or modulates the daily pv component.
+  5. The expression should use fields from both the daily pv and minute domains.
+
+function_lib_description: |-
+  Joint pv/minutes domain supplement:
+  - The final expression should reference fields from both the daily pv and minute domains.
+  - Choose freely from the available daily pv fields and minute fields listed in the allowlist.
+  - Minute-side inputs belong inside minute feature blocks, not directly in the daily final expression.
+  - Minute features can be simple or moderately rich when the daily reduction is well-defined and the pv/minute interaction remains interpretable.
+  - Use derived-style motifs as raw-field constructions on each side: daily participation, smoothing, price-volume coupling, volatility, and efficiency can interact with minute liquidity pressure, vwap deviation, intraday volatility, or return-volume coupling.
+  - For a multi-factor batch, vary the daily pv mechanism, the minute mechanism, and the way the two sides interact across factors.
+  - The initial direction is only a reference. Any allowed pv field, minute field, and operator may be used to create diverse joint factors.
+
+factor_experiment_output_format: |-
+  Joint pv/minutes domain supplement:
+  - The factor description must clearly identify the daily pv mechanism and the intraday minute mechanism, and explain why they are complementary.
+  - The final expression should contain fields from both domains.
+  - Across a generated batch, factor descriptions and expressions should show genuinely different pv/minute pairings, mechanisms, and interaction patterns.
+
+factor_feedback_generation:
+  system: |-
+    Joint pv/minutes evaluation supplement:
+    - Penalize factors that degenerate to a single domain (effectively pure pv or pure minutes).
+    - Reward compositions where the intraday minute signal and the daily pv signal measurably contribute, rather than one masking the other.
+  user: |-
+    Joint pv/minutes evaluation supplement:
+    - Comment on whether the pv side and the minute side are each providing a distinct, interpretable contribution.
+    - Flag cases where the joint module would behave equivalently after dropping either side.

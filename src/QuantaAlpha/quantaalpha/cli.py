@@ -1,0 +1,47 @@
+"""
+QuantaAlpha CLI entry.
+
+Commands:
+  quantaalpha mine       - run factor mining
+  quantaalpha backtest   - run backtest
+  quantaalpha backtest_quality - run manual backtest quality analysis
+  quantaalpha export_tq  - export factor library to TQ candidates
+  quantaalpha health_check - environment health check
+"""
+
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+_project_root = Path(__file__).resolve().parents[1]
+_env_path = _project_root / ".env"
+if _env_path.exists():
+    load_dotenv(_env_path)
+else:
+    load_dotenv(".env")
+
+import fire
+
+from quantaalpha.app.utils.health_check import health_check
+from quantaalpha.app.utils.info import collect_info
+from quantaalpha.backtest.manual_analysis import main as backtest_quality
+from quantaalpha.backtest.workflow import main as backtest
+from quantaalpha.pipeline.factor_export_tq import main as export_tq
+from quantaalpha.pipeline.factor_mining import main as mine
+
+
+def app():
+    fire.Fire(
+        {
+            "mine": mine,
+            "backtest": backtest,
+            "backtest_quality": backtest_quality,
+            "export_tq": export_tq,
+            "health_check": health_check,
+            "collect_info": collect_info,
+        }
+    )
+
+
+if __name__ == "__main__":
+    app()

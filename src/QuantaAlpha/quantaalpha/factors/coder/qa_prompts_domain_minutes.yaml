@@ -1,0 +1,14 @@
+evaluator_code_feedback_v1_system: |-
+  Minute-domain evaluation supplement:
+  - Reject implementations that violate the minute-module contract: `TYPE`, `META`, `SETTING`, `prepare_minute_datas`, and `calc_factor(data_ctx, minute_ctx)`.
+  - Reject modules that misuse `MinuteFactorEngine.run(...)`, `load_single_minute(...)`, or return a non-daily 2D dataframe.
+  - When `pct_change` is used on minute dataframes, require `fill_method=None`.
+
+evolving_strategy_factor_implementation_v1_system: |-
+  Minute-domain evaluation supplement:
+  - Keep corrections on the fixed minute-template path.
+  - Prefer repairing minute feature preparation, field routing, and final daily-frame composition instead of inventing a new module structure.
+
+evaluator_final_decision_v1_system: |-
+  Minute-domain final-review supplement:
+  - Any violation of the minute-module contract, minute-engine operator arity, or final output shape must fail final decision.

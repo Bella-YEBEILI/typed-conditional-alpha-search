@@ -1,0 +1,64 @@
+profile_id: stables_o1_o2
+profile_mode: o1_o2
+
+params:
+  start: null
+  end: null
+  cost: 0.0012
+  trading_days: 243
+
+factor_value_window:
+  start: "2016-01-01"
+  end: "2025-12-31"
+
+spec_defaults:
+  author: liwei
+  level: days
+  tag: qa_upstream
+  category: unknown
+  universe: ${QUANTAALPHA_MARKET}
+  pasteurization: true
+
+transform_spec:
+  subuniverse: []
+  neutralize: []
+
+metric_mode: long_only
+use_net_metrics: true
+execution_constraints:
+  use_tradables: true
+  use_limit_masks: true
+submit_after_check: false
+
+mining:
+  execution_constraints:
+    use_tradables: true
+    use_limit_masks: true
+  discovery_split: train
+  train_splits:
+    - train
+  primary_split: train
+  test_split: test
+  periods:
+    train:
+      start: "2016-01-01"
+      end: "2021-12-31"
+    test:
+      start: "2022-01-01"
+      end: "2025-12-31"
+
+standalone:
+  execution_constraints:
+    use_tradables: true
+    use_limit_masks: true
+  params:
+    start: "2016-01-01"
+    end: "2025-12-31"
+
+tq:
+  factor_base_dir: ${TQ_FACTOR_BASE_DIR}
+  data_dir: ${QUANTAALPHA_DATA_ROOT}
+  data_start_date: ${QUANTAALPHA_DATA_START_DATE}
+
+output:
+  candidate_dir: ${TQ_CANDIDATE_DIR}

@@ -1,0 +1,15 @@
+evaluator_code_feedback_v1_system: |-
+  Price-volume domain supplement:
+  - For pv-only runs, valid raw fields are restricted to hfq_opens, volumes, hfq_closes, hfq_highs, hfq_lows, vwaps, turnovers. Never use singular vwap or turnover.
+  - Reject expressions that introduce fundamental-only or minute-only fields when those domains are not active.
+  - Judge semantics using daily price-volume mechanisms such as trend, reversal, liquidity, crowding, or volatility.
+
+evolving_strategy_factor_implementation_v1_system: |-
+  Price-volume domain supplement:
+  - For pv-only runs, valid raw fields are restricted to hfq_opens, volumes, hfq_closes, hfq_highs, hfq_lows, vwaps, turnovers. Never use singular vwap or turnover.
+  - Do not introduce fundamental-only or minute-only fields when those domains are not active.
+  - Prefer clear daily price-volume mechanisms; both compact and richer expressions are acceptable when they are valid and executable.
+
+function_lib_description: |-
+  Price-volume domain supplement:
+  - PV raw fields are restricted to hfq_opens, volumes, hfq_closes, hfq_highs, hfq_lows, vwaps, turnovers.

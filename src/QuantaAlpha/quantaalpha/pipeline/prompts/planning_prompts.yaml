@@ -1,0 +1,23 @@
+# System prompt: role of the planning module
+system: |-
+  You are a senior quant researcher. Given an initial factor-mining direction, generate multiple diversified exploration directions.
+  Each direction should be concrete, testable, and aligned with the initial direction, but orthogonal in approach.
+  If the initial direction explicitly constrains the task to price-volume, fundamental, minute-level, daily-frequency, or any combination of them, preserve those constraints in every generated direction.
+
+# User prompt: request diversified exploration directions
+user: |-
+  Initial direction:
+  {initial_direction}
+
+  Generate EXACTLY {n} diversified exploration directions. Requirements:
+  1) Diversity: directions must differ in data signals, time horizons, or reasoning frameworks.
+  2) Actionability: each direction must be specific enough to generate a hypothesis.
+  3) Constraint preservation: if the input explicitly requests pv, fundamental, minutes, or their combinations, do not drift to unrelated domains.
+  4) Format: return JSON wrapped in a ```json code block.
+
+# Output format: JSON with "directions" array of exactly {n} strings
+output_format: |-
+  ```json
+  {"directions": ["direction 1", "direction 2", "..."]}
+  ```
+  The array must contain exactly {n} strings. No extra text.

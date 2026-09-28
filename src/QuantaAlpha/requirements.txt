@@ -1,0 +1,69 @@
+# =============================================================================
+# QuantaAlpha dependency list
+#
+# Read automatically when installing via `pip install -e .`
+# Only third-party packages actually imported in project code are listed.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Core framework
+# -----------------------------------------------------------------------------
+pydantic-settings          # Settings (ExtendedBaseSettings)
+filelock                   # File locking (avoid concurrent conflicts)
+loguru                     # Logging
+fire                       # CLI framework
+fuzzywuzzy                 # Fuzzy string matching
+openai                     # LLM API (DashScope-compatible)
+python-dotenv              # .env loading
+pyyaml                     # YAML config/prompt loading
+jinja2                     # Template rendering
+tqdm                       # Progress bars
+requests                   # HTTP client used in app/document reader
+rich                       # Rich terminal UI in runtime env tools
+dill                       # Knowledge base serialization
+Pillow                     # Image handling for document processing
+
+# -----------------------------------------------------------------------------
+# Data & scientific computing
+# -----------------------------------------------------------------------------
+numpy>=1.24,<3.0           # Version for compatibility with downstream deps
+pandas>=1.5,<3.0           # Same as above, relaxed constraints
+pandarallel                # Pandas parallelization
+scikit-learn>=1.3          # Clustering (KMeans), similarity, preprocessing
+scipy                      # Statistical utilities and distances
+numba                      # Accelerated kernels for backtest ops
+matplotlib                 # Diagnostic plotting in quality analysis
+
+# -----------------------------------------------------------------------------
+# LLM & document processing
+# -----------------------------------------------------------------------------
+langchain-community        # Community packages only, not main langchain
+tiktoken                   # Token counting and segmentation
+pymupdf                    # PDF parsing (import fitz)
+
+# -----------------------------------------------------------------------------
+# Azure (document analysis)
+# -----------------------------------------------------------------------------
+azure-ai-formrecognizer    # Azure Document Intelligence
+azure-identity             # Azure token provider for managed identity
+
+# -----------------------------------------------------------------------------
+# Factor storage
+# -----------------------------------------------------------------------------
+tables                     # HDF5 table storage (PyTables)
+
+# -----------------------------------------------------------------------------
+# Infrastructure
+# -----------------------------------------------------------------------------
+docker                     # Docker container management (remote backtest)
+
+# -----------------------------------------------------------------------------
+# Build & versioning
+# -----------------------------------------------------------------------------
+setuptools-scm             # Dynamic version from SCM
+
+# -----------------------------------------------------------------------------
+# Pinned core dependencies
+# -----------------------------------------------------------------------------
+rdagent==0.8.0             # RD-Agent framework (pinned for compatibility)
+

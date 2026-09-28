@@ -1,0 +1,38 @@
+potential_direction_transformation: |-
+  Fundamental-domain supplement:
+  - When fundamental fields are active, prefer economically interpretable hypotheses tied to valuation, profitability, quality, leverage, payout, capital efficiency, or growth persistence.
+  - Make the hypothesis explicit about slow-moving information, reporting lags, stale-data risk, and why the signal should survive cross-sectionally over a medium horizon rather than intraday.
+
+factor_hypothesis_specification: |-
+  4. When fundamental data is active, explicitly account for slower update frequency, reporting cadence, and stale-data risk.
+  5. Prefer robust cross-sectional relationships such as valuation, profitability, capital efficiency, leverage, dividend quality, earnings quality, or growth persistence.
+  6. Do not force high-frequency timing logic onto slowly changing fundamental fields; if timing is needed, use simple daily confirmation rather than complex fast-turnover logic.
+
+function_lib_description: |-
+  Fundamental-domain supplement:
+  - Fundamental data is stored under /home/workspace/common/quant_data/fundamental_factors. Use the raw field names from the raw/ subdirectory; do not use *_neutral files as expression inputs.
+  - Available raw fields and intended meanings:
+    bp = book-to-price valuation; ep = earnings-to-price valuation; roe = return on equity; roe_trend = improving/deteriorating ROE; roe_stability = profitability persistence; revenue_growth = top-line growth; earnings_growth = earnings growth; asset_growth = balance-sheet expansion; asset_turnover = capital efficiency; leverage = balance-sheet leverage; long_term_debt_ratio = long-term debt burden; net_margin/profit_margin = profitability quality; operating_cost_ratio/cost_ratio_trend = cost pressure; cash_coverage = cash-flow coverage; payout_ratio = payout intensity; div_yield_ttm/div_yield_yoy/div_yield_stability/consecutive_div_years = dividend yield and continuity; ff_factors/ff_factors_rolling = broad style/fundamental composites.
+  - If you mix price-volume and fundamental fields, clearly explain the role split: fundamentals provide economic anchor, while daily price-volume fields provide confirmation, crowding filter, or entry timing.
+  - If multiple domains are active, each factor must include at least one fundamental field in the final expression.
+  - Prefer simple expressions using 1-3 core fundamental anchors and medium horizons such as 20, 60, 120, or 252 days.
+
+factor_experiment_output_format: |-
+  Fundamental-domain supplement:
+  - If a factor uses fundamental fields, the description must explain the economic transmission path and why a slow-moving signal can still predict medium-horizon returns.
+  - Prefer parsimonious combinations; avoid stacking many fundamental ratios into one expression or pretending quarterly information can justify intraday turnover.
+  - When fundamental is active alongside other domains, the final expression must still contain at least one fundamental field.
+  - The final expression must use only registered operators and raw fundamental field names, for example `ts_mean(roe, 60)`, `cs_zscore(ep)`, or `mul(cs_zscore(roe_trend), cs_zscore(earnings_growth))`.
+
+factor_feedback_generation:
+  system: |-
+    Fundamental-domain evaluation supplement:
+    - Check whether the factor respects the slower refresh cycle of fundamental data.
+    - Penalize expressions that pretend fundamental variables behave like high-frequency signals.
+    - Reward simple, economically grounded combinations over wide formula mashups, especially when one core fundamental anchor is paired with a small amount of daily confirmation.
+    - Treat raw + zz1000s as the mandatory gate, and use complete only to decide whether the factor still looks like residual fundamental alpha or should be tagged as smart_styles.
+    - In joint-domain factors, prefer slow-moving fundamentals as the economic anchor and treat pv features mainly as confirmation, crowding filter, or timing overlay.
+  user: |-
+    Fundamental-domain evaluation supplement:
+    - If the tested factor uses fundamental fields, comment on whether its holding horizon, turnover, reporting-lag handling, and economic story are consistent.
+    - Explain which raw / zz1000s / complete metric is blocking progress, and whether the pv leg in a joint factor is helping timing rather than overpowering the slow-moving signal.

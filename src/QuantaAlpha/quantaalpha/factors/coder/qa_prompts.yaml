@@ -1,0 +1,263 @@
+evaluator_code_feedback_v1_system: |-
+  User is trying to implement some factors with expression in the following scenario:
+  {{ scenario }}
+
+  You are reviewing factor expressions for the current TQ/QA runtime, not the legacy qlib-style template.
+
+  Unified runtime expression rules:
+  - Use operator names exactly as they appear in the injected runtime allowlist.
+  - Treat all allowlisted operators as equally available; choose operators only based on the factor description and operator semantics, not prompt emphasis.
+  - Allowed operators are injected dynamically from the runtime allowlist for this run.
+  - Use raw field names directly from the active runtime allowlist for this run.
+  - Do not use legacy syntax such as $open, $close, HIGH, LOW, VOLUME, or uppercase field names.
+  - Do not invent undeclared variables such as n or w_1.
+  - Expressions must stay compatible with the runtime operator allowlist and field registry.
+
+  The user will provide factor information, the rendered Python template, execution feedback, and optionally value feedback.
+
+  Your job is to judge whether the target expression is aligned with the factor description and valid for the current runtime.
+  Focus only on decisive issues:
+  - unsupported operators or legacy syntax
+  - unsupported or wrong field names
+  - registry, AST, or runtime-allowlist mismatches
+  - execution errors showing the expression cannot run correctly
+  - value feedback proving the implementation is materially wrong
+  - major semantic mismatch between the factor description and the expression
+
+  Your comments are sent to a coding agent, not to an end user.
+  - Do not ask the user to inspect code lines or debug manually.
+  - Do not include code.
+  - Keep each comment short, concrete, and action-oriented.
+  - Ignore minor differences such as small window changes unless they alter the core meaning.
+
+  If there is no decisive issue, respond exactly:
+  No comment found
+
+  Otherwise respond in the following format:
+  comment 1: The comment message 1
+  comment 2: The comment message 2
+evaluator_code_feedback_v1_user: |-
+  --------------Factor information:---------------
+  {{ factor_information }}
+  --------------Factor Expression in the Python template:---------------
+  {{ code }}
+  --------------Execution feedback:---------------
+  {{ execution_feedback }}
+  {% if value_feedback is not none %}
+  --------------Factor value feedback:---------------
+  {{ value_feedback }}
+  {% endif %}
+  {% if gt_code is not none %}
+  {% endif %}
+
+evolving_strategy_factor_implementation_v1_system: |-
+  User is trying to implement some factors by writing factor expressions in the following scenario:
+  {{ scenario }}
+
+  You are correcting expressions for the current TQ/QA runtime, not the legacy qlib-style template.
+
+  The user may provide:
+  1. Similar successful expressions to learn from.
+  2. Your former failed expression and the corresponding feedback.
+  3. Suggestions distilled from similar fail-to-fix examples.
+  4. A fixed Python/Jinja template where only the expression should be replaced.
+
+  Your task is to rewrite the latest expression so that it is executable and semantically aligned with the factor description.
+
+  Unified runtime expression rules:
+  - Use operator names exactly as they appear in the injected runtime allowlist.
+  - Treat all allowlisted operators as equally available; choose operators only based on the factor description and operator semantics, not prompt emphasis.
+  - Allowed operators are injected dynamically from the runtime allowlist for this run.
+  - Use raw field names directly from the active runtime allowlist for this run.
+  - Do not use legacy syntax such as $open, $close, HIGH, LOW, VOLUME, or uppercase field names.
+  - Do not invent undeclared variables such as n or w_1.
+  - The corrected expression must contain at least one valid runtime field.
+  - The corrected expression must stay compatible with the runtime operator allowlist and field registry.
+  - Historical feedback or similar-error examples may contain stale allowlist or registry complaints from older runs; ignore those if they conflict with the injected runtime constraints for this run.
+
+  Correction priorities:
+  1. Fix registry, operator, field, syntax, and runtime issues first.
+  2. Keep the core economic meaning of the factor description whenever possible.
+  3. Prefer the simplest valid expression that matches the target idea.
+  4. Do not output explanations, code fences, or extra text.
+
+  Respond in JSON only. Here is the required structure:
+  {
+      "expr": "[CORRECTED_FACTOR_EXPRESSION]"
+  }
+evolving_strategy_factor_implementation_v2_user: |-
+  --------------Target factor information:---------------
+  {{ factor_information_str }}
+
+
+  {% if former_expression is not none %}
+  --------------Your former latest attempt:---------------
+  =====Expression to the former implementation=====
+  {{ former_expression }}
+
+  =====Feedback to the former implementation=====
+  {{ former_feedback }}
+  {% endif %}
+
+  {% if queried_similar_error_knowledge|length != 0 %}
+  {% if error_summary_critics is none %}
+  Recall your last failure, your implementation met some errors.
+  When doing other tasks, you met some similar errors but you finally solve them. Here are some examples:
+  {% for error_content, similar_error_knowledge in queried_similar_error_knowledge %} 
+  --------------Factor information to similar error ({{error_content}}):---------------
+  {{ similar_error_knowledge[0].target_task.get_task_information() }}
+  =====Code with similar error ({{error_content}}):=====
+  {{ similar_error_knowledge[0].implementation.code }}
+  =====Success code to former code with similar error ({{error_content}}):=====
+  {{ similar_error_knowledge[1].implementation.code }}
+  {% endfor %}
+  {% else %}
+  Recall your last failure, your implementation met some errors.
+  After reviewing some similar errors and their solutions, here are some suggestions for you to correct your code:
+  {{error_summary_critics}}
+  {% endif %}
+  {% endif %}
+  
+  {% if similar_successful_factor_description is not none %}
+  Here are some success implements of similar component tasks, take them as references:
+  --------------Correct code to similar factors:---------------
+  =====Factor Description:=====
+  {{ similar_successful_factor_description }}
+  =====Factor Expression:=====
+  {{ similar_successful_expression }}
+  {% endif %}
+  {% if latest_attempt_to_latest_successful_execution is not none %}
+  You have tried to correct your former failed expression but still met some errors. Here is the latest attempt to the latest successful execution, try not to get the same error to your new code:
+  =====Your latest attempt=====
+  {{ latest_attempt_to_latest_successful_execution.implementation.code }}
+  =====Feedback to your latest attempt=====
+  {{ latest_attempt_to_latest_successful_execution.feedback }}
+  {% endif %}
+
+evolving_strategy_error_summary_v2_system: |-
+  User is trying to implement some factors in the following scenario:
+  {{ scenario }}
+  User is doing the following task: 
+  {{factor_information_str}}
+
+  You have written some code but it meets errors like the following:
+  {{code_and_feedback}}
+
+  The user has found some tasks that met similar errors, and their final correct solutions.
+  Historical traces may contain stale allowlist or registry complaints from older runs; do not repeat those unless the current injected runtime constraints explicitly confirm them.
+  Please refer to these similar errors and their solutions, provide some clear, short and accurate critics that might help you solve the issues in your code.
+
+  You suggestion should not include any code, just some clear and short suggestions. Please point out very critical issues in your response, ignore non-important issues to avoid confusion. If no big issue found in the code, you can response "No critics found".
+
+  Please response the critic in the following format. Here is an example structure for the output:
+  critic 1: The critic message to critic 1
+  critic 2: The critic message to critic 2
+  
+evolving_strategy_error_summary_v2_user: |-
+  {% if queried_similar_error_knowledge|length != 0 %}
+  {% for error_content, similar_error_knowledge in queried_similar_error_knowledge %} 
+  --------------Factor information to similar error ({{error_content}}):---------------
+  {{ similar_error_knowledge[0].target_task.get_task_information() }}
+  =====Code with similar error ({{error_content}}):=====
+  {{ similar_error_knowledge[0].implementation.code }}
+  =====Success code to former code with similar error ({{error_content}}):=====
+  {{ similar_error_knowledge[1].implementation.code }}
+  {% endfor %}
+  {% endif %}
+
+
+select_implementable_factor_system: |-
+  User is trying to implement some factors in the following scenario:
+  {{ scenario }}
+  Your job is to help the user select factors that can be implemented correctly and robustly. Some factors may be difficult to implement due to missing information, unsupported fields/operators, or unclear execution contracts. Do not reject a factor solely because it is complex if the expression can be parsed and executed. The user will provide the number of factors you should pick and information about the factors, including their descriptions, formulas, and variable explanations.
+  User will provide you the former attempt to implement the factor and the feedback to the implementation. You need to carefully review your previous attempts. Some factors have been repeatedly tried without success. You should consider discarding these factors.
+  Please analyze the difficulties of the each factors and provide the reason and response the indices of selected implementable factor in the json format. Here is an example structure for the JSON output:
+  {
+      "Analysis": "Analyze the difficulties of the each factors and provide the reason why the factor can be implemented or not."
+      "selected_factor": "The indices of selected factor index in the list, like [0, 2, 3].The length should be the number of factor left after filtering.",
+  }
+
+select_implementable_factor_user: |-
+  Number of factor you should pick: {{ factor_num }}
+  {% for factor_info in sub_tasks %} 
+  =============Factor index:{{factor_info[0]}}:=============
+  =====Factor name:=====
+  {{ factor_info[1].factor_name }}
+  =====Factor description:=====
+  {{ factor_info[1].factor_description }}
+  =====Factor formulation:=====
+  {{ factor_info[1].factor_formulation }}
+  {% if factor_info[2]|length != 0 %}
+  --------------Your former attempt:---------------
+  {% for former_attempt in factor_info[2] %}
+  =====Code to attempt {{ loop.index }}=====
+  {{ former_attempt.implementation.code }}
+  =====Feedback to attempt {{ loop.index }}=====
+  {{ former_attempt.feedback }}
+  {% endfor %}
+  {% endif %}
+  {% endfor %}
+
+evaluator_output_format_system: |-
+  User is trying to implement some factors in the following scenario:
+  {{ scenario }}
+  User will provide you the format of the output. Please help to check whether the output is align with the format.
+  Please respond in the JSON format. Here is an example structure for the JSON output:
+  {
+      "output_format_decision": true,
+      "output_format_feedback": "The output format is correct."
+  }
+
+
+evaluator_final_decision_v1_system: |-
+  User is trying to implement some factors in the following scenario:
+  {{ scenario }}
+  User has finished evaluation and got some feedback from the evaluator.
+  You are the final reviewer for the current TQ/QA factor runtime, not the legacy qlib-style template.
+  Review the factor information, target expression, generated code, execution feedback, code feedback, and value feedback together, then decide whether the implementation should pass.
+
+  Final-review rules:
+  1. Any AST, registry, or operator/field allowlist failure means the factor MUST fail.
+  2. Any syntax error, NameError, KeyError, FileNotFoundError, missing output file, bad path, wrong column reference, or unresolved execution/runtime error means the factor MUST fail.
+  3. Any feedback showing the generated dataframe is invalid, not daily when daily is required, contains unresolved inf issues, or otherwise violates runtime/output expectations means the factor MUST fail.
+  4. If value feedback proves the factor mismatches ground truth, the factor MUST fail.
+  5. Only return true when all hard checks pass and the feedback indicates the factor is valid under the current operator system.
+
+  Keep the final_feedback short, concrete, and focused on the decisive reason.
+  Please respond in JSON only. Here is the required structure:
+  {
+      "final_decision": true,
+      "final_feedback": "The final feedback message, A SINGLE LINE OF TEXT"
+  }
+
+evaluator_final_decision_v1_user: |-
+  --------------Factor information:---------------
+  {{ factor_information }}
+  --------------Target expression:---------------
+  {{ target_expression }}
+  --------------Generated code:---------------
+  {{ generated_code }}
+  --------------Execution feedback:---------------
+  {{ execution_feedback }}
+  --------------Code feedback:---------------
+  {{ code_feedback }}
+  --------------Factor value feedback:---------------
+  {{ value_feedback }}
+
+
+function_lib_description: |-
+  Use only the standalone TQ/QA expression syntax.
+
+  Hard constraints:
+  - Use operator names exactly as they appear in the injected runtime allowlist.
+  - Treat all allowlisted operators as equally available; choose operators only based on the factor description and operator semantics, not prompt emphasis.
+  - Use raw field names directly from the active runtime allowlist for this run.
+  - Do not use legacy style variables like $open, $close, HIGH, LOW, VOLUME.
+  - Do not invent free variables such as n or w_1.
+  - Keep expressions compatible with the active runtime allowlist and field registry.
+
+  Operator source of truth:
+  - The concrete operator list is injected dynamically at runtime for each experiment.
+  - Do not trust any stale static operator examples from older templates or prior runs.
+
+

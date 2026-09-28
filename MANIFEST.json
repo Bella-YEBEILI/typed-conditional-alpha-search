@@ -1,0 +1,3075 @@
+[
+  {
+    "file": "src/alpha_factory/config/fld_registry.py",
+    "source": "quant_anian/alpha_factory/config/fld_registry.py",
+    "bytes": 15067,
+    "sha256": "17c8fc004b6d798a0614dcc0c3008bc1596622e95f0836ea2259a5d593fe95a8",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/config/genetic.py",
+    "source": "quant_anian/alpha_factory/config/genetic.py",
+    "bytes": 1888,
+    "sha256": "10f46b13493ea6fd50ff9bd8fbdb6c16b7f3fc7fa02460fccf710dd2b294a553",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/config/interaction_condition.py",
+    "source": "quant_anian/alpha_factory/config/interaction_condition.py",
+    "bytes": 2602,
+    "sha256": "dff4a7ae140401e5ee59d4988347794dfe1233713cfef5c18331dc8d87d0c830",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/config/interaction_cross_multi.py",
+    "source": "quant_anian/alpha_factory/config/interaction_cross_multi.py",
+    "bytes": 3007,
+    "sha256": "9e392b4e829e386003f5a89ae683a579960603f7b5707fe3aa6ec5852a97183d",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/config/interaction_cross_single.py",
+    "source": "quant_anian/alpha_factory/config/interaction_cross_single.py",
+    "bytes": 3191,
+    "sha256": "3a4db91ba8489f9bb9dc66540c343e2c296ee5b1a642835eea416a4db360ee6b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/config/ops_registry.py",
+    "source": "quant_anian/alpha_factory/config/ops_registry.py",
+    "bytes": 12081,
+    "sha256": "35c938b328da35a9c8ea895680ad5c974219d6258e9b6ce9d60b4aaf206a182c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/config/refine.py",
+    "source": "quant_anian/alpha_factory/config/refine.py",
+    "bytes": 1923,
+    "sha256": "0919128198b8be80d84fe2691ab0e9e7aff45a379c983208b26f35ff88884d90",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/config/seed.py",
+    "source": "quant_anian/alpha_factory/config/seed.py",
+    "bytes": 3178,
+    "sha256": "32c906cee43e8c969d4ee381971027e1b0ca1fe9c52ea013263d02aeca2279a8",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/core/adjuster.py",
+    "source": "quant_anian/alpha_factory/core/adjuster.py",
+    "bytes": 1744,
+    "sha256": "b1bb7e0cb0744bc7d2f15df0a0f4c53e905d734067b8e20c3fba72aa781c436f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/core/checker.py",
+    "source": "quant_anian/alpha_factory/core/checker.py",
+    "bytes": 2658,
+    "sha256": "c109d9c79daf8d1dba85cd3217a28af783acbb3ea5d283bd3b87fe7209cefc5e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/core/evaluator.py",
+    "source": "quant_anian/alpha_factory/core/evaluator.py",
+    "bytes": 3637,
+    "sha256": "185e8dae3ff86ebaaf0532ac78e9c1c07904688e4aad86af0bb02ec78d925c22",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/core/factor.py",
+    "source": "quant_anian/alpha_factory/core/factor.py",
+    "bytes": 3122,
+    "sha256": "e5d0e25e11813f773b45a0412d6c8cf1130dd3365cc991932c214b4974ab99a5",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/core/id_manager.py",
+    "source": "quant_anian/alpha_factory/core/id_manager.py",
+    "bytes": 664,
+    "sha256": "8159be128846299a1915e502c87c3be96e665f608589a07057e248a05ce147f4",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/core/machine_lib.py",
+    "source": "quant_anian/alpha_factory/core/machine_lib.py",
+    "bytes": 2860,
+    "sha256": "8c3a981cccd3c8ee7d3008b6ec3e62bed2232574b1f1e0858038988e4acd880d",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/core/node.py",
+    "source": "quant_anian/alpha_factory/core/node.py",
+    "bytes": 507,
+    "sha256": "aa1a8c58d7e4a75f0d37cfc34fa3c4d55b6cc0490d91d74acc6afe7c72fd796f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/core/parser.py",
+    "source": "quant_anian/alpha_factory/core/parser.py",
+    "bytes": 2365,
+    "sha256": "c189983eeeca43e3646426443e3314866bab12f7bf004c135dbc6e71558fe806",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/core/post_processor.py",
+    "source": "quant_anian/alpha_factory/core/post_processor.py",
+    "bytes": 1105,
+    "sha256": "372e30129bfd663193c5dada418b9285a9f3d84e57c5b2582a8a5cb4a293cab6",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/core/result_engine.py",
+    "source": "quant_anian/alpha_factory/core/result_engine.py",
+    "bytes": 6534,
+    "sha256": "931c9ef955630060d032518d451c055044c27719df9b2c6400072c87b9af3543",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/core/result_marker.py",
+    "source": "quant_anian/alpha_factory/core/result_marker.py",
+    "bytes": 7427,
+    "sha256": "6586116dd99a625989bbccf9b2e5020609e6b268240ae08e302debe52d88b519",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/core/selector.py",
+    "source": "quant_anian/alpha_factory/core/selector.py",
+    "bytes": 1777,
+    "sha256": "84d26b168d9a6b29e44b249a12a463dadb3b93ac3cc7418c6bccba5103f3714a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/core/value_engine.py",
+    "source": "quant_anian/alpha_factory/core/value_engine.py",
+    "bytes": 1897,
+    "sha256": "04a6f466daa55b0a436f0b8812c1189537e4f4d1a01550ff9970fa91260dca92",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/factory_data/data_manager.py",
+    "source": "quant_anian/alpha_factory/factory_data/data_manager.py",
+    "bytes": 1340,
+    "sha256": "17e1e0958d22d370d9e6342249104ab27ac05de581e364e1af022042d2abb7ab",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/factory_ops/numba_kernels.py",
+    "source": "quant_anian/alpha_factory/factory_ops/numba_kernels.py",
+    "bytes": 56375,
+    "sha256": "44c6231e87fa98001f1f170c681d398ecba147f218245636455266291d90a30c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/factory_ops/numpy_funcs.py",
+    "source": "quant_anian/alpha_factory/factory_ops/numpy_funcs.py",
+    "bytes": 19304,
+    "sha256": "f72dbe96d88843338612dc6a2b0c0bd67c37bba4a0476d2cfd63531aef859039",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/genetic/context.py",
+    "source": "quant_anian/alpha_factory/genetic/context.py",
+    "bytes": 8143,
+    "sha256": "e85df36d8e3a7274d256f61606a2a30897abd425ad546e716f76b1433a8b401e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/genetic/local_mutator.py",
+    "source": "quant_anian/alpha_factory/genetic/local_mutator.py",
+    "bytes": 6305,
+    "sha256": "d5c9bd18a5a4f7aaf91f023b805c974a2ff54609721f039d2823482987219e8e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/genetic/mutator.py",
+    "source": "quant_anian/alpha_factory/genetic/mutator.py",
+    "bytes": 4024,
+    "sha256": "70e453d404aeeea7ed3935c80d28509d10e8e7f73fd6993d1fd624fa4ba96a37",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/genetic/population.py",
+    "source": "quant_anian/alpha_factory/genetic/population.py",
+    "bytes": 2654,
+    "sha256": "58664f7c05d2623ec9691d20f68fec527ba05cbdedd9bf3faf92bf108a9dd458",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/interaction_strategy/__init__.py",
+    "source": "quant_anian/alpha_factory/interaction_strategy/__init__.py",
+    "bytes": 1,
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/interaction_strategy/common_cross_multi.py",
+    "source": "quant_anian/alpha_factory/interaction_strategy/common_cross_multi.py",
+    "bytes": 1170,
+    "sha256": "070f8b79cbed43a02bcb0144df1e8c3babe102e9114527337c6124338d5d2e7e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/interaction_strategy/default_condition.py",
+    "source": "quant_anian/alpha_factory/interaction_strategy/default_condition.py",
+    "bytes": 5189,
+    "sha256": "f58365f1093c737a04ebeaa0e468b32bcf430355674fdf1c46ea78a6c938093e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/interaction_strategy/default_cross_multi.py",
+    "source": "quant_anian/alpha_factory/interaction_strategy/default_cross_multi.py",
+    "bytes": 6910,
+    "sha256": "39243f53086f0112f5287a0914da281c7bfb15eb4e55f1a9c2f20929d424d0c0",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/interaction_strategy/default_cross_single.py",
+    "source": "quant_anian/alpha_factory/interaction_strategy/default_cross_single.py",
+    "bytes": 7057,
+    "sha256": "766901a129d14975086ae4710b4c6ecb8be0f02576b82dc8a73f810f415d975b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/interaction_strategy/job_key.py",
+    "source": "quant_anian/alpha_factory/interaction_strategy/job_key.py",
+    "bytes": 414,
+    "sha256": "c460196a421dcef196a9d893f149418d12a4bb96f7dee74c27eb742298e8bd4f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/interaction_strategy/lc_cross_multi.py",
+    "source": "quant_anian/alpha_factory/interaction_strategy/lc_cross_multi.py",
+    "bytes": 3648,
+    "sha256": "9b384da1b83cf3eee235fe085d9a60181fd4b155be8b2106afa6b61cea70f8d5",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/interaction_strategy/lc_cross_single.py",
+    "source": "quant_anian/alpha_factory/interaction_strategy/lc_cross_single.py",
+    "bytes": 3265,
+    "sha256": "0e45974ea4da941f0ec67db82a4d385f669ae247ab3c57a4a11c2a5a8ed3860f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/log_and_time/all_factor_recorder.py",
+    "source": "quant_anian/alpha_factory/log_and_time/all_factor_recorder.py",
+    "bytes": 2161,
+    "sha256": "ade92ddd23579f265b5b8853c02fd045fa2078d47e7c794d3b675a2485d2ab9f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/log_and_time/run_recorder.py",
+    "source": "quant_anian/alpha_factory/log_and_time/run_recorder.py",
+    "bytes": 2691,
+    "sha256": "6d10815cd35c317c275a46bc16292affd0ef927d2cf25ab2e12e14eeb36acdf8",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/log_and_time/terminal_progress.py",
+    "source": "quant_anian/alpha_factory/log_and_time/terminal_progress.py",
+    "bytes": 1589,
+    "sha256": "ebb0d0a060a7942b7c062efc0bd38ec97912346bf9f17cf7cb5b90dc913ffe2e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/main.py",
+    "source": "quant_anian/alpha_factory/main.py",
+    "bytes": 16142,
+    "sha256": "3d13c87a707c32728afdac76e0efdbc4533b30499ee00fb61bfd011d112eeff2",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/pipeline/candidate_refiner.py",
+    "source": "quant_anian/alpha_factory/pipeline/candidate_refiner.py",
+    "bytes": 7606,
+    "sha256": "ea08bf9876a3b06ae2da230b7a0d0b4b3bf9397855c67a411b46a7d9fa3d52ec",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/pipeline/genetic_miner.py",
+    "source": "quant_anian/alpha_factory/pipeline/genetic_miner.py",
+    "bytes": 10559,
+    "sha256": "b394a2d4aa295ad745979a15f592ec35c8e45aee1da15c748f490f5392053afb",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/pipeline/interaction_miner.py",
+    "source": "quant_anian/alpha_factory/pipeline/interaction_miner.py",
+    "bytes": 5121,
+    "sha256": "220424ff5b9a873c93c0ac644e4f72baf0673bd66db6fe1d3def240a9feb02d4",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/pipeline/product_manager.py",
+    "source": "quant_anian/alpha_factory/pipeline/product_manager.py",
+    "bytes": 10002,
+    "sha256": "84a5276417b652b4bbcfb7f5eec15d6aa663d24b703cf3b70a5413eac83f2d68",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/pipeline/seed_miner.py",
+    "source": "quant_anian/alpha_factory/pipeline/seed_miner.py",
+    "bytes": 7350,
+    "sha256": "f485dda90d76b14d21b9a67f31e9bc9a2ecb7a86f12ee1d0bcdebaef5213a106",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/plugins/db_interactor.py",
+    "source": "quant_anian/alpha_factory/plugins/db_interactor.py",
+    "bytes": 8967,
+    "sha256": "8b7370846504db7180a472c39d46a4ed6bbf675393cad65ce89701ab1d4818f4",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/plugins/rankic_corr_sweeper.py",
+    "source": "quant_anian/alpha_factory/plugins/rankic_corr_sweeper.py",
+    "bytes": 7682,
+    "sha256": "b065618774d95ded3aa7efdef38ad11f72a8001b5aea537110f58d8ae752a0db",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/project_context.md",
+    "source": "quant_anian/alpha_factory/project_context.md",
+    "bytes": 12264,
+    "sha256": "16ab005c430468e37bcccd461b2454ec56194402668913b8a7d5b81c5665bbdc",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/repository/genetic_repository.py",
+    "source": "quant_anian/alpha_factory/repository/genetic_repository.py",
+    "bytes": 9893,
+    "sha256": "6a54ae739bd12745135c25d54f6e1fa877fe096c77ebe88dc82eb5a8b32223ae",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/repository/interaction_repository.py",
+    "source": "quant_anian/alpha_factory/repository/interaction_repository.py",
+    "bytes": 9932,
+    "sha256": "1fcbea1e6aae4d0bbfdf7071a460e728066d7686370a39b06ebd731af7269e30",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/repository/product_repository.py",
+    "source": "quant_anian/alpha_factory/repository/product_repository.py",
+    "bytes": 13958,
+    "sha256": "83af5615ad2cd72a9409a7ee0d8dd4f693d5460186fc4c70c59a423b87136454",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/alpha_factory/repository/seed_repository.py",
+    "source": "quant_anian/alpha_factory/repository/seed_repository.py",
+    "bytes": 14640,
+    "sha256": "bd65e6c51e52571d226a4b4564917065a7af89dfa098f4b24d3ba2ff60c39d5b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/backtest_library.sh",
+    "source": "quant_anian/QuantaAlpha/backtest_library.sh",
+    "bytes": 3399,
+    "sha256": "a589aa557591a8bd6039cb396aec589e4b6a3ed72236e1a1ed200ff0598c9d2f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/collect_factor_code.sh",
+    "source": "quant_anian/QuantaAlpha/collect_factor_code.sh",
+    "bytes": 3640,
+    "sha256": "ecdeede61206470b90d822a96cad5a6f82a01333d9d681499a31abbfb92dac09",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/combined_domain_contract.py",
+    "source": "quant_anian/QuantaAlpha/combined_domain_contract.py",
+    "bytes": 16642,
+    "sha256": "55ab6374a2d4885ae8cb8dd576783a8f6b332ff71b30c69c55d17e2f224b5b3e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/configs/experiment.yaml",
+    "source": "quant_anian/QuantaAlpha/configs/experiment.yaml",
+    "bytes": 7286,
+    "sha256": "c7d65949d747bdb45239648e7ee5ce9f6ea8ba7f2e3e3204d0c9e9126e7449bd",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/configs/experiment_joint_chain_smoke.yaml",
+    "source": "quant_anian/QuantaAlpha/configs/experiment_joint_chain_smoke.yaml",
+    "bytes": 1718,
+    "sha256": "7b3be875bc64a13321b0d9ba4b2e43d10b61dd02c3c5b19305e2c4949abff11c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/configs/experiment_joint_smoke.yaml",
+    "source": "quant_anian/QuantaAlpha/configs/experiment_joint_smoke.yaml",
+    "bytes": 1682,
+    "sha256": "e429125e4727ce01632b75079178ea8feff81816d1f753717341451ee5f00a1c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/configs/tq_upstream_alignment.yaml",
+    "source": "quant_anian/QuantaAlpha/configs/tq_upstream_alignment.yaml",
+    "bytes": 1149,
+    "sha256": "b7c3617312b2807df542c41556cd49adc74267a445fb1b22c97f7ad0ad9065d8",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/convert_directions.py",
+    "source": "quant_anian/QuantaAlpha/convert_directions.py",
+    "bytes": 7398,
+    "sha256": "245b7290074539857b12b4f10b9dafc86e581720f6da36a5b9102814b2abef85",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/data_domains.py",
+    "source": "quant_anian/QuantaAlpha/data_domains.py",
+    "bytes": 9126,
+    "sha256": "473a23b6b141a374732ea2cc53a489a383194d58d04b29f1be16abe064915260",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/evolving_strategy.py",
+    "source": "quant_anian/QuantaAlpha/evolving_strategy.py",
+    "bytes": 76793,
+    "sha256": "993aae374a360bbdb7d0e77728cddb164616e19bc8a26aa8c07af4b1d7a750c4",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/experiment/README_EXPERIMENT.md",
+    "source": "quant_anian/QuantaAlpha/experiment/README_EXPERIMENT.md",
+    "bytes": 2361,
+    "sha256": "a328c918844610a74834d2495b93d2acc9db3a3f8f577e2657e7b7c382eebc5e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/experiment/README_EXPERIMENT_CN.md",
+    "source": "quant_anian/QuantaAlpha/experiment/README_EXPERIMENT_CN.md",
+    "bytes": 2078,
+    "sha256": "948f38ad439de5dae460f93fe2469d5b14fd39b2dbb264e7717bac60b327ea15",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/factor_mining_alignment.md",
+    "source": "quant_anian/QuantaAlpha/factor_mining_alignment.md",
+    "bytes": 14899,
+    "sha256": "cdf8446bd2f94fea618ac4e65bdff0ae21e98c996addf1ade0abb096121b31e8",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/backend/app.py",
+    "source": "quant_anian/QuantaAlpha/frontend/backend/app.py",
+    "bytes": 84915,
+    "sha256": "fe55c671100bf68d99f4522d1e1d89f5b449cf2a927e418ee3e61b7ee984b93f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/backend/requirements.txt",
+    "source": "quant_anian/QuantaAlpha/frontend/backend/requirements.txt",
+    "bytes": 133,
+    "sha256": "14317e0a9cbad2707204768a8af86cb94c1890fc8eef613c75722850435d3e4b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/index.html",
+    "source": "quant_anian/QuantaAlpha/frontend/index.html",
+    "bytes": 393,
+    "sha256": "cde1aa47bf46892a214d1647c8ce8f375fb6814ca805e85985cf2c0f3d9c2046",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/postcss.config.js",
+    "source": "quant_anian/QuantaAlpha/frontend/postcss.config.js",
+    "bytes": 80,
+    "sha256": "190c877db466995bf1482f4a16abd06e04a89ede3119341e2a86ff96e1737b27",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/QUICKSTART.md",
+    "source": "quant_anian/QuantaAlpha/frontend/QUICKSTART.md",
+    "bytes": 8138,
+    "sha256": "b6c8b66ab28e5f4ea87d187e4a6fad9961ba4f403487c581736c969556ac4060",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/README.md",
+    "source": "quant_anian/QuantaAlpha/frontend/README.md",
+    "bytes": 8658,
+    "sha256": "70b5535a4d89b5beb7053dcc335fae3662f0d742d11b9f9a258d057f22b76324",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/App.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/App.tsx",
+    "bytes": 6114,
+    "sha256": "9239cfcedb672a443344965cde74f89c72eb1b027c1615fc337834525e16fb02",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/ChatInput.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/ChatInput.tsx",
+    "bytes": 16724,
+    "sha256": "3ca6d0a734f95f3d077abbb282a4d662f025fa5f34977bdb07d2dda7ebec8e16",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/ExecutionPanel.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/ExecutionPanel.tsx",
+    "bytes": 3880,
+    "sha256": "a770ae54863ffdd0e40388746e9290a46b50dc6eb88fd9f7c43c7796eec9b008",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/FactorList.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/FactorList.tsx",
+    "bytes": 7233,
+    "sha256": "61c480a405d4cc56ab117e6b75c300ae8b24edf15aba0503c7a5337fcc43d621",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/FactorStatsRow.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/FactorStatsRow.tsx",
+    "bytes": 4556,
+    "sha256": "20c086d297847e27372fc81a00cdb1a7f0ab872b435869dfb65e53dd9fde6e8c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/InputPanel.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/InputPanel.tsx",
+    "bytes": 6470,
+    "sha256": "4178f979c7096b252c32a2074dcd96fe9f6258d951adee94800177d57c145a57",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/layout/Layout.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/layout/Layout.tsx",
+    "bytes": 3553,
+    "sha256": "9a26673fa197e2d1afb9860b978d34f8ccb0f1ae0e51ee965ddc865f9a751dd2",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/LiveCharts.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/LiveCharts.tsx",
+    "bytes": 6100,
+    "sha256": "08f92a8744585de45ce20c2cd8dd672b10e6701e64f8de84ba67055796f16143",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/MetricsPanel.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/MetricsPanel.tsx",
+    "bytes": 6072,
+    "sha256": "220ef82349b940dc6cd967bf4b229a0f14ce16ece357ea97f41b9a15c90fbb5b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/ParticleBackground.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/ParticleBackground.tsx",
+    "bytes": 2507,
+    "sha256": "6fb415d28f514a02b8683ffc27b55086a3456caa09d70ae408d46c450789f23b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/ProgressSidebar.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/ProgressSidebar.tsx",
+    "bytes": 4900,
+    "sha256": "48371644d72617c9af274b083b94c15c8c379f5d158e39e60baeb7c67fe0faac",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/ResultVisualization.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/ResultVisualization.tsx",
+    "bytes": 9817,
+    "sha256": "74c89482762e6ebbe56d4504531aae931929988c08d5155162048f3541114be6",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/ui/Badge.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/ui/Badge.tsx",
+    "bytes": 1056,
+    "sha256": "e35b53e59ead11bac0095fdb334c9d838655a13a429a3423f2bdc047137d6720",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/ui/Button.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/ui/Button.tsx",
+    "bytes": 1527,
+    "sha256": "c79b44f5b801f7bb74bc42f5549d45b7058087c0c81284fe86c8aa1800d6f53e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/ui/Card.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/ui/Card.tsx",
+    "bytes": 1578,
+    "sha256": "cabd7fd8f82a3a6725bb022aa43810d158efb68f23af60a6810218cbc285993c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/ui/HoverCard.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/ui/HoverCard.tsx",
+    "bytes": 344,
+    "sha256": "dbcf97a27ccb472a848e405b02642bd52726dd8d271a1eb8a8cb4f75ac01cc26",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/ui/Progress.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/ui/Progress.tsx",
+    "bytes": 795,
+    "sha256": "a9060c5d2557337685a69f1bf6ced7236634d8bddebfaaab4cc4b3c3ac2ab9aa",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/components/ui/Textarea.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/components/ui/Textarea.tsx",
+    "bytes": 747,
+    "sha256": "951b22accd65bace57378f3c195664cc83b60970ff1fed8a79c3d0d7f06ba1bc",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/context/TaskContext.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/context/TaskContext.tsx",
+    "bytes": 21655,
+    "sha256": "2236d1d77b478c761a751a8462901a4435a3fe3f1ec978dad8aaaeb5232c61db",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/index.css",
+    "source": "quant_anian/QuantaAlpha/frontend/src/index.css",
+    "bytes": 6674,
+    "sha256": "33753c455b0817d92d4bea2717757862d0b179d63ab9bddc87e98af92005ec4c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/main.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/main.tsx",
+    "bytes": 240,
+    "sha256": "79faf095f462c11b5dc445dac9043c06809247d25c47f6693fccd656d1a1d35a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/pages/BacktestPage.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/pages/BacktestPage.tsx",
+    "bytes": 31205,
+    "sha256": "1bec28e9468be1d4926ee7bdb606c17ba7bc5610d23d93fa9e6ccdffdb66a291",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/pages/FactorAnalysisPage.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/pages/FactorAnalysisPage.tsx",
+    "bytes": 41395,
+    "sha256": "26497828f4d2d71abbb50429ec907c65292ab8185a02e693ad0a8d93fda6a1aa",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/pages/FactorLibraryPage.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/pages/FactorLibraryPage.tsx",
+    "bytes": 30282,
+    "sha256": "1d2fb32a775ad14e16d85b501f0bc532287ff1ad6230b5d63ccab9f2c2b14564",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/pages/HomePage.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/pages/HomePage.tsx",
+    "bytes": 4771,
+    "sha256": "be37c0893b43b13284826130e8dada392f60bcf6cf9c52642ffda651a9eee1ec",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/pages/MiningDashboardPage.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/pages/MiningDashboardPage.tsx",
+    "bytes": 3051,
+    "sha256": "2fefac97cfac8e5e49d8091532d2bc13f5951f102488abdd008817a0da3508fe",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/pages/MLBacktestPage.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/pages/MLBacktestPage.tsx",
+    "bytes": 52179,
+    "sha256": "4c253c8ac3a614508c78c1607521cc8e8a8b23b54337bbe3956ee2ff31396945",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/pages/SettingsPage.tsx",
+    "source": "quant_anian/QuantaAlpha/frontend/src/pages/SettingsPage.tsx",
+    "bytes": 28400,
+    "sha256": "4982672a75688c2af9dc41741cb1af87933a230bd8bf8dbb2a0b7ca39acedeb5",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/services/api.ts",
+    "source": "quant_anian/QuantaAlpha/frontend/src/services/api.ts",
+    "bytes": 6347,
+    "sha256": "a20c2e0493d58ed1055e94189ec208c347d42a9ec0a25a7eb5b4138005cea132",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/types/index.ts",
+    "source": "quant_anian/QuantaAlpha/frontend/src/types/index.ts",
+    "bytes": 4046,
+    "sha256": "c3d24606246ac4c0e1fbb88fb0860fc172bf486229ab52dbeaf9ad6ca7d5969c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/utils/index.ts",
+    "source": "quant_anian/QuantaAlpha/frontend/src/utils/index.ts",
+    "bytes": 2093,
+    "sha256": "898610e7f83303793377aca09f2a91ad1ced74ba9df2f9c5ad75293b8211daf3",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/src/utils/miningDirections.ts",
+    "source": "quant_anian/QuantaAlpha/frontend/src/utils/miningDirections.ts",
+    "bytes": 949,
+    "sha256": "5d0570b3778af7d6a49fab85f8814a1d1f40d274bc69c348a7dec7503fc2fb41",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/start.sh",
+    "source": "quant_anian/QuantaAlpha/frontend/start.sh",
+    "bytes": 6498,
+    "sha256": "6d3f4e41f04b9400df9709c82371090f948818aeb8a40adf81355b7c629cc909",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/tailwind.config.js",
+    "source": "quant_anian/QuantaAlpha/frontend/tailwind.config.js",
+    "bytes": 2092,
+    "sha256": "c4ad6892a9e2ea79c673beb519fc07b9da716f824b0b814880096e41395d334c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/frontend/vite.config.ts",
+    "source": "quant_anian/QuantaAlpha/frontend/vite.config.ts",
+    "bytes": 522,
+    "sha256": "9fcc0a171c896259dfc5b2dc33d7683366cc1a20bb024333faff6340aae69660",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/minute_spec_compiler.py",
+    "source": "quant_anian/QuantaAlpha/minute_spec_compiler.py",
+    "bytes": 18603,
+    "sha256": "99e0eee206486fc9d8a6349456161f610fc32b80007cb7b6b1159105bc6ec712",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quant_union/common/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quant_union/common/__init__.py",
+    "bytes": 45,
+    "sha256": "d2299210451d2544865aeb7fc43afc6f90f8e3b16984eb5582e4bc7f5c919aa1",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quant_union/common/quantEnum.py",
+    "source": "quant_anian/QuantaAlpha/quant_union/common/quantEnum.py",
+    "bytes": 302,
+    "sha256": "b5f2cca903a4cf59405f550c5cb151f6897e11666358acadba8d106fa066c23f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/__init__.py",
+    "bytes": 69,
+    "sha256": "28e5016e750f9be0554edd270e904213feb5c5de5a762ae4defd09f50f91c920",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/config.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/config.py",
+    "bytes": 569,
+    "sha256": "977aad17792fef44a3e060c333bd06cc68a16b86b9d0b389ea408927a01b2e97",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/deps.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/deps.py",
+    "bytes": 351,
+    "sha256": "21b182ecf0c9f1990d0f388516f74fcaeebcdc7479dae248b999b6007b4c567f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/main.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/main.py",
+    "bytes": 1622,
+    "sha256": "dd08d63473e65298db4f863abf4cff0127d425804208d311c1b9a0266406b3f1",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/routers/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/routers/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/routers/analysis.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/routers/analysis.py",
+    "bytes": 2518,
+    "sha256": "7f457f360b635e5b9b1db22192073dd853e4a02e8dcd16b7fc06cd765a6756cd",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/routers/backtest.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/routers/backtest.py",
+    "bytes": 2725,
+    "sha256": "8963c52f2a22be2c6a271550005bf08a94618b5edcf6030cf3445d97e781cb3a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/routers/dashboard.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/routers/dashboard.py",
+    "bytes": 723,
+    "sha256": "66f0dff56cab67fe89bd01580c5a2c55e4dc943c1db07cde6cbf5aeb91d08f75",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/routers/library.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/routers/library.py",
+    "bytes": 2466,
+    "sha256": "623da4fa721a89696f01a659c2766983c20563b66251c184e2845d60bd1ed388",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/routers/mining.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/routers/mining.py",
+    "bytes": 3528,
+    "sha256": "f8e44a9b7d47d68f6291d21a07068798f0c0ec44e8c8dbde19b50600e7f7a50b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/schemas/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/schemas/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/schemas/analysis.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/schemas/analysis.py",
+    "bytes": 816,
+    "sha256": "c1ba90533a45b931c831c42ffdf3f780641214b5e08a6729571c01dfb3d906f6",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/schemas/backtest.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/schemas/backtest.py",
+    "bytes": 2042,
+    "sha256": "c0ab7864691d256a1b80ffe096ecd8440897291a080a5694e9833b332a63a98f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/schemas/common.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/schemas/common.py",
+    "bytes": 447,
+    "sha256": "23f92317f99f1aeea499fb115f0e9b5bc4fe9c8eee16eda67e38ec06dcffa371",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/schemas/dashboard.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/schemas/dashboard.py",
+    "bytes": 429,
+    "sha256": "ce9685fa2d87a0ac4f09607949e09af7e13b805fa791b88abd2ae599e3af01b6",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/schemas/library.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/schemas/library.py",
+    "bytes": 2031,
+    "sha256": "03c1134976220da7871c86218a10f77e9003debc6d25e74d0c6e848d1dbe5d94",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/schemas/mining.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/schemas/mining.py",
+    "bytes": 1223,
+    "sha256": "e7abc85cd995ab46a94bed385fa45fb1b98fc9e48236ed5f8a6c4ea77aa64ad1",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/services/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/services/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/services/analysis_service.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/services/analysis_service.py",
+    "bytes": 4958,
+    "sha256": "f472005a3688df54d953cf3a56521907646e1b1b453c1030e8f1a8acf0e9478e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/services/backtest_service.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/services/backtest_service.py",
+    "bytes": 6194,
+    "sha256": "cd478ac053f83d0078df298c594067303af1b8bf45280c8e31d2f366f88a939c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/services/library_service.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/services/library_service.py",
+    "bytes": 14506,
+    "sha256": "0c7ae9272e8ccb5228d29b84a9dd9b53c275e607f2ff8497055880c27c209fa7",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/services/mining_service.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/services/mining_service.py",
+    "bytes": 5693,
+    "sha256": "ca69bb34d381c0712bc14fa789889757d034c1c9f99ea4049c1ba509dc4e301e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/services/task_manager.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/services/task_manager.py",
+    "bytes": 9420,
+    "sha256": "85fb2b9f4683383b5ed29a222172a678ef4e09f1e4eadeae1cab8a371ae94043",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/ws/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/ws/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/ws/backtest_ws.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/ws/backtest_ws.py",
+    "bytes": 1322,
+    "sha256": "5fde47bf919aa62f102d1d24409877734b5c42a1863399b1630f895ffdd14981",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/api/ws/mining_ws.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/api/ws/mining_ws.py",
+    "bytes": 1330,
+    "sha256": "c898091b85b86d018762478e6191e4765d152f8857bebf7f695bafe2425742b4",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/app/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/app/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/app/utils/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/app/utils/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/app/utils/health_check.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/app/utils/health_check.py",
+    "bytes": 1629,
+    "sha256": "31dff6f88d0a5caa628e520b6703eb6dc29209115714ebed3d01d49cb59c902e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/app/utils/info.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/app/utils/info.py",
+    "bytes": 1835,
+    "sha256": "fc2ed95ac22a0522628ab5943d73de709b173429d03ca19589ff6c72dc18f508",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/__init__.py",
+    "bytes": 2680,
+    "sha256": "adbe2e27c17ef8aac1d7070b455eceaed618584cf97b2f43296b6319c72199cb",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/analysis.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/analysis.py",
+    "bytes": 41131,
+    "sha256": "f7cbbbb4a50941ac72e2848a17bdfb0b68a47cd7ae41d6db52afa2051f8e0ef7",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/bridge.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/bridge.py",
+    "bytes": 29162,
+    "sha256": "1db381d15eba5ab2d548b77faca8ef1d921c2038ac57953828a7d5def5da23db",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/config.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/config.py",
+    "bytes": 9920,
+    "sha256": "87c2cc707b3e0f9c4807c97256376edc03897d6e47eff319fe774c812026156e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/evaluator.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/evaluator.py",
+    "bytes": 21207,
+    "sha256": "9e2e837e60d4bb4d6b2cdeaa6508ff4699fc1d24bd518ce7030d280bedb2dd5f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/manual_analysis.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/manual_analysis.py",
+    "bytes": 2987,
+    "sha256": "2e838e09faa9c36d5ce0303ca386d94e92783bf15c0d316aed9d42c461aa899b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/minute_ops.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/minute_ops.py",
+    "bytes": 39589,
+    "sha256": "3d1752f4574ccbfb7ae097bac25ea2f6a429caedfa6c8fd20d7301ce17c9fa8a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/minute_tools.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/minute_tools.py",
+    "bytes": 13608,
+    "sha256": "f9ca65cc274dfd9fbe6d7559151c0c715be68849a1a2dee7f507daddb04c910a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/notebook_report.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/notebook_report.py",
+    "bytes": 4092,
+    "sha256": "16b165a1191f1e5eac607547b620f68b9784c5b8c9b14d0dd2a3af9839841354",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/numbafunc.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/numbafunc.py",
+    "bytes": 42719,
+    "sha256": "c3e132b0a9e1f8a0f5dff88d7712aab8c50ec2677e9a0e98f7545bffd0c7420b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/performance_engine.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/performance_engine.py",
+    "bytes": 3649,
+    "sha256": "367c21a7544b417db5a801df61099cb7230e6a2011a162751e1a0822313ec70e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/profiles.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/profiles.py",
+    "bytes": 485,
+    "sha256": "528e8d60b017866d7d189aaa2b66998c5da0ce7fa922f38e2616b3ea4c84536b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/provider.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/provider.py",
+    "bytes": 10986,
+    "sha256": "3b47ffde5d9dfc9624ef87da03d32d519bfe9d9d582e98dc490b78430545574e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/quality.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/quality.py",
+    "bytes": 9125,
+    "sha256": "7aee964ed3401dd4b0ae0fae0ea6cb0e8b80f00c119a60f1dea2db808f962c7d",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/README.md",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/README.md",
+    "bytes": 1580,
+    "sha256": "93c5d8dba1ecbf2a708d0483d608da8780ab6f898fa464adf48c31e2caabaa17",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/result_engine.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/result_engine.py",
+    "bytes": 11197,
+    "sha256": "29e1b19d31489125268aae0eef9b0749dded9979146fa76c47b772e41e23175d",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/run_backtest.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/run_backtest.py",
+    "bytes": 13701,
+    "sha256": "4b317eaa22204cc3cde015edf42260a7d9384b5459a6c7803ab15e81160e0160",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/run_library_backtest.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/run_library_backtest.py",
+    "bytes": 12892,
+    "sha256": "97bce8cbeefd39fae8d9626c643a29f209b3dd5c2d2f9087ad77802a2f19392c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/run_ml_backtest.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/run_ml_backtest.py",
+    "bytes": 36035,
+    "sha256": "c5d9ced3102385e18d9f7f35ac854c8dfe210fa974ed5a6587d2d2987dec3e93",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/run_standalone.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/run_standalone.py",
+    "bytes": 594,
+    "sha256": "84964becab1caf8cad4064b8a277039964a22bf51d628265f9b4680c714138f3",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/submission_check.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/submission_check.py",
+    "bytes": 5319,
+    "sha256": "8457a31edd64c79d26280a159607a003f266ea0d842a41c2d8361f552fade644",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/backtest/workflow.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/backtest/workflow.py",
+    "bytes": 1591,
+    "sha256": "2910f461c4b746e43571394c8e0be9fcca199733371efedd8ac4a970dc3888e1",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/cli.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/cli.py",
+    "bytes": 1253,
+    "sha256": "2b414f21c319a842723405981d3d3885e9b634210cdd46a8470808401b682afc",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/coder/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/coder/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/coder/costeer/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/coder/costeer/__init__.py",
+    "bytes": 5842,
+    "sha256": "03f3e08cd413747f34abdc25013bd4a80b49cfe8845e318c65d4a2bdfb9c4ede",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/coder/costeer/config.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/coder/costeer/config.py",
+    "bytes": 1059,
+    "sha256": "d355d42c4a5bcb23884f71d45f92948eb2714fd9def92b391454977da550cf2d",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/coder/costeer/evaluators.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/coder/costeer/evaluators.py",
+    "bytes": 6671,
+    "sha256": "03251b639b35b353c30e1c7a4e75421e0d6d393623f0512033ab86615dcf5725",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/coder/costeer/evolvable_subjects.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/coder/costeer/evolvable_subjects.py",
+    "bytes": 1235,
+    "sha256": "eb3e04dbd187a408870463cad572cb78981f5e7dca22c5eb7f58ed47d5976b1a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/coder/costeer/evolving_agent.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/coder/costeer/evolving_agent.py",
+    "bytes": 849,
+    "sha256": "3683b4e8ef05b234843907d8178098ec1e6b3599229e45a1095d7998da0b7396",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/coder/costeer/evolving_strategy.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/coder/costeer/evolving_strategy.py",
+    "bytes": 3896,
+    "sha256": "e6536735b46170e58af14a809316182bce106f1ac834bb4a0821deb8f0d3c593",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/coder/costeer/knowledge_management.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/coder/costeer/knowledge_management.py",
+    "bytes": 42779,
+    "sha256": "67d25e67bd6e7bada4f624cb972f7b6880ccc2243a83d617aae0238cc9d87d6f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/coder/costeer/prompts.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/coder/costeer/prompts.yaml",
+    "bytes": 498,
+    "sha256": "51a8d6af475bbae2341e103728aac4e277b5ba27f6cf7e7a96a34025ac3d5fdd",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/coder/costeer/scheduler.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/coder/costeer/scheduler.py",
+    "bytes": 658,
+    "sha256": "1955464c75b36fbc654a2a47bd8c5cd049543904d976202d11a4e0e6a227a901",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/coder/costeer/task.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/coder/costeer/task.py",
+    "bytes": 221,
+    "sha256": "73f2078d8e94afc8b49b2bc9da96a0856f78658fa7f534a7186632bb6e773c66",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/coder/knowledge/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/coder/knowledge/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/coder/knowledge/graph.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/coder/knowledge/graph.py",
+    "bytes": 15281,
+    "sha256": "c66c094b10bf0e1c0a09d08dc3d86fefa152b1b6bf807fefcd0eaf4c4df2e406",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/coder/knowledge/vector_base.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/coder/knowledge/vector_base.py",
+    "bytes": 5579,
+    "sha256": "b4796f035a0b97d0ac84346da94331f226391407540d26d8dbaff0f34a0b5283",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/components/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/components/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/components/benchmark/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/components/benchmark/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/components/benchmark/conf.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/components/benchmark/conf.py",
+    "bytes": 990,
+    "sha256": "8c9e2c678bb29817a08778cfa0deb55680df2195c517b8b5765c1e9d41841a99",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/components/benchmark/eval_method.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/components/benchmark/eval_method.py",
+    "bytes": 7700,
+    "sha256": "5308224d7299b3fa7378a46b9029c0ee211edab827e772ce67e5c86098367836",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/components/proposal/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/components/proposal/__init__.py",
+    "bytes": 4478,
+    "sha256": "4efda65ca0e78377bab1916403fb61f3d9a4ed52bd4ac2a6699f4ca89b7b6b63",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/components/proposal/prompts.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/components/proposal/prompts.yaml",
+    "bytes": 3384,
+    "sha256": "e24af1744c86460a8f590adf15fef4a154068d3eff7788db386ffd054c9a3b07",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/components/runner/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/components/runner/__init__.py",
+    "bytes": 2731,
+    "sha256": "2b037f531c1d23024eec6e9822fc8564a187ff56645d73772da10ecb582c150f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/model/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/model/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/model/coder/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/model/coder/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/model/coder/eva_utils.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/model/coder/eva_utils.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/model/coder/evaluators.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/model/coder/evaluators.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/model/coder/evolving_strategy.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/model/coder/evolving_strategy.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/model/coder/gt_code.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/model/coder/gt_code.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/model/coder/model.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/model/coder/model.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/model/coder/model_execute_template_v1.txt",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/model/coder/model_execute_template_v1.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/model/coder/model_execute_template_v2.txt",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/model/coder/model_execute_template_v2.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/model/coder/prompts.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/model/coder/prompts.yaml",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/model/coder/task_loader.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/model/coder/task_loader.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/model/experiment.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/model/experiment.py",
+    "bytes": 483,
+    "sha256": "daee369ceaea88cb8520e6a22bd887d3af1f21e7787fb540bbaa9bc91374acbf",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/model/model_coder.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/model/model_coder.py",
+    "bytes": 85,
+    "sha256": "27f53dd52e09a9d1f75c16ce688d2de681370b3d4ef5302624bbd89606d9650c",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/model/prompts.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/model/prompts.yaml",
+    "bytes": 32222,
+    "sha256": "6a601bf92fef5f893f645e6298ce9b22291effec3ad30598b88d0e9a9b4566fe",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/model/proposal.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/model/proposal.py",
+    "bytes": 4569,
+    "sha256": "d4fc861ec952ebff70421d98b2c22215c825050971c870ed08edf7bdf5d9f0e6",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/contrib/model/runner.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/contrib/model/runner.py",
+    "bytes": 1234,
+    "sha256": "0d3247d906ddb50b11845a48bec15e7b6b3dbe7afbedf33e80a517c8c73cf91c",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/controller.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/controller.py",
+    "bytes": 48748,
+    "sha256": "4994f4fa0fe5dd4b59c63b2cf80294560a97d809b1b51fe48d3abb91f8618f08",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/core/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/core/__init__.py",
+    "bytes": 1,
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/core/conf.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/core/conf.py",
+    "bytes": 3313,
+    "sha256": "a10e12a20f7cbbb611a6979fe731bbb5d826c03cc8014ecd25a6be9cd9e8daf4",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/core/developer.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/core/developer.py",
+    "bytes": 770,
+    "sha256": "9ec349e1d844596f0e57a55354376aed35d00b13fb79ed28f55203f2f14e4507",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/core/evaluation.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/core/evaluation.py",
+    "bytes": 515,
+    "sha256": "8bab3ffecbadcb01285aaf3c9ecdb316ef5ea047e5488aa9d4f306c6e3e5d032",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/core/evolving_agent.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/core/evolving_agent.py",
+    "bytes": 15487,
+    "sha256": "11e3a09cecb6d99d93bfef55f67539d1091a41b9bda3440f0c40ee8786227182",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/core/evolving_framework.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/core/evolving_framework.py",
+    "bytes": 2678,
+    "sha256": "26b6dc8643165211b2e78f66055982bb271da81126da7683b5d136071f57c3b7",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/core/exception.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/core/exception.py",
+    "bytes": 1003,
+    "sha256": "cb5f9c2e89a2f04c6809017d91e2a150e8959a187599389feea9b8444b413a7a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/core/experiment.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/core/experiment.py",
+    "bytes": 7639,
+    "sha256": "8c57f4b3e4121973603bba8b22746474acf292d2017143f9dbbeaaadfd2f27a8",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/core/knowledge_base.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/core/knowledge_base.py",
+    "bytes": 976,
+    "sha256": "fe9436a2472ff570ca0fa4d55d738b55b0efca7a4f9c87dde7402cceb8cd1256",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/core/prompts.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/core/prompts.py",
+    "bytes": 564,
+    "sha256": "900733cac9b660832182d2faaa96b07b229731754f336fa910f6ffecfacdce76",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/core/proposal.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/core/proposal.py",
+    "bytes": 5155,
+    "sha256": "24fd526ea11187638da11b559cdfc9f24ffbdd20336ae05bb3a1acaebf36dd89",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/core/scenario.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/core/scenario.py",
+    "bytes": 1689,
+    "sha256": "42ca5a13aa315d19fa55f257fd57b2020ecebd9a8d42163c6d653c387d01ac72",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/core/template.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/core/template.py",
+    "bytes": 819,
+    "sha256": "cebab0b0888a96411ec15a5c666710b7fa9ac7da9d7a8a808f3fc77e9ed9915c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/core/utils.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/core/utils.py",
+    "bytes": 8422,
+    "sha256": "4a741c7cca1a916d7c664598d6b900cdb0f0894c1a900520a5767ace529b3dfc",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/docker/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/docker/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/accelerated_ops.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/accelerated_ops.py",
+    "bytes": 224,
+    "sha256": "c4c9a09ecd0020bd035905fe4c614fca897994d08598ec9954ee92810090d5bc",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/alignment/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/alignment/__init__.py",
+    "bytes": 264,
+    "sha256": "0abe3ca8e592cb2dae05cd0f594ae2025ad0ef1b89d72be5cbb5b7f77f67fbf4",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/alignment/preflight_guard.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/alignment/preflight_guard.py",
+    "bytes": 7711,
+    "sha256": "816d36d6d84bb19eacadad3d64f9db492e4a885493265c16c62e4cfc0b8df42f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/alignment/prompt_proxy.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/alignment/prompt_proxy.py",
+    "bytes": 2879,
+    "sha256": "583e8e815154fc2a700d56c610175cada8a480064f5ee57ee2ffbdeba4fa969f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/alignment/registry.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/alignment/registry.py",
+    "bytes": 12269,
+    "sha256": "7e8801efb3314b5657372856cfb25a01884e5d584ebe5442baf4df957b03c5c4",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/__init__.py",
+    "bytes": 2432,
+    "sha256": "1e157e4e1d9b188eb48b72b8f621ef228f39827c399885c30a2253e9680fdca6",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/config.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/config.py",
+    "bytes": 2110,
+    "sha256": "f35a2a720b2108dc501de317f4ec475f1eaa4fc8b362294b95d622406910fc0f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/eva_utils.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/eva_utils.py",
+    "bytes": 29947,
+    "sha256": "af4df508c7893342353f99430bd898c7b0108de947c769591b77aedf74d7afc4",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/evaluators.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/evaluators.py",
+    "bytes": 24550,
+    "sha256": "e87322acb7c2411bb165046abb5c99321ff1728a662021667b8b667020612bd8",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/evolving_strategy.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/evolving_strategy.py",
+    "bytes": 87693,
+    "sha256": "47d2ead4ec27ed0a95ba4b8a7bf9bf8154adcdf2653d206b1b88ba4d1fe8c5e8",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/expr_parser.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/expr_parser.py",
+    "bytes": 13371,
+    "sha256": "4c803e92c78bf50d4f1b0b9311ffeb493179bce24a01908e5f5f05af4e1b1a43",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/factor.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/factor.py",
+    "bytes": 31305,
+    "sha256": "0800ac7d8c2961e0d3d1249f793bb8eb84806c56a17ea0fe356b8781b9d556f0",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/factor_ast.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/factor_ast.py",
+    "bytes": 22608,
+    "sha256": "10cecf9171f662d403d1db5cc83ea59b39235dc12014484c823e9150fb4a2caf",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/field_domain_classifier.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/field_domain_classifier.py",
+    "bytes": 11228,
+    "sha256": "caead86569990e5af7adce3d3cb947df41b6672b883582230c81f2ef54b33023",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/function_lib.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/function_lib.py",
+    "bytes": 59889,
+    "sha256": "2d5744d3dec4af2be868dddb9ccb9df92475b3d3d222e5558d2a8cb3f6fcd430",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/minute_op_registry.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/minute_op_registry.py",
+    "bytes": 5124,
+    "sha256": "393a1431a5716ea8bb9b2df87616e1dbcc41eeb55e114e94457ad56e88813b23",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/minute_spec_compiler.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/minute_spec_compiler.py",
+    "bytes": 42961,
+    "sha256": "b86150fc26afc935d13a11e9cbe311e845205ecc8e9e5c88cd9fc5bf1794b703",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/prompt_utils.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/prompt_utils.py",
+    "bytes": 4875,
+    "sha256": "797651d17d6d8e8f03c7a3b203ef2d8afdcb030d47b06fd8ac2fb60e6fcec898",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/prompts.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/prompts.yaml",
+    "bytes": 12656,
+    "sha256": "531bbc92be3b2dff1a721505e46fc5c06ca67f5b80631907dfc3755970a94edf",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/prompts_domain_fundamental.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/prompts_domain_fundamental.yaml",
+    "bytes": 1673,
+    "sha256": "e52a054a3bcd12b1e90ae02050dc64134207e7c7f207aa2e6a5a1bc21c85ad91",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/prompts_domain_joint.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/prompts_domain_joint.yaml",
+    "bytes": 4339,
+    "sha256": "b754b532f9abd95ef7080b514b926e4bfbb966d5e1056d52cad0fa58d29f249d",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/prompts_domain_minutes.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/prompts_domain_minutes.yaml",
+    "bytes": 8113,
+    "sha256": "3bad6bbb5271109343b64c9858594fd1680bf1b978fee2fc102d0c9243c5d00c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/prompts_domain_pv.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/prompts_domain_pv.yaml",
+    "bytes": 771,
+    "sha256": "020c80fb74bd8592490186c66949f6cad0257560e6a4e048386488294ad8494a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/proposal.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/proposal.py",
+    "bytes": 84147,
+    "sha256": "f96667ab5bb943a0d435043d97d800743c8fab08fa6baf608a5ea79d19a8b2ff",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/qa_prompts.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/qa_prompts.yaml",
+    "bytes": 14052,
+    "sha256": "52ff0a3451d746cf7ddbc8fe35010f13094948249c5b2929f8c477331112e959",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/qa_prompts_domain_fundamental.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/qa_prompts_domain_fundamental.yaml",
+    "bytes": 2163,
+    "sha256": "70b5968ebb9d8c66e8f5cadb0e367cfbf3dbd5fe0e819b9f7a8818c29a71f490",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/qa_prompts_domain_joint.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/qa_prompts_domain_joint.yaml",
+    "bytes": 3589,
+    "sha256": "00d76e30fb2037a9554d2641912a7e4003ef8f493ea901e6cb8cdc1961934f0a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/qa_prompts_domain_minutes.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/qa_prompts_domain_minutes.yaml",
+    "bytes": 943,
+    "sha256": "a9bfbcad18c58c9949cf5f88a0cd07bd82bd98454ecc4fe136c8e7456e3fbeee",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/qa_prompts_domain_pv.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/qa_prompts_domain_pv.yaml",
+    "bytes": 1121,
+    "sha256": "df4acbd074a36fa8a237e49f8bb778f30ccdf7c0883031e863f8eaefa10a037a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/coder/test.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/coder/test.py",
+    "bytes": 576,
+    "sha256": "df4473a6c38603183be4da9ca05b844cd1173e525c83f3843454047a97525eba",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/combined_domain_contract.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/combined_domain_contract.py",
+    "bytes": 17582,
+    "sha256": "e79082ab40640e12aa83de62d1011450bcee1a3661bb352cd3f1665fe80cb3f3",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/data_domains.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/data_domains.py",
+    "bytes": 12848,
+    "sha256": "a9c157a55b30a593b6c7ea9ad760fd2c69953a6b654023f28ae454502c38d17e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/experiment.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/experiment.py",
+    "bytes": 3265,
+    "sha256": "972b63a1c05c1939e1f75fb7521e36b7bd6a4d870083d7491cb895980065a55b",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/factor_coder.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/factor_coder.py",
+    "bytes": 969,
+    "sha256": "83f40d49ba29de6a803bdd8dcefaab1a40f3ba2898995ac06c565562dd732bb9",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/factor_runtime_utils.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/factor_runtime_utils.py",
+    "bytes": 2151,
+    "sha256": "b884bb81aa790f8aff2e14242b9921daa8cd4857f3a2fe7b2ee250ac0f48e19e",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/factor_template/minute_factor_template.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/factor_template/minute_factor_template.py",
+    "bytes": 3061,
+    "sha256": "dde3d394622125e6be4825e2624fb3c8c3967c27be7ec8fec618cc281639b6c7",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/factor_template/regular_factor_template.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/factor_template/regular_factor_template.py",
+    "bytes": 1731,
+    "sha256": "eaf33e8e4675d71a04ba8049733fcd95b9e80a89ea343925c6a0dbda99e7bba1",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/factor_template/super_factor_template.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/factor_template/super_factor_template.py",
+    "bytes": 2334,
+    "sha256": "5c5a95999d048f132df23b866909df30b08875db02dffa777275623f2141d7b9",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/feedback.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/feedback.py",
+    "bytes": 25045,
+    "sha256": "2436571726533c7d36a8f7612679b5231a0fa8bd4ec103cac77f04a0161171c2",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/library.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/library.py",
+    "bytes": 43032,
+    "sha256": "46e0222903a49c4e296f3385071f12e87d5beb18c1cd1423e7b6c94a88ccb947",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/loader/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/loader/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/loader/json_loader.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/loader/json_loader.py",
+    "bytes": 2474,
+    "sha256": "728c077157df145bc6884175b76a22452c41bb9058ec575c59e22049ed29f899",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/loader/pdf_loader.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/loader/pdf_loader.py",
+    "bytes": 22234,
+    "sha256": "783f38cb810d964a1809c3d1ff2576ea613af7e6fd29714b0190d86b3a30fc6e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/loader/prompts.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/loader/prompts.yaml",
+    "bytes": 12631,
+    "sha256": "9e0da7dd315dd08b973117424efb20664decdfed2209b75a324ad3125f48d002",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/prompts/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/prompts/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/prompts/experiment.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/prompts/experiment.yaml",
+    "bytes": 14831,
+    "sha256": "8132d956f3c96a7d1c48407114c2548ed057d60d6c8d49af7f40ac4bed62b45f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/prompts/prompts.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/prompts/prompts.yaml",
+    "bytes": 35233,
+    "sha256": "628de94a58210f3a3ed63ed8043f6a751213068eb37c5400cfb3e461b563948d",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/prompts/prompts_domain_fundamental.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/prompts/prompts_domain_fundamental.yaml",
+    "bytes": 4403,
+    "sha256": "5b0828764f4e8527b8b0860966a40f36f6fc5d29456b48838711b6b0e578a85c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/prompts/prompts_domain_joint.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/prompts/prompts_domain_joint.yaml",
+    "bytes": 2631,
+    "sha256": "2b402dd83c636c7395be2c93ffde76adacfad7ab770b2efef3ce2d5935d7e513",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/prompts/prompts_domain_minutes.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/prompts/prompts_domain_minutes.yaml",
+    "bytes": 2783,
+    "sha256": "cbe162aeeb57d23ded29c070e4c3fd787b79230952ed43e4e2e1188721afbdc0",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/prompts/prompts_domain_pv.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/prompts/prompts_domain_pv.yaml",
+    "bytes": 4448,
+    "sha256": "900a3f25aacd40c6a6ea02e0c616aff5128112431cc645a4c353d79a7ce177b0",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/proposal.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/proposal.py",
+    "bytes": 84154,
+    "sha256": "a08e5b5079a48394532060a85cbf36a9fd203772db39525e2f92acdc0e6c00ba",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/regulator/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/regulator/__init__.py",
+    "bytes": 1072,
+    "sha256": "1f1edbe4291af0a184faf6495e1737778505d88eb49aeab717b320043b6ff3d5",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/regulator/consistency_checker.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/regulator/consistency_checker.py",
+    "bytes": 20180,
+    "sha256": "d4407b6e97c5913d37390b58170d6a31de8fe2520c2ee4500157399804f53eb4",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/regulator/consistency_prompts.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/regulator/consistency_prompts.yaml",
+    "bytes": 5140,
+    "sha256": "05607b01740c097b25c3d841a2d8ff3bd9f3307f8b4cae7c6206f1ba28a1a33b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/regulator/factor_regulator.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/regulator/factor_regulator.py",
+    "bytes": 13036,
+    "sha256": "8033c2349153b4299d94264ac4b3ee9a242b87a603cedbde477e5183f8c523b7",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/runner.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/runner.py",
+    "bytes": 760,
+    "sha256": "5c8699a033063e18fd8f899200b5c96af122177e482a400bfdca7e817e77c30a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/tq_runner.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/tq_runner.py",
+    "bytes": 58396,
+    "sha256": "d3d06318f8d1a6cd6a58c096987d046ff533a1d768ff61fb85df3d9d1159db72",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/upstream_factor_api.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/upstream_factor_api.py",
+    "bytes": 1115,
+    "sha256": "bf74aba647e7ed7eb6d45f0b0a97ae0c4682d4cdf46c509e2e18055a1f5e33fa",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/factors/workspace.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/factors/workspace.py",
+    "bytes": 3624,
+    "sha256": "806f35c0505c8241f0151da1867e836c1ec87af7c010b09d0b4031963ebc6290",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/library.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/library.py",
+    "bytes": 40451,
+    "sha256": "d4b10a6e630139ebfb6c52f727229fa9d083609eda8df257872f7eb832ed9533",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/llm/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/llm/__init__.py",
+    "bytes": 104,
+    "sha256": "e65ca72a3da706fe8451922c22c1ed977a37da8680d99db18a0ed73d010f6a6e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/llm/client.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/llm/client.py",
+    "bytes": 48923,
+    "sha256": "f6e6e1f590751bb172870f50c089974a69ae3abb70a75f3c581e48821a47651a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/llm/config.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/llm/config.py",
+    "bytes": 2001,
+    "sha256": "913192bb8d6472a4ec4ed5c475f5d34603bbe8d1a1f3ae6dd3372a2bcf1cca21",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/base.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/base.py",
+    "bytes": 3158,
+    "sha256": "55ca3bc62932649527700697030a467dd63510081ccf53323c61213de98fc8b0",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/evolution/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/evolution/__init__.py",
+    "bytes": 987,
+    "sha256": "00eafd96014905f65dd6c0f54488dc98f567ae885242d32de7205dc18de51206",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/evolution/controller.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/evolution/controller.py",
+    "bytes": 52279,
+    "sha256": "feea82cf3ac0526033f0aad2eb27ea55bf772a309e132e5a3ed07ff2d8416030",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/evolution/crossover.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/evolution/crossover.py",
+    "bytes": 37480,
+    "sha256": "d6ebf2d860cfc8a9c48775a5adcd97721d5c02428fdfcec39a60cd31917c9f96",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/evolution/mutation.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/evolution/mutation.py",
+    "bytes": 16906,
+    "sha256": "423e36fd60ddbdd19540c1798b13eeb29fe69ed722a9a94e14facc62181b032d",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/evolution/trajectory.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/evolution/trajectory.py",
+    "bytes": 20581,
+    "sha256": "14c4ba063c4d49986217e013a8e9defb203e5fed95ed9cd4f3dc5be65ae90ae6",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/factor_backtest.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/factor_backtest.py",
+    "bytes": 199,
+    "sha256": "2e9457373f5e94bbadee785802047cc9b3905681b44991525bf2c9354f0af318",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/factor_export_tq.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/factor_export_tq.py",
+    "bytes": 1276,
+    "sha256": "2710dc399e084e03f96dd2e2fae1f74de384a47e9f02b56ad359a79aec5045cf",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/factor_from_report.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/factor_from_report.py",
+    "bytes": 6869,
+    "sha256": "82ad91aa5be65295dd0549879ebe56bb3acdded2291db3781610436a2be5c97b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/factor_mining.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/factor_mining.py",
+    "bytes": 51991,
+    "sha256": "c50987e8b5d1d1ec94fba86e6d7210b160790e4660e435b4187850f61de2992f",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/loop.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/loop.py",
+    "bytes": 15959,
+    "sha256": "96c4a8d96a35f9e99e300268f5fa8acc9a164ca1aea224e6820533baa7b4438e",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/planning.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/planning.py",
+    "bytes": 5296,
+    "sha256": "ba8fbdfa28253e830b2667c115a984cb8992e47089c23cde28f6f4250b08c638",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/prompts/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/prompts/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/prompts/evolution_prompts.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/prompts/evolution_prompts.yaml",
+    "bytes": 14576,
+    "sha256": "06145acc1bf812a135e616bb1641cea18003b1e4cdd370f087e41da29509d6f8",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/prompts/planning_prompts.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/prompts/planning_prompts.yaml",
+    "bytes": 1300,
+    "sha256": "c5c07c1eb56c5ed10dbeac64abbd930a4ba3c626f995bddbe7e466fda3e2595e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/pipeline/settings.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/pipeline/settings.py",
+    "bytes": 5113,
+    "sha256": "305b386636a37e001dc5ef5c3e45f0998d0a3ec669d9a3d617fe396a967583b2",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/README.md",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/README.md",
+    "bytes": 8566,
+    "sha256": "7be87adbfb17d7e47ab9dae782ca49ea9d0580284ed6806bb694658915ba270f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/runtime.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/runtime.py",
+    "bytes": 5613,
+    "sha256": "3b826e69667a9a58a2803c952e4944ccff156e2a0c630c3084dc149f3943434c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/utils/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/utils/__init__.py",
+    "bytes": 1951,
+    "sha256": "46af02b1acf4df700f637236e95ab682b74bcb78ea82ac3bc420d8d1c15ee80d",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/utils/agent/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/utils/agent/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/utils/agent/ret.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/utils/agent/ret.py",
+    "bytes": 774,
+    "sha256": "eca28b9e850924675e887830e7f58192474096181ee22fce80ff48eeb6d34ac1",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/utils/agent/tpl.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/utils/agent/tpl.py",
+    "bytes": 2105,
+    "sha256": "befe1f06143968054061e025d4b130703f038a487134c55f2aa513056728db61",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/utils/agent/tpl.yaml",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/utils/agent/tpl.yaml",
+    "bytes": 86,
+    "sha256": "24914087466353ddeaaa9c6235ef990fffa4984cecdb069f4112ed9fe4be652d",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/utils/document_reader/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/utils/document_reader/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/utils/document_reader/document_reader.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/utils/document_reader/document_reader.py",
+    "bytes": 3876,
+    "sha256": "56b69ef9469659844ff127d0f3eceed700e0f2ee51edda51abe83a952fdace99",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/utils/env.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/utils/env.py",
+    "bytes": 23226,
+    "sha256": "aa6ba95c0703e025d24ef61e11ad7af4d0457ee765dd915109f1c819df512a80",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/utils/factor_local_env.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/utils/factor_local_env.py",
+    "bytes": 104,
+    "sha256": "95e7b5131794b6c3244d0df3f2fad199bac7c9a2f426cc9935a886d27f3960b0",
+    "copy_status": "text_normalized_or_redacted"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/utils/loader/__init__.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/utils/loader/__init__.py",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/utils/loader/experiment_loader.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/utils/loader/experiment_loader.py",
+    "bytes": 242,
+    "sha256": "ac1abad578bd30e26e268a570c1b2ab081b1bcd1071970a75d8b5b23def5cc62",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/utils/loader/task_loader.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/utils/loader/task_loader.py",
+    "bytes": 3951,
+    "sha256": "9b4c2c3f4863f6f91ef410f44706d8294108ad0e7887a0b8f225fb0a4ca2f109",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/quantaalpha/utils/workflow.py",
+    "source": "quant_anian/QuantaAlpha/quantaalpha/utils/workflow.py",
+    "bytes": 6787,
+    "sha256": "7d3887341329e0215436585c8ca83b4aede3bb021b63cc128f986e08334da5a3",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/README.md",
+    "source": "quant_anian/QuantaAlpha/README.md",
+    "bytes": 5147,
+    "sha256": "aa800a493fd70956d8cbc7cbf63af63ea8536a4ddcc2681cda1cc6396103a7eb",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/requirements/docs.txt",
+    "source": "quant_anian/QuantaAlpha/requirements/docs.txt",
+    "bytes": 177,
+    "sha256": "641086403c8eb8c56a4301c38ccda0d4bbb2bbe9cace8a6affe2fb643953018d",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/requirements/lint.txt",
+    "source": "quant_anian/QuantaAlpha/requirements/lint.txt",
+    "bytes": 94,
+    "sha256": "50087e4ff72e5f6d75e5838e5e4557a8281a67274a51a4caa67d627bd5e49422",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/requirements/package.txt",
+    "source": "quant_anian/QuantaAlpha/requirements/package.txt",
+    "bytes": 61,
+    "sha256": "d80e85a5c858cb9c2651bb832f5678aafd0e65679de629d59f1611554c6cfd52",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/requirements/test.txt",
+    "source": "quant_anian/QuantaAlpha/requirements/test.txt",
+    "bytes": 41,
+    "sha256": "536c267a650f143bd1e25db3f673e6387790bd6e1144361928d33b6cf6c24c7d",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/requirements.txt",
+    "source": "quant_anian/QuantaAlpha/requirements.txt",
+    "bytes": 3622,
+    "sha256": "8b1df4843f691b23f58755e0075535288355d72e09eac81d39efa700f20ac167",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/run.sh",
+    "source": "quant_anian/QuantaAlpha/run.sh",
+    "bytes": 16478,
+    "sha256": "2286bcb467af7e8abed7065f5922cd7d76013ababf98324109d8e8ef0d55d88c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/backtest/test_analysis.py",
+    "source": "quant_anian/QuantaAlpha/tests/backtest/test_analysis.py",
+    "bytes": 2976,
+    "sha256": "58857889992a508a3c4efc65747b3ce2eb8e688c03e65db3f3bfd38ea6b002e3",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/backtest/test_daily_pv_field_contract.py",
+    "source": "quant_anian/QuantaAlpha/tests/backtest/test_daily_pv_field_contract.py",
+    "bytes": 3406,
+    "sha256": "1022e8cbfa582c008c8c037cf468c3b5d48de39b4f47cc81ef0d1011bd203a7f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/backtest/test_provider_fundamental.py",
+    "source": "quant_anian/QuantaAlpha/tests/backtest/test_provider_fundamental.py",
+    "bytes": 787,
+    "sha256": "6d5d62f6444ea80ef848eafe1a748b00a569fefce8f5b59d5b39c7cdcda5be2f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/backtest/test_run_ml_backtest_windows.py",
+    "source": "quant_anian/QuantaAlpha/tests/backtest/test_run_ml_backtest_windows.py",
+    "bytes": 3534,
+    "sha256": "29cf615cf08d14ac4ca0d5933a046aa3aeaeb98a614272de4b8a0dc2d521c146",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/coder/costeer/test_develop_handoff.py",
+    "source": "quant_anian/QuantaAlpha/tests/coder/costeer/test_develop_handoff.py",
+    "bytes": 1784,
+    "sha256": "3607b055645faf8264e70388058c7067bbb2c4f656008fb31a5f95b695b91738",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/core/test_evolving_agent_handoff.py",
+    "source": "quant_anian/QuantaAlpha/tests/core/test_evolving_agent_handoff.py",
+    "bytes": 2144,
+    "sha256": "3810da5c4dffbf940992d59b04f3a96b73b29e1f6fa55047eeb4173f468d2964",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/factors/coder/test_factor_evaluator_feedback.py",
+    "source": "quant_anian/QuantaAlpha/tests/factors/coder/test_factor_evaluator_feedback.py",
+    "bytes": 5187,
+    "sha256": "15824cfccb6782972ffd1c74bac2bd61125aa6ae4e409fa8317279ea5ce64562",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/factors/coder/test_minute_op_registry.py",
+    "source": "quant_anian/QuantaAlpha/tests/factors/coder/test_minute_op_registry.py",
+    "bytes": 1761,
+    "sha256": "4ba76ce127157604182617b1d1d3177d23f7e0fbeb2c03c1cbe201497fe54ddb",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/factors/coder/test_minute_spec_compiler.py",
+    "source": "quant_anian/QuantaAlpha/tests/factors/coder/test_minute_spec_compiler.py",
+    "bytes": 16005,
+    "sha256": "745ee1b5577cffc21cafa209b259d67e468cbc90eaddf04a12e875faf306b6bf",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/factors/coder/test_stage4_strategies.py",
+    "source": "quant_anian/QuantaAlpha/tests/factors/coder/test_stage4_strategies.py",
+    "bytes": 16322,
+    "sha256": "3862591faacf37868ac4bbec61a0d43a8c2cb7a731fc86c5ea7df2a56ea6d0db",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/factors/test_combined_domain_contract.py",
+    "source": "quant_anian/QuantaAlpha/tests/factors/test_combined_domain_contract.py",
+    "bytes": 1717,
+    "sha256": "cba585370952398a0b135138e6d3d56d37b0c7b11b1f59b3a595cfdbb66d3537",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/factors/test_preflight_guard.py",
+    "source": "quant_anian/QuantaAlpha/tests/factors/test_preflight_guard.py",
+    "bytes": 5075,
+    "sha256": "ecd6a9392e15dd21a622ad13614d79a9ce77276c77c946e4ac03edcc0f83344c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/factors/test_proposal_candidate_filtering.py",
+    "source": "quant_anian/QuantaAlpha/tests/factors/test_proposal_candidate_filtering.py",
+    "bytes": 5584,
+    "sha256": "ff8f08d0d5360c27d960c42e0bb25b817b9a7e29112dc4429b4fa2d5eba0cd6e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/factors/test_proposal_factor_count_metadata.py",
+    "source": "quant_anian/QuantaAlpha/tests/factors/test_proposal_factor_count_metadata.py",
+    "bytes": 743,
+    "sha256": "2dfb777a537935f0cb07e56fcea301aa58210d6c9f49dd3c43b1c7a8c2bb4438",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/factors/test_registry_semantics.py",
+    "source": "quant_anian/QuantaAlpha/tests/factors/test_registry_semantics.py",
+    "bytes": 3223,
+    "sha256": "d216250ca9920b3585826e8a975d1183e500c505c9b3ba619b69b6c8e0bebbe3",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/factors/test_tq_runner.py",
+    "source": "quant_anian/QuantaAlpha/tests/factors/test_tq_runner.py",
+    "bytes": 482,
+    "sha256": "55f544aa6c8c8c029c0679114bc4e03d4e7e4acd76e01725b8d970929d3f8fcb",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/frontend/test_mining_config.py",
+    "source": "quant_anian/QuantaAlpha/tests/frontend/test_mining_config.py",
+    "bytes": 7031,
+    "sha256": "7e0923946319acb1c578b85dd7969a7eeafe721ba3798439873f34c76bd393d3",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/llm/test_client_auto_continue.py",
+    "source": "quant_anian/QuantaAlpha/tests/llm/test_client_auto_continue.py",
+    "bytes": 859,
+    "sha256": "699bad0a69af6819ff2a8d65bd022bc84094d233ea6bdec7148d878f0180c903",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/tests/pipeline/test_evolution_reliability.py",
+    "source": "quant_anian/QuantaAlpha/tests/pipeline/test_evolution_reliability.py",
+    "bytes": 11496,
+    "sha256": "2769c2f7ac3ee077491f07d20b3ce99826245999fffe2b9ead9dddc11daf8ba2",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/validate_convert.py",
+    "source": "quant_anian/QuantaAlpha/validate_convert.py",
+    "bytes": 1339,
+    "sha256": "98d0c40e493ea4f4194bf56e6d50d194f6ee75cc7edd675cec673e66688d52ea",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/vendors/__init__.py",
+    "source": "quant_anian/QuantaAlpha/vendors/__init__.py",
+    "bytes": 60,
+    "sha256": "d26566b7f9f16fe6df47954821c3dd27803fb9ffe04ef2c4193c57e56c7fea7c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/vendors/quant_lib/__init__.py",
+    "source": "quant_anian/QuantaAlpha/vendors/quant_lib/__init__.py",
+    "bytes": 74,
+    "sha256": "4493ebd8c02910fb154b6127aa3964f91bb8f51ed3012a6097f85bc0185867a1",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/vendors/quant_lib/analysis.py",
+    "source": "quant_anian/QuantaAlpha/vendors/quant_lib/analysis.py",
+    "bytes": 63,
+    "sha256": "fc9cb2d48227c03c748c85524c27ea24226383f2027bd9f31995e31991435119",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/vendors/quant_lib/minute_ops.py",
+    "source": "quant_anian/QuantaAlpha/vendors/quant_lib/minute_ops.py",
+    "bytes": 65,
+    "sha256": "ad71186e4ad4b16887f756adfd1681c8b44ec20f5aff42ac2b6f7c69561917c9",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/QuantaAlpha/vendors/quant_lib/minute_tools.py",
+    "source": "quant_anian/QuantaAlpha/vendors/quant_lib/minute_tools.py",
+    "bytes": 67,
+    "sha256": "7f33a265d3ded42b325d6ecae0349099910fd47f7297b27038842473def4bb64",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/data_system/data_hub/core/fundamental_neutralizer.py",
+    "source": "quant_anian/quant/data_system/data_hub/core/fundamental_neutralizer.py",
+    "bytes": 6827,
+    "sha256": "4447805cc97e9804516df9cae7b33607c6ad0313439faafafdd64500a94513e3",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/data_system/data_hub/core/fundamental_updater.py",
+    "source": "quant_anian/quant/data_system/data_hub/core/fundamental_updater.py",
+    "bytes": 34702,
+    "sha256": "dff6ab9d5d8c54158eec9304af9ec7bbb46518ce4379de342ba05c89f7310acc",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/data_system/data_hub/core/safe_pickle_writer.py",
+    "source": "quant_anian/quant/data_system/data_hub/core/safe_pickle_writer.py",
+    "bytes": 774,
+    "sha256": "197dc30a54c812a7c713e99da9a962c711cd0d0dcebc154fc54d01e72518bb7a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/data_system/data_hub/main.py",
+    "source": "quant_anian/quant/data_system/data_hub/main.py",
+    "bytes": 1545,
+    "sha256": "16232d5c4fbd27038b41633210dfc0a869e0bc757a9f2e650918e0993decd148",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/data_system/data_hub/service/access_service.py",
+    "source": "quant_anian/quant/data_system/data_hub/service/access_service.py",
+    "bytes": 1261,
+    "sha256": "c26f49a337c7b621f0300e4d5254583430a521c27d1ddec992e60ebefa36baa6",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/data_system/data_hub/service/update_service.py",
+    "source": "quant_anian/quant/data_system/data_hub/service/update_service.py",
+    "bytes": 24630,
+    "sha256": "dbcae1083d6618b2eb6e6afc1af2535dd68c87b7d805f74ee63c1f9c14a4b4b2",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/data_system/README.md",
+    "source": "quant_anian/quant/data_system/README.md",
+    "bytes": 10160,
+    "sha256": "74d23284421c082ec4dc01d02a3019d53242042741263b92292c623dcc97ed10",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/dashboard/app.py",
+    "source": "quant_anian/quant/factor_system/dashboard/app.py",
+    "bytes": 20538,
+    "sha256": "8a3ee5fa0524e8f6f68867c0767f8f524a9eb08d966b9b86854ad130cafb2416",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/dashboard/static/vendor/bootstrap.min.css",
+    "source": "quant_anian/quant/factor_system/dashboard/static/vendor/bootstrap.min.css",
+    "bytes": 232803,
+    "sha256": "3c8f27e6009ccfd710a905e6dcf12d0ee3c6f2ac7da05b0572d3e0d12e736fc8",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/dashboard/static/vendor/chart.umd.min.js",
+    "source": "quant_anian/quant/factor_system/dashboard/static/vendor/chart.umd.min.js",
+    "bytes": 205399,
+    "sha256": "d2af8974e95271638772e9e9524db5b9a6f58d6ec2d5d781400447b4a31c681e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/dashboard/templates/base.html",
+    "source": "quant_anian/quant/factor_system/dashboard/templates/base.html",
+    "bytes": 1021,
+    "sha256": "535eacaeb25cf5f9d53e8e3ea344104bb5e063f6ce6625a038044a4918c78e89",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/dashboard/templates/factor_detail.html",
+    "source": "quant_anian/quant/factor_system/dashboard/templates/factor_detail.html",
+    "bytes": 14372,
+    "sha256": "26347e3a415e8826036869f34a017009341663093db875834bce9183e49daae9",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/dashboard/templates/factor_list.html",
+    "source": "quant_anian/quant/factor_system/dashboard/templates/factor_list.html",
+    "bytes": 6152,
+    "sha256": "053c691ec3137754116c930aca96f99602ecd94a2584ca55b7c3ba2f35a1abdb",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/dashboard/templates/weekly_report.html",
+    "source": "quant_anian/quant/factor_system/dashboard/templates/weekly_report.html",
+    "bytes": 6795,
+    "sha256": "aa5828af96913b2fa7799b628b0f3faee1203569bbd8c42aa4c08074512ce43a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/components/factor_comparator.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/components/factor_comparator.py",
+    "bytes": 5872,
+    "sha256": "e34e1373407454824beaa6652bef5d73e1b7f9ab575477145dd8e0116e9da3b5",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/components/factor_simulator.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/components/factor_simulator.py",
+    "bytes": 6416,
+    "sha256": "dd84cdd824b7ad7e14b615fce16d569d74cae39aa0b270878e8b13a7d7a5509c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/components/lib_interactor.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/components/lib_interactor.py",
+    "bytes": 16380,
+    "sha256": "9c2b4fc35add1024e55de2b1810d962203dbfcb1af539df0347e9e34e68a76cd",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/core/config.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/core/config.py",
+    "bytes": 1801,
+    "sha256": "46c3a51f8b0ffa7055f32cc4716cdec9e16c08263820507cc940387e991901a5",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/core/factor_criteria.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/core/factor_criteria.py",
+    "bytes": 1465,
+    "sha256": "a21c31fa9787cf35e01fcd34f1deef7ef0745b7184a071d4be8ee4053f14b5c3",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/core/factor_loader.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/core/factor_loader.py",
+    "bytes": 6956,
+    "sha256": "a563c5e3b548fe8f940c6096d6b2dbc428037f38ecee0a82ccb074c5ec61037b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/core/factor_performance_engine.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/core/factor_performance_engine.py",
+    "bytes": 4878,
+    "sha256": "25ff96422a4892daee631442ae3b01e78f0ad4f529d49022f14530e03163c179",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/core/factor_registry.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/core/factor_registry.py",
+    "bytes": 3137,
+    "sha256": "d3ef13ea2b0b10183389d52602bf81059af070f00c5c0f7d7c1f60d7febb9dff",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/core/factor_result_engine.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/core/factor_result_engine.py",
+    "bytes": 11948,
+    "sha256": "d4153e847793ba4b22daa54c51e5486f1a365f79f45eda762cf2887905a946ff",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/core/factor_result_profiles.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/core/factor_result_profiles.py",
+    "bytes": 944,
+    "sha256": "a21c40a0ab32f2b6987acf0a6414f785bda7181df2d04d2094bf40fcbab2f9ea",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/core/factor_result_store.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/core/factor_result_store.py",
+    "bytes": 2644,
+    "sha256": "9edc09b03b82c7ba2f9155dd6cf558cf25a3d1e7cabf5432b809af48a4fdb81e",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/core/factor_scorer.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/core/factor_scorer.py",
+    "bytes": 917,
+    "sha256": "e7da142e6c3b8b68dd98ab821d9b7de78637a667f3abdd2f5d4289f08a90994f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/core/factor_selector.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/core/factor_selector.py",
+    "bytes": 1532,
+    "sha256": "d15beaa8354c061270017eed8f85a64999976ede7c269c10532dcf5e839a08cf",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/core/factor_value_engine.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/core/factor_value_engine.py",
+    "bytes": 6107,
+    "sha256": "13dcd78a8c9cd96dabad87a8b7ad060183a7a91f7768abf449b03e29aecc171a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/core/factor_value_store.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/core/factor_value_store.py",
+    "bytes": 1522,
+    "sha256": "2753fdfeb2664b72e4fe9b9ad125060c7dfbc3548e3527a90ea9de8dd45d8e08",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/core/factor_value_transformer.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/core/factor_value_transformer.py",
+    "bytes": 2156,
+    "sha256": "eaa613e33d37f5ee735dedf93758bd187b54d8ca1c12017b40a8eb16cc8da905",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/main.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/main.py",
+    "bytes": 9616,
+    "sha256": "d04691cc5669662ad163d1630859034cc789b2f862f92c1728ecf05befdccf49",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/plugins/factor_portrait.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/plugins/factor_portrait.py",
+    "bytes": 3667,
+    "sha256": "c0fba4a5777e28d6403f1adb323a537f2c261b9d141dab3f7ebe0481ee82f9f2",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/plugins/factor_pruner.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/plugins/factor_pruner.py",
+    "bytes": 9933,
+    "sha256": "f71d6ef823c51b7b5191b8ab1711e5b0ca0609892e477d52d5e25683d5f6ee32",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/plugins/factor_weekly_report.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/plugins/factor_weekly_report.py",
+    "bytes": 13975,
+    "sha256": "2c97143b8b3e72a8e13799cdd6d050a1f55698e143286c79f5b3d75a54afca5a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/services/access_service.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/services/access_service.py",
+    "bytes": 11613,
+    "sha256": "451e4ff3788634bf09040d47cbbe12173aa413c814ac878a30f85b136f2ff294",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/services/manage_service.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/services/manage_service.py",
+    "bytes": 18113,
+    "sha256": "f366e7faac6e09648b625c368efcabb7ccdee00d2ac7ebaa03bb860ab0113868",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/services/research_service.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/services/research_service.py",
+    "bytes": 19998,
+    "sha256": "ecb65b9ffb26d505826d9389f92028eee45b69dd9781658c879bda0944ba7c11",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/services/select_service.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/services/select_service.py",
+    "bytes": 1008,
+    "sha256": "97f44de9091d4ba0cbe3662c73a7eb7570c25a880cc6d5f2546c22d2658dfa15",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/templates/minute_factor_template.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/templates/minute_factor_template.py",
+    "bytes": 2353,
+    "sha256": "454caf8fafa9a14da9a834b8f76bf9ae9ac08b5e201437fa5e68b6b7eb6eef0b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/templates/regular_factor_template.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/templates/regular_factor_template.py",
+    "bytes": 1695,
+    "sha256": "df1c8a2b0b71719b2d4fe5cbd6a7aa89bbfb36fb32a648b8743cd6d337e73681",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/templates/super_factor_template.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/templates/super_factor_template.py",
+    "bytes": 2297,
+    "sha256": "cd3281324e03762684fcb396b8bb5c2187183974fd7663a81db29849b48a8ba6",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/tools/factor_plotter.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/tools/factor_plotter.py",
+    "bytes": 5127,
+    "sha256": "2a6705cb03b50b17718290619bb44e09934e41bf7da0f601b5a7bd159884aa1a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/tools/factor_spec_builder.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/tools/factor_spec_builder.py",
+    "bytes": 8089,
+    "sha256": "62889cc5a8ee48ff9a613387303ff3e55336994c2011b0fe5df64574c0d5cbbb",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/tools/factor_spec_renderer.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/tools/factor_spec_renderer.py",
+    "bytes": 5606,
+    "sha256": "2bf6b271e22b1426b171e158fba8ea4bc26f3aa46f7de76185cd90a53b355743",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub/tools/factor_template_builder.py",
+    "source": "quant_anian/quant/factor_system/factor_hub/tools/factor_template_builder.py",
+    "bytes": 9333,
+    "sha256": "f245c930da350fa73f4eda791cf30c7ba6f5016b9089ff5c191ec2123c154a92",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub_doc/minute.py",
+    "source": "quant_anian/quant/factor_system/factor_hub_doc/minute.py",
+    "bytes": 2353,
+    "sha256": "8b6c070d8a58979e70477637957a599903aeb5ee23e06d6e537eb6be4b88385a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/factor_hub_doc/regular.py",
+    "source": "quant_anian/quant/factor_system/factor_hub_doc/regular.py",
+    "bytes": 1695,
+    "sha256": "f6da174a27c6b99d2a14d49e7a81d275a0558db62238e7c40150025b279ac2b3",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/factor_system/README.md",
+    "source": "quant_anian/quant/factor_system/README.md",
+    "bytes": 5585,
+    "sha256": "cbd215ce222e32e710b1f8797d0815df9787cb5fba27ec684929ad5f38902f63",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/portal/app.py",
+    "source": "quant_anian/quant/portal/app.py",
+    "bytes": 6206,
+    "sha256": "5d2c47d2ec5a5020d56372696942cb8cbe72135d53bb5704937c286ece11554f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_lib/_gplearn3d/__init__.py",
+    "source": "quant_anian/quant/quant_lib/_gplearn3d/__init__.py",
+    "bytes": 378,
+    "sha256": "bb2fa091f7bc03983106415682c509b992a8deb7604a30efdfb3739b7c7309be",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_lib/_gplearn3d/_program.py",
+    "source": "quant_anian/quant/quant_lib/_gplearn3d/_program.py",
+    "bytes": 46825,
+    "sha256": "8f9f13d60852596cb85793fd668cce450507e0e372c27e75495f093d6abe84d8",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_lib/_gplearn3d/fitness.py",
+    "source": "quant_anian/quant/quant_lib/_gplearn3d/fitness.py",
+    "bytes": 20580,
+    "sha256": "249af31962962213000ccc18a41f6ef9ba697d9558a05b4253e42c3e67928bb9",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_lib/_gplearn3d/functions.py",
+    "source": "quant_anian/quant/quant_lib/_gplearn3d/functions.py",
+    "bytes": 8913,
+    "sha256": "3f041ff5d254c8b5bf88327a19be583a19740831a3e955fdaec9a0e5f688fbf7",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_lib/_gplearn3d/genetic.py",
+    "source": "quant_anian/quant/quant_lib/_gplearn3d/genetic.py",
+    "bytes": 142899,
+    "sha256": "6c1bff51b2e364b72436774545ad0d05d2e3dc4ab0120f3a63dbf692d9d056a8",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_lib/_gplearn3d/more_functions.py",
+    "source": "quant_anian/quant/quant_lib/_gplearn3d/more_functions.py",
+    "bytes": 14974,
+    "sha256": "3665e63274412f55a306ab49da31cc70649e80e845680eb09ddb3a6274b6da08",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_lib/_gplearn3d/README.md",
+    "source": "quant_anian/quant/quant_lib/_gplearn3d/README.md",
+    "bytes": 2577,
+    "sha256": "18c26e0089c50ebddfc019ac3465b227f7dd558526e3f17c8a81eb7ee1561155",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_lib/_gplearn3d/utils.py",
+    "source": "quant_anian/quant/quant_lib/_gplearn3d/utils.py",
+    "bytes": 3590,
+    "sha256": "46a4c3ccb801c3fb243aa9250bc885f17dbc69160095b37674caf20ea31312e1",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_lib/analysis.py",
+    "source": "quant_anian/quant/quant_lib/analysis.py",
+    "bytes": 28959,
+    "sha256": "2ae7e2087913d95ffc5824be20139dea13b70126dbe872d3568fd04e16eb80bc",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_lib/gp_crossday_features.py",
+    "source": "quant_anian/quant/quant_lib/gp_crossday_features.py",
+    "bytes": 6196,
+    "sha256": "c30d9955faa29b023254e0db52ee799470717c59b5c2d1f15fd3984012612566",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_lib/gp_extra_minute_ops.py",
+    "source": "quant_anian/quant/quant_lib/gp_extra_minute_ops.py",
+    "bytes": 44215,
+    "sha256": "b583292ec0225a270aa40afed56e4318fb0b8ede1df95d7b9273e19ed5a22cbf",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_lib/minute_ops.py",
+    "source": "quant_anian/quant/quant_lib/minute_ops.py",
+    "bytes": 18419,
+    "sha256": "29bf43d2ceffa71400cd5b02064f127787c23658e477681e7ca200a8230e1c0a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_lib/minute_tools.py",
+    "source": "quant_anian/quant/quant_lib/minute_tools.py",
+    "bytes": 14858,
+    "sha256": "ecfc9cf2af9b60b56816cb960c5bd95a0b8a35f15a4f0a12d1baed791be9fb2b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_lib/numbafunc.py",
+    "source": "quant_anian/quant/quant_lib/numbafunc.py",
+    "bytes": 42735,
+    "sha256": "771a94d1e2526c788a6218e59157c09237806eb215694795d3aa3139e339a3ec",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_lib/quantEnum.py",
+    "source": "quant_anian/quant/quant_lib/quantEnum.py",
+    "bytes": 1062,
+    "sha256": "2e248ed54d6aa8230841382190ced2d82a1bbe9d7ed07317cf833ea1d15bc644",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_lib/timing_factor.py",
+    "source": "quant_anian/quant/quant_lib/timing_factor.py",
+    "bytes": 8459,
+    "sha256": "d85d17f3d709fb333aa64ca7d41c83af1b25af583112ffcaed5eafc9c1389618",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/quant_pipeline.py",
+    "source": "quant_anian/quant/quant_pipeline.py",
+    "bytes": 1218,
+    "sha256": "8446b2cb2f42b0d4cd8bcf4757dd840706e027eb33d39598a705792760c70a1f",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/dashboard/app.py",
+    "source": "quant_anian/quant/strategy_system/dashboard/app.py",
+    "bytes": 10052,
+    "sha256": "29d56661fd04d70c8dab633ae059d80b7fe765b04ba6acc67ea4dc1df33e4979",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/dashboard/static/vendor/bootstrap.min.css",
+    "source": "quant_anian/quant/strategy_system/dashboard/static/vendor/bootstrap.min.css",
+    "bytes": 232803,
+    "sha256": "3c8f27e6009ccfd710a905e6dcf12d0ee3c6f2ac7da05b0572d3e0d12e736fc8",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/dashboard/static/vendor/echarts.min.js",
+    "source": "quant_anian/quant/strategy_system/dashboard/static/vendor/echarts.min.js",
+    "bytes": 1030855,
+    "sha256": "e84270bd0cd5bdf60fefc26d00c2a391cb2e81f4d26a7a9ee16185a54773a3cf",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/dashboard/templates/base.html",
+    "source": "quant_anian/quant/strategy_system/dashboard/templates/base.html",
+    "bytes": 4279,
+    "sha256": "b433df9c5034b4a6ad078ff53889446cf56a71bb9aa6c9993c8f5bc6c42a4fd5",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/dashboard/templates/strategy_overview.html",
+    "source": "quant_anian/quant/strategy_system/dashboard/templates/strategy_overview.html",
+    "bytes": 15717,
+    "sha256": "82d9bfc36917376aaffcb2f86157a1913241161b74783c73d22f735efc0dcb67",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/methods/tree/catboost_engine.py",
+    "source": "quant_anian/quant/strategy_system/methods/tree/catboost_engine.py",
+    "bytes": 10574,
+    "sha256": "bb1f17740f8fec93315747719358108aef34c14d735debe1e121e1ce81752b04",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/methods/tree/xgb_engine.py",
+    "source": "quant_anian/quant/strategy_system/methods/tree/xgb_engine.py",
+    "bytes": 23064,
+    "sha256": "24d32d68d4f2fbc92a8e2537862a6b9b14f140013d91fd1bf616d0fbba94445b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/strategy_help_functions/mkt.py",
+    "source": "quant_anian/quant/strategy_system/strategy_help_functions/mkt.py",
+    "bytes": 2994,
+    "sha256": "d9ab1c9c09ed823eca6a2f975c4d8699cfb49b303c499e4f8ecb3c2a2beb7076",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/strategy_hub/core/config.py",
+    "source": "quant_anian/quant/strategy_system/strategy_hub/core/config.py",
+    "bytes": 64,
+    "sha256": "7f13ea518a872f070e962950f5d25c4e32f504bb5865e7704f7a4fb49ba59526",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/strategy_hub/core/strategy_loader.py",
+    "source": "quant_anian/quant/strategy_system/strategy_hub/core/strategy_loader.py",
+    "bytes": 2815,
+    "sha256": "248683673412bdcfc3afcf609c7add0d0e007985175d7d8bf91a1168a0545530",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/strategy_hub/core/strategy_performance_engine.py",
+    "source": "quant_anian/quant/strategy_system/strategy_hub/core/strategy_performance_engine.py",
+    "bytes": 4153,
+    "sha256": "5c5868fb565780089522e340ffc43759691ea0374181af8b755c57b6926ab65a",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/strategy_hub/core/strategy_registry.py",
+    "source": "quant_anian/quant/strategy_system/strategy_hub/core/strategy_registry.py",
+    "bytes": 3199,
+    "sha256": "aa18e2d0b4a4758b4bc795192da69eafab041db68384d423a10cffeac7d17cb5",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/strategy_hub/core/strategy_result_engine.py",
+    "source": "quant_anian/quant/strategy_system/strategy_hub/core/strategy_result_engine.py",
+    "bytes": 8403,
+    "sha256": "5ef6551cb1acffd7d819b77f509022a6c25a87fbef5ceeb6369964890f67fdc6",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/strategy_hub/core/strategy_result_store.py",
+    "source": "quant_anian/quant/strategy_system/strategy_hub/core/strategy_result_store.py",
+    "bytes": 2704,
+    "sha256": "febc00448513fce367cd9fa0134e28c14a4f916931a73eb1dbf7036392e96ccf",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/strategy_hub/core/strategy_signal_engine.py",
+    "source": "quant_anian/quant/strategy_system/strategy_hub/core/strategy_signal_engine.py",
+    "bytes": 1037,
+    "sha256": "958590de408454632b09a52c8b26e8bfc84ef57db043f89dadf35e2e8eb86102",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/strategy_hub/core/strategy_signal_store.py",
+    "source": "quant_anian/quant/strategy_system/strategy_hub/core/strategy_signal_store.py",
+    "bytes": 1571,
+    "sha256": "5b11bab42b352c9dbca20532937e6427e01c96f743b6cf713bcea1f98bde7465",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/strategy_hub/core/strategy_weight_engine.py",
+    "source": "quant_anian/quant/strategy_system/strategy_hub/core/strategy_weight_engine.py",
+    "bytes": 6649,
+    "sha256": "2f1a42bb38c1b155460441571702cffa314a23a95a6379161803d4d94ef5f315",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/strategy_hub/core/strategy_weight_store.py",
+    "source": "quant_anian/quant/strategy_system/strategy_hub/core/strategy_weight_store.py",
+    "bytes": 1574,
+    "sha256": "86c14259df1777be2f917fc205b7d5a90efbbc0fcf0721cfbbfda24627217609",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/strategy_hub/main.py",
+    "source": "quant_anian/quant/strategy_system/strategy_hub/main.py",
+    "bytes": 4045,
+    "sha256": "666fe47dae2967b80cf14f9b6f1c07b4dccdd180095d5809367e83f1f3ffa490",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/strategy_hub/services/access_service.py",
+    "source": "quant_anian/quant/strategy_system/strategy_hub/services/access_service.py",
+    "bytes": 30,
+    "sha256": "f739586842e005be1a685eaa6a6a694217c9c3ee94568efa58e312af5972e49c",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/strategy_hub/services/manage_service.py",
+    "source": "quant_anian/quant/strategy_system/strategy_hub/services/manage_service.py",
+    "bytes": 10035,
+    "sha256": "cec91c93a88dd28e04e9c8204171db7158ccf07caccfde70dded4c39ba2500c2",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/strategy_hub/services/research_service.py",
+    "source": "quant_anian/quant/strategy_system/strategy_hub/services/research_service.py",
+    "bytes": 7297,
+    "sha256": "d8d840c1e3f35990100acf86f9f6271aad35248abfb99b9d346e171bb1748160",
+    "copy_status": "identical"
+  },
+  {
+    "file": "src/quant/strategy_system/strategy_hub/tools/strategy_plotter.py",
+    "source": "quant_anian/quant/strategy_system/strategy_hub/tools/strategy_plotter.py",
+    "bytes": 2487,
+    "sha256": "d15c52dd833653a2a85dffcaf9e291e3fe2015ee0e267fdb577aa58b9c8b0705",
+    "copy_status": "identical"
+  },
+  {
+    "file": "experiments/run_v3_no_leak_experiments.py",
+    "source": "scripts/run_v3_no_leak_experiments.py",
+    "bytes": 21865,
+    "sha256": "86e253a3b0d5c9ef131329591b8bc6119d8bc07f14eed6b8e6fc47ef96c6cd7b",
+    "copy_status": "identical"
+  },
+  {
+    "file": "experiments/run_v4_flow_role_experiments.py",
+    "source": "scripts/run_v4_flow_role_experiments.py",
+    "bytes": 13821,
+    "sha256": "b85f04c29b28385af64e77e8d1142a34151d7dd7f42da36a7aad1f9901e8a423",
+    "copy_status": "identical"
+  },
+  {
+    "file": "experiments/run_v4_bucket_condition_experiment.py",
+    "source": "scripts/run_v4_bucket_condition_experiment.py",
+    "bytes": 11428,
+    "sha256": "9a9d010a7257748d0f305df0851de9fb8e69ebd5b53b487b1cbe48533eb27287",
+    "copy_status": "identical"
+  },
+  {
+    "file": "experiments/audit_condition_synthesis_v4.py",
+    "source": "scripts/audit_condition_synthesis_v4.py",
+    "bytes": 10202,
+    "sha256": "4f54a613e19a63639d7c2ae970946578126eaa3c2e70e34ef78dbf69800feea5",
+    "copy_status": "identical"
+  }
+]
